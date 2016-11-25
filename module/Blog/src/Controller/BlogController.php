@@ -128,7 +128,7 @@ class BlogController extends AbstractActionController
 //         $oSoapClient = new SoapClient ( $url . "?WSDL", $params );
         $opt = array('trace'=>true);
         
-           $client = new Client('http://127.0.0.1:8080/service?wsdl', ['stream_context' => stream_context_create($opts)]);
+           $client = new Client('http://localizapet.esy.es/public/service?wsdl', ['stream_context' => stream_context_create($opts)]);
            $client->setWSDLCache(false);
            $client->setSoapVersion(SOAP_1_1);
 //            phpinfo();
@@ -150,7 +150,7 @@ class BlogController extends AbstractActionController
         
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(\Blog\Soap\Client::class)
-                         ->setUri('http://127.0.0.1:8080/service');
+                         ->setUri('http://localizapet.esy.es/public/service');
             $viewModel = new viewModel();
             //desativa layout
             $viewModel->setTerminal(true);
@@ -167,7 +167,7 @@ class BlogController extends AbstractActionController
         }
         
         // pointing to the current file here
-        $soap = new Server('http://127.0.0.1:8080/service?wsdl',[
+        $soap = new Server('http://localizapet.esy.es/public/service?wsdl',[
             'cache_wsdl' => WSDL_CACHE_NONE
         ]);
         $request = new Request();
@@ -189,7 +189,7 @@ class BlogController extends AbstractActionController
     
     public function serverAction(){
         libxml_disable_entity_loader(false);
-        $server = new \Zend\Soap\Server("http://localhost:8080/service.wsdl", [
+        $server = new \Zend\Soap\Server("http://localizapet.esy.es/public/service.wsdl", [
             'cache_wsdl' => WSDL_CACHE_NONE
         ]);
 //         $server->setUri("http://localhost:8080/blog/server");
