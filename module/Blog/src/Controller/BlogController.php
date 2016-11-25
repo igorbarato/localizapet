@@ -150,7 +150,8 @@ class BlogController extends AbstractActionController
         
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(\Blog\Soap\Client::class)
-                         ->setUri('http://localizapet.esy.es/public/service');
+                            ->setBindingStyle(array('style' => 'document'))
+                            ->setUri('http://localizapet.esy.es/public/service');
             $viewModel = new viewModel();
             //desativa layout
             $viewModel->setTerminal(true);
@@ -158,7 +159,8 @@ class BlogController extends AbstractActionController
             header('Content-type: application/xml');
 //             $wsdl = $wsdl->toDomDocument();
             echo $wsdl->toXML();
-            return $viewModel;
+//             return $viewModel;
+            exit();
         }
         
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {
