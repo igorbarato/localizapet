@@ -311,11 +311,11 @@ class WebServiceController extends AbstractActionController
             $viewModel->setTerminal(true);
             
             $wsdl = $autodiscover->generate();
-//            $wsdl->addComplexType(WebService\Model\Registro::class);
-//            $wsdl->addComplexType(WebService\Model\Animal::class);
-//            $wsdl->addComplexType(WebService\Model\Raca::class);
-//            $wsdl->addComplexType(WebService\Model\Especie::class);
-//            $wsdl->addComplexType(WebService\Model\Usuario::class);
+            $wsdl->addComplexType(WebService\Model\Registro::class);
+            $wsdl->addComplexType(WebService\Model\Animal::class);
+            $wsdl->addComplexType(WebService\Model\Raca::class);
+            $wsdl->addComplexType(WebService\Model\Especie::class);
+            $wsdl->addComplexType(WebService\Model\Usuario::class);
             
             header('Content-type: application/xml');
             echo $wsdl->toXml();
