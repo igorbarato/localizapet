@@ -319,7 +319,8 @@ class WebServiceController extends AbstractActionController
             
             header('Content-type: application/xml');
             echo $wsdl->toXml();
-            return $viewModel;
+//            return $viewModel;
+            exit();
             
         } else {
             $options = array(
