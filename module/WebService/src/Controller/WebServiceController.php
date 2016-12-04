@@ -89,7 +89,7 @@ class WebServiceController extends AbstractActionController
 //            $raca_id, $especie_id, $cor, $porte);
         
         return new ViewModel([
-            'animals' => $animal->listaAnimais()
+            'animals' => $client->listaAnimais()
         ]);
     }
     
@@ -175,35 +175,9 @@ class WebServiceController extends AbstractActionController
                 'especie_id' => 2
             ]
         ];
-//        var_dump($animal);
-//        $usuario->setUsuario_id(1);
-//        $animal->setUsuario($usuario);
-//        var_dump($client->getFunctions());
-//        var_dump($client->getLastResponse());
-//        $client->setUri('urn:Servicos');
-//        $client->setLocation('http://localizapet.esy.es/public/server.php');
-//        $client->setCompressionOptions('SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP');
-////        
-//        var_dump($client->olaMundo());
-//        $client->call('cadastrar_animal', $animal);
-////        $client->cadastrar_animal($animal);
-//        var_dump($client->getLastMethod());
+        $client->cadastrar_animal($animal);
         
-        $cliente = new \SoapClient('http://localizapet.esy.es/public/server.php?wsdl',[
-            'locaction' => 'http://localizapet.esy.es/public/server.php',
-            'uri' => 'http://localizapet.esy.es/public/server.php',
-            'soap_version'   => SOAP_1_2,
-            'compression' => SOAP_COMPRESSION_DEFLATE | SOAP_COMPRESSION_GZIP,
-            'trace' => 1,
-            'exceptions' => true, 
-            'cache_wsdl' => WSDL_CACHE_NONE
-        ]);
-//        $cliente->__soapCall('cadastrar_animal', $animal_data);
-        $result = $cliente->olaMundo();
-//        $result =  $cliente->__getLastRequest();
-        var_dump($result);
-        
-//        return $this->redirect()->toRoute('pet');
+        return $this->redirect()->toRoute('pet');
                 
    }
    

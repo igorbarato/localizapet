@@ -6,7 +6,16 @@ use WebService\Database\Database;
 
 class Servicos {
     
-    /** @param WebService\Model\Animal $animal */
+    /**
+     * 
+     * @return array
+     */
+    public function lista_animais(){
+        $db = new Database();
+        return $db->query('SELECT * FROM animal;');
+    }
+
+        /** @param WebService\Model\Animal $animal */
     public function cadastrar_animal($animal){
         $db = new Database();
         $db->start();
