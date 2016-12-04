@@ -17,24 +17,18 @@ use WebService\Database\Database;
 
 class WebServiceController extends AbstractActionController
 {
-    /**
-     * @var PostTable
-     */
-    private $table;
-    private $animal_table;
-    
     public function __construct()
     {
-//         $this->table = $table;
-//         $this->animal_table = $animal_table;
     }
     
     public function indexAction()
     {
-//        $postTable = $this->table;
-        return new ViewModel([
-//            'posts' => $postTable->fetchAll()
+        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+        $view = new ViewModel([
+            'animals' => $client->lista_animais()
         ]);
+//        $view->setTemplate('web-service');
+        return $view;
     }
     
     public function indexpetAction()
@@ -89,7 +83,7 @@ class WebServiceController extends AbstractActionController
 //            $raca_id, $especie_id, $cor, $porte);
         
         return new ViewModel([
-            'animals' => $client->listaAnimais()
+            'animals' => $client->lista_animais()
         ]);
     }
     
@@ -123,14 +117,15 @@ class WebServiceController extends AbstractActionController
    {
 
         $form = new WebService\Form\AnimalForm();
-        $form->get('submit')->setValue('Add Animal');
+        $form->get('submit')->setValue('Adicionar Pet');
         
         $request = $this->getRequest();
         
         if (!$request->isPost()){
-            return new ViewModel([
+            $view = new ViewModel([
                 'form' => $form,
-            ]);   
+            ]); 
+            return $view;
         }
         
         $form->setData($request->getPost());
@@ -160,21 +155,21 @@ class WebServiceController extends AbstractActionController
         $animal->especie_id = $data['especie'];
         $animal->usuario_id = 1;
         
-        $animal_data = [
-            'animal' => [
-                'animal_id' => '',
-                'nome' => 'Pluto',
-                'idade' => 2,
-                'sexo' => 2,
-                'detalhes' => 'teste',
-                'cor' => '#ffffff',
-                'foto' => '',
-                'porte' => 2,
-                'usuario_id'=> 1,
-                'raca_id' => 1,
-                'especie_id' => 2
-            ]
-        ];
+//        $animal_data = [
+//            'animal' => [
+//                'animal_id' => '',
+//                'nome' => 'Pluto',
+//                'idade' => 2,
+//                'sexo' => 2,
+//                'detalhes' => 'teste',
+//                'cor' => '#ffffff',
+//                'foto' => '',
+//                'porte' => 2,
+//                'usuario_id'=> 1,
+//                'raca_id' => 1,
+//                'especie_id' => 2
+//            ]
+//        ];
         $client->cadastrar_animal($animal);
         
         return $this->redirect()->toRoute('pet');

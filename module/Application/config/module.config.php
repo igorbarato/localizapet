@@ -14,16 +14,16 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 return [
     'router' => [
         'routes' => [
-            'home' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
-                    ],
-                ],
-            ],
+//            'home' => [
+//                'type' => Literal::class,
+//                'options' => [
+//                    'route'    => '/',
+//                    'defaults' => [
+//                        'controller' => Controller\IndexController::class,
+//                        'action'     => 'index',
+//                    ],
+//                ],
+//            ],
 //             'application' => [
 //                 'type'    => Segment::class,
 //                 'options' => [

@@ -3,6 +3,7 @@
 namespace WebService;
 
 use WebService\Controller\WebServiceController;
+use WebService\Controller\RegistroController;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 class Module implements ConfigProviderInterface
@@ -59,10 +60,10 @@ class Module implements ConfigProviderInterface
         return [
             'factories' => [
                 WebServiceController::class => function ($container) {
-                    return new WebServiceController(
-//                         $container->get(Model\PostTable::class)
-//                         $container->get(Model\AnimalTable::class)
-                    );
+                    return new WebServiceController();
+                },
+                RegistroController::class => function () {
+                    return new RegistroController();
                 }
             ]
         ];
