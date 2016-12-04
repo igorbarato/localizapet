@@ -42,9 +42,9 @@ return array(
     'Zend\\Authentication\\' => array($vendorDir . '/zendframework/zend-authentication/src'),
     'ZendDeveloperTools\\' => array($vendorDir . '/zendframework/zend-developer-tools/src'),
     'ZF\\DevelopmentMode\\' => array($vendorDir . '/zfcampus/zf-development-mode/src'),
+    'WebService\\' => array($baseDir . '/module/WebService/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
-    'Blog\\' => array($baseDir . '/module/Blog/src'),
     'Application\\' => array($baseDir . '/module/Application/src'),
     'ApplicationTest\\' => array($baseDir . '/module/Application/test'),
 );

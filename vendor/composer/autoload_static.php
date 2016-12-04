@@ -50,6 +50,10 @@ class ComposerStaticInit16885ffec2282fc86679dda49d2eb73b
             'ZendDeveloperTools\\' => 19,
             'ZF\\DevelopmentMode\\' => 19,
         ),
+        'W' => 
+        array (
+            'WebService\\' => 11,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -57,10 +61,6 @@ class ComposerStaticInit16885ffec2282fc86679dda49d2eb73b
         'I' => 
         array (
             'Interop\\Container\\' => 18,
-        ),
-        'B' => 
-        array (
-            'Blog\\' => 5,
         ),
         'A' => 
         array (
@@ -214,6 +214,10 @@ class ComposerStaticInit16885ffec2282fc86679dda49d2eb73b
         array (
             0 => __DIR__ . '/..' . '/zfcampus/zf-development-mode/src',
         ),
+        'WebService\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/module/WebService/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -221,10 +225,6 @@ class ComposerStaticInit16885ffec2282fc86679dda49d2eb73b
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
-        ),
-        'Blog\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/module/Blog/src',
         ),
         'Application\\' => 
         array (

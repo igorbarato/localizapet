@@ -98,7 +98,7 @@
   "autoload" : {
     "psr-4" : {
       "Application\\" : "module/Application/src/",
-      "Blog\\" : "module/Blog/src"
+      "WebService\\" : "module/WebService/src"
     }
   },
   "type" : "project",

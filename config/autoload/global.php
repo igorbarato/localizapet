@@ -12,16 +12,16 @@
  */
 
 return [
-   'db' => [
-         'driver'         => 'Pdo',
-         'dsn'            => 'mysql:dbname=blog;host=localhost;port=3306,charset=utf8',
-   ],
-   'service_manager' => [
-         'factories' => [
-               'Zend\Db\Adapter\Adapter'
-               => 'Zend\Db\Adapter\AdapterServiceFactory',
-         ],
-   ],
+//    'db' => [
+//          'driver'         => 'Pdo',
+//          'dsn'            => 'mysql:dbname=localizapet;host=localhost;port=3306,charset=utf8',
+//    ],
+//    'service_manager' => [
+//          'factories' => [
+//                'Zend\Db\Adapter\Adapter'
+//                => 'Zend\Db\Adapter\AdapterServiceFactory',
+//          ],
+//    ],
    
     // ...
 ];

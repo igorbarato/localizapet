@@ -1,0 +1,24 @@
+<?php $this->headTitle("Animal"); ?>
+<h1>Animais</h1>
+
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Sexo</th>
+        <th>Cor</th>
+        <th>Detalhes</th> 
+    </tr>
+    <?php 
+    $animals = $this->animals;
+     var_dump($animals);?>
+    <?php foreach ($animals as $animal): ?>
+        <tr>
+            <td><?= $this->escapeHtml($animal['nome']); ?></td>
+            <td><img src="data:image/jpeg;base64, <?= base64_encode($animal['foto']);?>"/></td>
+            <td><?= $this->escapehtml($animal->sexo);?></td>
+            <td><?= $this->escapehtml($animal->cor);?></td>
+            <td><?= $this->escapehtmlattr($animal->detalhes);?></td>
+        </tr>
+    <?php endforeach;?>
+</table>

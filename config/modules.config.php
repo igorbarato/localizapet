@@ -26,5 +26,5 @@ return [
     'Zend\Validator',
     'Zend\Db',
     'Application',
-    'Blog'
+    'WebService'
 ];
