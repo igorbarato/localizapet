@@ -24,11 +24,9 @@ class WebServiceController extends AbstractActionController
     public function indexAction()
     {
         $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
-        $view = new ViewModel([
+        return $view = new ViewModel([
             'animals' => $client->lista_animais()
         ]);
-//        $view->setTemplate('web-service');
-        return $view;
     }
     
     public function indexpetAction()
@@ -122,10 +120,10 @@ class WebServiceController extends AbstractActionController
         $request = $this->getRequest();
         
         if (!$request->isPost()){
-            $view = new ViewModel([
+            
+            return $view = new ViewModel([
                 'form' => $form,
-            ]); 
-            return $view;
+            ]);
         }
         
         $form->setData($request->getPost());

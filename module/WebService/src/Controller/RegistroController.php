@@ -10,7 +10,7 @@ use Zend\Soap\Client;
 use Zend\Soap\AutoDiscover;
 use Zend\Soap\Server;
 use Zend\Http\PhpEnvironment\Request;
-use WebService\Model\Animal;
+use WebService\Model\Registro;
 use WebService\Model\Usuario;
 use WebService;
 use WebService\Database\Database;
@@ -48,29 +48,28 @@ class RegistroController extends AbstractActionController
             return ['form' => $form];
         }
         
-//        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
-//        $client->setWSDLCache(false);
-//        $client->setSoapVersion(SOAP_1_2);
+        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+        $client->setWSDLCache(false);
+        $client->setSoapVersion(SOAP_1_2);
 //        
 //        
-//        $animal = new Registro();
+        $registro = new Registro();
 //        $usuario = new Usuario();
 //        
-//        $data = $form->getData();
-//        $animal->nome = $data['nome'];
-//        $animal->idade = $data['idade'];
-//        $animal->sexo = $data['sexo'];
-//        $animal->detalhes = $data['detalhes'];
-//        $animal->cor = $data['cor'];
-//        $animal->foto = $data['foto'];
-//        $animal->porte = $data['porte'];
-//        $animal->raca_id = $data['raca'];
-//        $animal->especie_id = $data['especie'];
-//        $animal->usuario_id = 1;
+        $data = $form->getData();
+        $registro->data = $data['data'];
+        $registro->latitude = $data['latitude'];
+        $registro->longitude = $data['longitude'];
+        $registro->tipo_registro = $data['tipo_registro'];
+        $registro->status = $data['status'];
+//        $registro->animal_id = $data['animal_id'];
+        $registro->animal_id = 1;
+//        $registro->usuario_id = $data['usuario_id'];
+        $registro->usuario_id = 1;
+        
+        $client->inserir_registro($registro);
 //        
-//        $client->cadastrar_animal($animal);
-//        
-//        return $this->redirect()->toRoute('pet');
+        return $this->redirect()->toRoute('registro');
                 
    }
    
