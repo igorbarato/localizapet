@@ -299,11 +299,13 @@ class WebServiceController extends AbstractActionController
     }
     
     public function serverAction(){
-        $url="http://localhost:8080/server.php?wsdl";
+//        $url="http://localhost:8080/server.php?wsdl";
+        $url="http://localizapet.esy.es/public/server.php?wsdl";
         if (isset($_GET['wsdl'])) {
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(\WebService\Soap\Servicos::class)
-                           ->setUri("http://localhost:8080/server.php");
+//                           ->setUri("http://localhost:8080/server.php");
+                           ->setUri("http://localizapet.esy.es/public/server.php");
             $viewModel = new viewModel();
             $viewModel->setTerminal(true);
             
