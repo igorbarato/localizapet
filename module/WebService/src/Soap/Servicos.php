@@ -67,4 +67,12 @@ class Servicos {
         $stm->close();
         $db->close();
     }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function olaMundo(){
+        return 'Olá mundo';
+    }
 }

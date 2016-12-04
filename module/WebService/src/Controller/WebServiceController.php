@@ -138,13 +138,16 @@ class WebServiceController extends AbstractActionController
             return ['form' => $form];
         }
         
-        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl', null);
+        $client->setWSDLCache(false);
+        $client->setSoapVersion(SOAP_1_2);
+        
 //        $client = new \Zend\Soap\Client('http://localhost:8080/server.php?wsdl', $options=null);
         
         $animal = new Animal();
         $usuario = new Usuario();
         
-        var_dump($form->getData());
+//        var_dump($form->getData());
         $data = $form->getData();
         $animal->setNome($data['nome']);
         $animal->setIdade($data['idade']);
@@ -156,13 +159,29 @@ class WebServiceController extends AbstractActionController
         $animal->setRaca_id($data['raca']);
         $animal->setEspecie_id($data['especie']);
         $animal->usuario_id = 1;
+//        var_dump($animal);
 //        $usuario->setUsuario_id(1);
 //        $animal->setUsuario($usuario);
+        var_dump($client->getFunctions());
+//        var_dump($client->getLastResponse());
+//        $client->setUri('urn:Servicos');
+//        $client->setLocation('http://localizapet.esy.es/public/server.php?wsdl');
+//        
+//        $client->call('cadastrar_animal', $animal);
+////        $client->cadastrar_animal($animal);
+//        var_dump($client->getLastMethod());
         
-        $client->cadastrar_animal($animal);
-//        $animal->exchangeArray($form->getData());
-//        $this->table->save($animal);
-        return $this->redirect()->toRoute('pet');
+//        $cliente = new \SoapClient('http://localizapet.esy.es/public/server.php?wsdl',[
+//            'soap_version'   => SOAP_1_2,
+//            'compression' => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP,
+//            'trace' => 1,
+//            'exceptions' => true, 
+//            'cache_wsdl' => WSDL_CACHE_NONE
+//        ]);
+//        $cliente->cadastrar_animal($animal);
+        
+        
+//        return $this->redirect()->toRoute('pet');
                 
    }
    

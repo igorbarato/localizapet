@@ -95,9 +95,7 @@ class AnimalForm extends Form
             'options' => [
                 'label'=> 'Raça',
                 'value_options' => [
-                    0 => 'Labrador',
-                    1 => 'Poodle',
-                    2 => 'Vira-lata'
+                    1 => 'Vira-lata'
                 ]
             ]
         ]);
@@ -108,8 +106,8 @@ class AnimalForm extends Form
             'options' => [
                 'label'=> 'Espécie',
                 'value_options' => [
-                    0 => 'Cachorro',
-                    1 => 'Gato'
+                    1 => 'Gato',
+                    2 => 'Cachorro'
                 ]
             ]
         ]);
