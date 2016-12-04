@@ -3,7 +3,6 @@
 namespace WebService\Controller;
 
 use WebService\Form\PostForm;
-use WebService\Model\Post;
 use WebService\Model\PostTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -139,7 +138,8 @@ class WebServiceController extends AbstractActionController
             return ['form' => $form];
         }
         
-        $client = new \Zend\Soap\Client('http://localhost:8080/server.php?wsdl', $options=null);
+        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl', $options=null);
+//        $client = new \Zend\Soap\Client('http://localhost:8080/server.php?wsdl', $options=null);
         
         $animal = new Animal();
         $usuario = new Usuario();
@@ -304,6 +304,7 @@ class WebServiceController extends AbstractActionController
         if (isset($_GET['wsdl'])) {
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(\WebService\Soap\Servicos::class)
+                            ->setBindingStyle(array('style' => 'document'))
 //                           ->setUri("http://localhost:8080/server.php");
                            ->setUri("http://localizapet.esy.es/public/server.php");
             $viewModel = new viewModel();
