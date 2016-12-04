@@ -6,10 +6,10 @@ use WebService\Model\Animal;
 
 class Database
 {
-    private $servername = 'localhost';
-    private $username = 'root';
-    private $password = 'futebol93';
-    private $database = 'localizapet';
+    private $servername = 'mysql.hostinger.com.br';
+    private $username = 'u368622186_root';
+    private $password = 'o0iDe+KyC^$`fB[ZLh';
+    private $database = 'u368622186_pet';
     private $charset = 'utf8';
     public $conexao;
     
