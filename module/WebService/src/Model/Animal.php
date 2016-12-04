@@ -40,19 +40,20 @@ class Animal extends Raca
     /** @var \WebService\Model\Especie */
     public $especie;
             
-    function __construct($animal_id, $nome, $idade, $sexo, $detalhes, $cor, 
-            $foto, $porte, $usuario, $raca, $especie) {
-        $this->animal_id = $animal_id;
-        $this->nome = $nome;
-        $this->idade = $idade;
-        $this->sexo = $sexo;
-        $this->detalhes = $detalhes;
-        $this->cor = $cor;
-        $this->foto = $foto;
-        $this->porte = $porte;
-        $this->usuario = $usuario;
-        $this->setRaca($raca);
-        $this->setEspecie($especie);
+    function __construct(){
+//    function __construct($animal_id, $nome, $idade, $sexo, $detalhes, $cor, 
+//            $foto, $porte, $usuario, $raca, $especie) {
+//        $this->animal_id = $animal_id;
+//        $this->nome = $nome;
+//        $this->idade = $idade;
+//        $this->sexo = $sexo;
+//        $this->detalhes = $detalhes;
+//        $this->cor = $cor;
+//        $this->foto = $foto;
+//        $this->porte = $porte;
+//        $this->usuario = $usuario;
+//        $this->setRaca($raca);
+//        $this->setEspecie($especie);
     }
 
     

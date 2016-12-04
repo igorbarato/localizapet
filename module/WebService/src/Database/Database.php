@@ -10,6 +10,12 @@ class Database
     private $username = 'u368622186_root';
     private $password = 'o0iDe+KyC^$`fB[ZLh';
     private $database = 'u368622186_pet';
+    
+//    private $servername = 'localhost';
+//    private $username = 'root';
+//    private $password = 'futebol93';
+//    private $database = 'localizapet';
+    
     private $charset = 'utf8';
     public $conexao;
     
@@ -90,8 +96,8 @@ class Database
         $this->start();
 //         $this->where = (!empty($where)) ? $where: null;
 //         $this->order = (!empty($order)) ? $order: null;
-        $stm = $this->conexao->prepare($query);
-        $stm->bind_param();
+//        $stm = $this->conexao->prepare($query);
+//        $stm->bind_param();
         $result = mysqli_query($this->conexao, $query);
         
         $rows = [];
