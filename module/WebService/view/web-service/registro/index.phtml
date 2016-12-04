@@ -1,0 +1,36 @@
+<?php $this->headTitle("Registros"); ?>
+<h1>Registros</h1>
+
+<table class="table">
+    <tr>
+        <th>Data</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Tipo de Registro</th>
+        <th>Status</th> 
+        <th>ID Animal</th> 
+        <th>ID Usuário</th> 
+    </tr>
+    <?php 
+    $registros = $this->registros;
+//     var_dump();?>
+    <?php foreach ($registros as $registro): ?>
+        <tr>
+            <td><?= $this->escapeHtml($registro['data']); ?></td>
+            <td><?= $this->escapeHtml($registro['latitude']); ?></td>
+            <td><?= $this->escapeHtml($registro['longitude']); ?></td>
+            <td><?= $this->escapeHtml($registro['tipo_registro']); ?></td>
+            <td><?= $this->escapeHtml($registro['status']); ?></td>
+            <td><?= $this->escapeHtml($registro['animal_id']); ?></td>
+            <td><?= $this->escapeHtml($registro['usuario_id']); ?></td>
+        </tr>
+    <?php endforeach;?>
+</table>
+<form>
+    <div class="form-group">
+        <input type="text" id="lati" name="latitude" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="text" id="long" name="longitude" class="form-control">
+    </div>
+</form>

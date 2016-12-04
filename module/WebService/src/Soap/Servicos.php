@@ -14,6 +14,15 @@ class Servicos {
         $db = new Database();
         return $db->query('SELECT * FROM animal;');
     }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function lista_registros(){
+        $db = new Database();
+        return $db->query('SELECT * FROM registro;');
+    }
 
         /** @param WebService\Model\Animal $animal */
     public function cadastrar_animal($animal){

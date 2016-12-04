@@ -4,10 +4,15 @@
 <table class="table">
     <tr>
         <th>Nome</th>
+        <th>Foto</th>
         <th>Idade</th>
         <th>Sexo</th>
         <th>Cor</th>
         <th>Detalhes</th> 
+        <th>Porte</th> 
+        <th>ID Raca</th> 
+        <th>ID Especie</th> 
+        <th>ID Usuario</th> 
     </tr>
     <?php 
     $animals = $this->animals;
@@ -16,38 +21,14 @@
         <tr>
             <td><?= $this->escapeHtml($animal['nome']); ?></td>
             <td><img src="data:image/jpeg;base64, <?= base64_encode($animal['foto']);?>"/></td>
-            <td><?= $this->escapehtml($animal->sexo);?></td>
-            <td><?= $this->escapehtml($animal->cor);?></td>
-            <td><?= $this->escapehtmlattr($animal->detalhes);?></td>
+            <td><?= $this->escapeHtml($animal['idade']); ?></td>
+            <td><?= $this->escapeHtml($animal['sexo']); ?></td>
+            <td><?= $this->escapeHtml($animal['cor']); ?></td>
+            <td><?= $this->escapeHtml($animal['detalhes']); ?></td>
+            <td><?= $this->escapeHtml($animal['porte']); ?></td>
+            <td><?= $this->escapeHtml($animal['raca_id']); ?></td>
+            <td><?= $this->escapeHtml($animal['especie_id']); ?></td>
+            <td><?= $this->escapeHtml($animal['usuario_id']); ?></td>
         </tr>
     <?php endforeach;?>
 </table>
-<form>
-    <div class="form-group">
-        <input type="text" id="lati" name="latitude" class="form-control">
-    </div>
-    <div class="form-group">
-        <input type="text" id="long" name="longitude" class="form-control">
-    </div>
-</form>
-<script>
-    window.onload = function (){
-      if (window.navigator && window.navigator.geolocation) {
-       var geolocation = window.navigator.geolocation;
-       geolocation.getCurrentPosition(sucesso, erro);
-      } else {
-         alert('Geolocalização não suportada em seu navegador.')
-      }
-      function sucesso(posicao){
-        console.log(posicao);
-        var latitude = posicao.coords.latitude;
-        var longitude = posicao.coords.longitude;
-        document.getElementById('lati').value = latitude;
-        document.getElementById('long').value = longitude;
-//        alert('Sua latitude estimada é: ' + latitude + ' e longitude: ' + longitude )
-      }
-      function erro(error){
-        console.log(error)
-      }
-    }
-</script>

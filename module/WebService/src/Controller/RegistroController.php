@@ -25,7 +25,7 @@ class RegistroController extends AbstractActionController
     {
         $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
         return new ViewModel([
-            'animals' => $client->lista_animais()
+            'registros' => $client->lista_registros()
         ]);
     }
     
