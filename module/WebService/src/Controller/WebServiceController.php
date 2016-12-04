@@ -323,7 +323,7 @@ class WebServiceController extends AbstractActionController
             
         } else {
             $options = array(
-                'uri' => 'urn:Client',
+                'uri' => 'urn:Servicos',
                 'location' => $url
             );
             $soap = new Server(null, $options);
