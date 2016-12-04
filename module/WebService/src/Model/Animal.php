@@ -31,14 +31,14 @@ class Animal extends Raca
     /** @var string */
     public $porte;
     
-    /** @var \WebService\Model\Usuario */
-    public $usuario;
+    /** @var int */
+    public $usuario_id;
     
-    /** @var \WebService\Model\Raca */
-    public $raca;
+    /** @var int */
+    public $raca_id;
     
-    /** @var \WebService\Model\Especie */
-    public $especie;
+    /** @var int */
+    public $especie_id;
             
     function __construct(){
 //    function __construct($animal_id, $nome, $idade, $sexo, $detalhes, $cor, 
