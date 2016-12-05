@@ -37,18 +37,17 @@ class UsuarioController extends AbstractActionController
             if($form->isValid()){
                 $login = $form->get("login")->getValue();
                 $senha = $form->get("senha")->getValue();
+                
+                $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+                $client->setWSDLCache(false);
+                $client->setSoapVersion(SOAP_1_2);
+                $result = $client->login($login, $senha);
             }
-            
             ////////////////////////
             //Verifica no banco se há o login e senha e retorna o ID do usuário
 //            $db = new \WebService\Database\Database();
 //            $result = $db->login($login, $senha);
             ///////////////////////////
-            
-            $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
-//            $client = new Client('http://localhost:8080/server.php?wsdl');
-            $result = $client->login($login, $senha);
-//            var_dump($result);
             
             if($result != NULL){
                 //Seta o ID do usuário como parâmetro de Sessão
@@ -56,7 +55,7 @@ class UsuarioController extends AbstractActionController
                 
                 var_dump($auth->getIdentity());
                 
-                $this->redirect()->toRoute('home');
+//                $this->redirect()->toRoute('home');
             }else{
                 $erro = 'Não foi possível realizar o login verifique o <strong>Usuário</strong> ou a <strong>Senha</strong>';
                 return new ViewModel([
