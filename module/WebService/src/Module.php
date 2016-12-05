@@ -5,6 +5,7 @@ namespace WebService;
 use WebService\Controller\WebServiceController;
 use WebService\Controller\RegistroController;
 use WebService\Controller\UsuarioController;
+use WebService\Controller\AnimalController;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 class Module implements ConfigProviderInterface
@@ -68,6 +69,9 @@ class Module implements ConfigProviderInterface
                 },
                 RegistroController::class => function () {
                     return new RegistroController();
+                },
+                AnimalController::class => function () {
+                    return new AnimalController();
                 }
             ]
         ];

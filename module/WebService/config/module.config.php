@@ -43,8 +43,8 @@ return [
                         'id' => '[0-9]+',
                     ],
                     'defaults' => [
-                        'controller' => Controller\WebServiceController::class,
-                        'action' => 'indexpet'
+                        'controller' => Controller\AnimalController::class,
+                        'action' => 'index'
                     ]
                 ]
             ],
@@ -95,7 +95,8 @@ return [
         'template_path_stack' => [
             'registro' => __DIR__ . "/../view",
             'usuario' => __DIR__ . "/../view",
-            'webservice' => __DIR__ . "/../view"
+            'webservice' => __DIR__ . "/../view",
+            'animal' => __DIR__ . "/../view"
         ]
     ]
 ];

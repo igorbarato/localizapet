@@ -51,8 +51,10 @@ class RegistroController extends AbstractActionController
         $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
-//        
-//        
+//      
+        //Retorna ID do usuário logado
+        $auth = new AuthenticationService();
+        
         $registro = new Registro();
 //        $usuario = new Usuario();
 //        
@@ -66,7 +68,7 @@ class RegistroController extends AbstractActionController
 //        $registro->animal_id = $data['animal_id'];
         $registro->animal_id = 1;
 //        $registro->usuario_id = $data['usuario_id'];
-        $registro->usuario_id = 1;
+        $registro->usuario_id = $auth->getIdentity()['usuario_id'];
         
         $client->inserir_registro($registro);
 //        
