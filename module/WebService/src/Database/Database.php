@@ -109,6 +109,24 @@ class Database
         return $rows;
     }
     
+    public function login($login, $senha){
+        $this->start();
+        
+        $query = 'SELECT * FROM usuario WHERE login = \'' . $login . '\' '
+            .'AND senha = \''.$senha.'\';';
+        
+        $result = mysqli_query($this->conexao, $query);
+        
+        $row = mysqli_fetch_array($result);
+//        var_dump($row);
+        $this->close();
+        //Se achou o login retorna true
+//        if($row != null) 
+            return $row['usuario_id'];
+        //Senão false
+//        return false;
+    }
+    
     function getConexao() {
         return $this->conexao;
     }

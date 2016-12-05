@@ -7,6 +7,25 @@ use WebService\Database\Database;
 class Servicos {
     
     /**
+     * @param string $login
+     * @param string $senha
+     * @return array
+     */
+    public function login($login, $senha){
+        $db = new Database();
+        $db->start();
+        
+        $query = 'SELECT * FROM usuario WHERE login = \'' . $login . '\' '
+            .'AND senha = \''.$senha.'\';';
+        
+        $result = mysqli_query($db->conexao, $query);
+        
+        $row = mysqli_fetch_array($result);
+        $db->close();
+            return $row['usuario_id'];
+    }
+    
+    /**
      * 
      * @return array
      */

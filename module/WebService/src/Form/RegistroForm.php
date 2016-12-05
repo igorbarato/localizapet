@@ -24,13 +24,13 @@ class RegistroForm extends Form
 //            'required' => true,
             'options' => [
                 'label'=> 'Data',
-                'format'=> 'i:H d/m/Y'
+                'format'=> 'm/d/Y H:i'
             ],
-            'attributes' => [
-             'min' => '2010-01-01T00:00:00Z',
-             'max' => '2020-01-01T00:00:00Z',
-             'step' => '1', // minutes; default step interval is 1 min
-            ]
+//            'attributes' => [
+//             'min' => '2010-01-01T00:00:00Z',
+//             'max' => '2020-01-01T00:00:00Z',
+//             'step' => '1', // minutes; default step interval is 1 min
+//            ]
         ]);
         
         $this->add([

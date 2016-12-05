@@ -1,6 +1,11 @@
 <?php $this->headTitle("Animal"); ?>
 <h1>Animais</h1>
-
+<?php
+use Zend\Authentication\AuthenticationService;
+$auth = new AuthenticationService();
+//$auth->clearIdentity();
+print_r($auth->getIdentity());
+?>
 <table class="table">
     <tr>
         <th>Nome</th>

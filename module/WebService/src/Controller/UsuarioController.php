@@ -2,31 +2,72 @@
 
 namespace WebService\Controller;
 
-use WebService\Form\PostForm;
-use WebService\Model\PostTable;
+use WebService\Form\UsuarioForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Soap\Client;
 use Zend\Soap\AutoDiscover;
 use Zend\Soap\Server;
 use Zend\Http\PhpEnvironment\Request;
-use WebService\Model\Registro;
 use WebService\Model\Usuario;
-use WebService;
-use WebService\Database\Database;
+use Zend\Authentication\Storage;
+use Zend\Authentication\AuthenticationService;
 
-class RegistroController extends AbstractActionController
+class UsuarioController extends AbstractActionController
 {
     public function __construct()
     {
     }
     
     public function indexAction()
-    {
-        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
-        return new ViewModel([
-            'registros' => $client->lista_registros()
-        ]);
+    {   
+        
+        $auth = new AuthenticationService();
+//        var_dump($auth->getIdentity());
+        $auth->clearIdentity();
+//        var_dump($auth->getIdentity());
+
+//        session_reset();
+        $form = new UsuarioForm();
+        $form->get('submit')->setValue('Login');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()){
+            $form->setData($request->getPost());
+            if($form->isValid()){
+                $login = $form->get("login")->getValue();
+                $senha = $form->get("senha")->getValue();
+            }
+            
+            ////////////////////////
+            //Verifica no banco se há o login e senha e retorna o ID do usuário
+//            $db = new \WebService\Database\Database();
+//            $result = $db->login($login, $senha);
+            ///////////////////////////
+            
+            $client = new Client('http://localizapet.esy.es/public/server.php?wsdl');
+//            $client = new Client('http://localhost:8080/server.php?wsdl');
+            $result = $client->login($login, $senha);
+//            var_dump($result);
+            
+            if($result != NULL){
+                //Seta o ID do usuário como parâmetro de Sessão
+                $auth->getStorage()->write(['usuario_id' => $result]);
+                
+                var_dump($auth->getIdentity());
+                
+                $this->redirect()->toRoute('home');
+            }else{
+                $erro = 'Não foi possível realizar o login verifique o <strong>Usuário</strong> ou a <strong>Senha</strong>';
+                return new ViewModel([
+                    'form' => $form,
+                    'dados' => $data,
+                    'erro'  => $erro
+                ]);
+            }
+        }
+        $view = new ViewModel(['form' => $form]);
+        return $view;
     }
     
    public function addAction()
@@ -116,6 +157,6 @@ class RegistroController extends AbstractActionController
         $this->table->delete($id);
         return $this->redirect()->toRoute('post');
             
-    }
-    
+    }    
 }
+

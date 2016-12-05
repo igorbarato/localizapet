@@ -13,7 +13,7 @@ return [
             'home' => [
                 'type' => 'literal',
                 'options' => [
-                    'route'    => '/',
+                    'route'    => '/home',
                     'defaults' => [
                         'controller' => Controller\WebServiceController::class,
                         'action'     => 'index',
@@ -62,6 +62,20 @@ return [
                     ]
                 ]
             ],
+            'login' => [
+                'type' => 'segment',
+                'options' => [
+                    'route' => '/login[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\UsuarioController::class,
+                        'action' => 'index'
+                    ]
+                ]
+            ],
             'server' => [
                 'type' => 'literal',
                 'options' => [
@@ -80,6 +94,7 @@ return [
     'view_manager' => [
         'template_path_stack' => [
             'registro' => __DIR__ . "/../view",
+            'usuario' => __DIR__ . "/../view",
             'webservice' => __DIR__ . "/../view"
         ]
     ]
