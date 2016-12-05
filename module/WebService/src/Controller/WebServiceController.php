@@ -14,6 +14,8 @@ use WebService\Model\Animal;
 use WebService\Model\Usuario;
 use WebService;
 use WebService\Database\Database;
+use Zend\Authentication\AuthenticationService;
+
 
 class WebServiceController extends AbstractActionController
 {
@@ -140,6 +142,8 @@ class WebServiceController extends AbstractActionController
         $animal = new Animal();
         $usuario = new Usuario();
         
+        $auth = new AuthenticationService();
+        
 //        var_dump($form->getData());
         $data = $form->getData();
         $animal->nome = $data['nome'];
@@ -151,7 +155,7 @@ class WebServiceController extends AbstractActionController
         $animal->porte = $data['porte'];
         $animal->raca_id = $data['raca'];
         $animal->especie_id = $data['especie'];
-        $animal->usuario_id = 1;
+        $animal->usuario_id = $auth->getIdentity();
         
 //        $animal_data = [
 //            'animal' => [
