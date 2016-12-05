@@ -53,9 +53,9 @@ class UsuarioController extends AbstractActionController
                 //Seta o ID do usuário como parâmetro de Sessão
                 $auth->getStorage()->write(['usuario_id' => $result]);
                 
-                var_dump($auth->getIdentity());
+//                var_dump($auth->getIdentity());
                 
-//                $this->redirect()->toRoute('home');
+                $this->redirect()->toRoute('home');
             }else{
                 $erro = 'Não foi possível realizar o login verifique o <strong>Usuário</strong> ou a <strong>Senha</strong>';
                 return new ViewModel([
