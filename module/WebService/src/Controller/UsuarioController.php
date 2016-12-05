@@ -45,7 +45,7 @@ class UsuarioController extends AbstractActionController
 //            $result = $db->login($login, $senha);
             ///////////////////////////
             
-            $client = new Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+            $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
 //            $client = new Client('http://localhost:8080/server.php?wsdl');
             $result = $client->login($login, $senha);
 //            var_dump($result);
