@@ -57,6 +57,11 @@ class ComposerStaticInit16885ffec2282fc86679dda49d2eb73b
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Container\\' => 14,
+        ),
+        'L' => 
+        array (
+            'Localizapet\\' => 12,
         ),
         'I' => 
         array (
@@ -221,6 +226,14 @@ class ComposerStaticInit16885ffec2282fc86679dda49d2eb73b
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Localizapet\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/module/Localizapet/src',
         ),
         'Interop\\Container\\' => 
         array (

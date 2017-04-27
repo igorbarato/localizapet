@@ -111,7 +111,7 @@ class Db extends AbstractWriter
     protected function doWrite(array $event)
     {
         if (null === $this->db) {
-            throw new Exception\RuntimeException('Database adapter is null');
+            throw new Exception\RuntimeException('DAO adapter is null');
         }
 
         $event = $this->formatter->format($event);

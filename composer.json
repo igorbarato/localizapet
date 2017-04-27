@@ -98,6 +98,7 @@
   "autoload" : {
     "psr-4" : {
       "Application\\" : "module/Application/src/",
+      "Localizapet\\" : "module/Localizapet/src/",
       "WebService\\" : "module/WebService/src"
     }
   },
@@ -109,7 +110,7 @@
     "development-enable" : "zf-development-mode enable",
     "development-status" : "zf-development-mode status",
     "post-create-project-cmd" : [ "@development-enable" ],
-    "serve" : "php -S 0.0.0.0:8080 -t public/ public/index.php",
+    "serve" : "php -S localhost:9000x  -t public public/index.php",
     "test" : "phpunit"
   },
   "homepage" : "http://framework.zend.com/",

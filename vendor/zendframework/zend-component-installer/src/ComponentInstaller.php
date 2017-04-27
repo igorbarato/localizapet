@@ -1,18 +1,19 @@
 <?php
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies Ltd (http://www.zend.com)
+ * @see       https://github.com/zendframework/zend-component-installer for the canonical source repository
+ * @copyright Copyright (c) 2015-2017 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   https://github.com/zendframework/zend-component-installer/blob/master/LICENSE.md New BSD License
  */
 
 namespace Zend\ComponentInstaller;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
-use Composer\Installer\InstallerEvent;
+use Composer\Installer\PackageEvent;
 use Composer\IO\IOInterface;
+use Composer\Package\PackageInterface;
 use Composer\Plugin\PluginInterface;
-use Composer\Script\Event as CommandEvent;
-use Composer\Script\PackageEvent;
+use DirectoryIterator;
 
 /**
  * If a package represents a component module, update the application configuration.
@@ -75,7 +76,7 @@ class ComponentInstaller implements
     /**
      * Map of known package types to composer config keys.
      *
-     * @param array
+     * @var string[]
      */
     private $packageTypes = [
         Injector\InjectorInterface::TYPE_CONFIG_PROVIDER => 'config-provider',
@@ -124,7 +125,7 @@ class ComponentInstaller implements
     /**
      * Return list of event handlers in this class.
      *
-     * @return array
+     * @return string[]
      */
     public static function getSubscribedEvents()
     {
@@ -178,18 +179,151 @@ class ComponentInstaller implements
             return;
         }
 
+        $dependencies = $this->loadModuleClassesDependencies($package);
+        $applicationModules = $this->findApplicationModules();
+
         $this->marshalInstallableModules($extra, $options)
             ->each(function ($module) use ($name) {
             })
             // Create injectors
             ->reduce(function ($injectors, $module) use ($options, $packageTypes) {
-                $injectors[$module] = $this->promptForConfigOption($module, $options, $packageTypes);
+                $injectors[$module] = $this->promptForConfigOption($module, $options, $packageTypes[$module]);
                 return $injectors;
             }, new Collection([]))
             // Inject modules into configuration
-            ->each(function ($injector, $module) use ($name, $packageTypes) {
-                $this->injectModuleIntoConfig($name, $module, $injector, $packageTypes);
+            ->each(function ($injector, $module) use ($name, $packageTypes, $applicationModules, $dependencies) {
+                if (isset($dependencies[$module])) {
+                    $injector->setModuleDependencies($dependencies[$module]);
+                }
+
+                $injector->setApplicationModules($applicationModules);
+                $this->injectModuleIntoConfig($name, $module, $injector, $packageTypes[$module]);
             });
+    }
+
+    /**
+     * Find all Module classes in the package and their dependencies
+     * - method `getModuleDependencies` of Module class.
+     *
+     * These dependencies are used later
+     * @see \Zend\ComponentInstaller\Injector\AbstractInjector::injectAfterDependencies
+     * to add component in a correct order on the module list - after dependencies.
+     *
+     * It works with PSR-0, PSR-4, 'classmap' and 'files' composer autoloading.
+     *
+     * @param PackageInterface $package
+     * @return array
+     */
+    private function loadModuleClassesDependencies(PackageInterface $package)
+    {
+        $dependencies = [];
+        $installer = $this->composer->getInstallationManager();
+        $packagePath = $installer->getInstallPath($package);
+
+        $autoload = $package->getAutoload();
+        foreach ($autoload as $type => $map) {
+            foreach ($map as $namespace => $path) {
+                switch ($type) {
+                    case 'classmap':
+                        $fullPath = sprintf('%s/%s', $packagePath, $path);
+                        if (is_dir(rtrim($fullPath, '/'))) {
+                            $modulePath = sprintf('%s%s', $fullPath, 'Module.php');
+                        } elseif (substr($path, -10) === 'Module.php') {
+                            $modulePath = $fullPath;
+                        } else {
+                            continue 2;
+                        }
+                        break;
+                    case 'files':
+                        if (substr($path, -10) !== 'Module.php') {
+                            continue 2;
+                        }
+                        $modulePath = sprintf('%s/%s', $packagePath, $path);
+                        break;
+                    case 'psr-0':
+                        $modulePath = sprintf(
+                            '%s/%s%s%s',
+                            $packagePath,
+                            $path,
+                            str_replace('\\', '/', $namespace),
+                            'Module.php'
+                        );
+                        break;
+                    case 'psr-4':
+                        $modulePath = sprintf(
+                            '%s/%s%s',
+                            $packagePath,
+                            $path,
+                            'Module.php'
+                        );
+                        break;
+                    default:
+                        continue 2;
+                }
+
+                if (file_exists($modulePath)) {
+                    if ($result = $this->getModuleDependencies($modulePath)) {
+                        $dependencies += $result;
+                    }
+                }
+            }
+        }
+
+        return $dependencies;
+    }
+
+    /**
+     * @param string $file
+     * @return array
+     */
+    private function getModuleDependencies($file)
+    {
+        $content = file_get_contents($file);
+        if (preg_match('/namespace\s+([^\s]+)\s*;/', $content, $m)) {
+            $moduleName = $m[1];
+
+            // @codingStandardsIgnoreStart
+            $regExp = '/public\s+function\s+getModuleDependencies\s*\(\s*\)\s*{[^}]*return\s*(?:array\(|\[)([^})\]]*)(\)|\])/';
+            // @codingStandardsIgnoreEnd
+            if (preg_match($regExp, $content, $m)) {
+                $dependencies = array_filter(
+                    explode(',', stripslashes(rtrim(preg_replace('/[\s"\']/', '', $m[1]), ',')))
+                );
+
+                if ($dependencies) {
+                    return [$moduleName => $dependencies];
+                }
+            }
+        }
+
+        return [];
+    }
+
+    /**
+     * Find all modules of the application.
+     *
+     * @return array
+     */
+    private function findApplicationModules()
+    {
+        $modulePath = is_string($this->projectRoot) && ! empty($this->projectRoot)
+            ? sprintf('%s/module', $this->projectRoot)
+            : 'module';
+
+        $modules = [];
+
+        if (is_dir($modulePath)) {
+            $directoryIterator = new DirectoryIterator($modulePath);
+            foreach ($directoryIterator as $file) {
+                if ($file->isDot() || ! $file->isDir()) {
+                    continue;
+                }
+
+                $modules[] = $file->getBasename();
+            }
+        }
+
+        return $modules;
     }
 
     /**
@@ -254,18 +388,22 @@ class ComponentInstaller implements
      * exposes in the extra configuration.
      *
      * @param string[] $extra
-     * @return int[] Array of Injector\InjectorInterface::TYPE_* constants.
+     * @return Collection Collection of Injector\InjectorInterface::TYPE_* constants.
      */
     private function discoverPackageTypes(array $extra)
     {
         $packageTypes = array_flip($this->packageTypes);
         $knownTypes   = array_keys($packageTypes);
-        return Collection::create(array_keys($extra))
-            ->filter(function ($type) use ($knownTypes) {
+        return Collection::create($extra)
+            ->filter(function ($packages, $type) use ($knownTypes) {
                 return in_array($type, $knownTypes, true);
             })
-            ->reduce(function ($discoveredTypes, $type) use ($packageTypes) {
-                $discoveredTypes[] = $packageTypes[$type];
+            ->reduce(function ($discoveredTypes, $packages, $type) use ($packageTypes) {
+                $packages = is_array($packages) ? $packages : [$packages];
+
+                foreach ($packages as $package) {
+                    $discoveredTypes[$package] = $packageTypes[$type];
+                }
                 return $discoveredTypes;
             }, new Collection([]));
     }
@@ -318,7 +456,7 @@ class ComponentInstaller implements
      * Prepare a list of modules to install/register with configuration.
      *
      * @param string[] $extra
-     * @param ConfigOption[] $options
+     * @param Collection $options
      * @return string[] List of packages to install
      */
     private function marshalInstallableModules(array $extra, Collection $options)
@@ -337,12 +475,12 @@ class ComponentInstaller implements
      *
      * @param string $name
      * @param Collection $options
-     * @param Collection $packageTypes
+     * @param int $packageType
      * @return Injector\InjectorInterface
      */
-    private function promptForConfigOption($name, Collection $options, Collection $packageTypes)
+    private function promptForConfigOption($name, Collection $options, $packageType)
     {
-        if ($cachedInjector = $this->getCachedInjector($packageTypes)) {
+        if ($cachedInjector = $this->getCachedInjector($packageType)) {
             return $cachedInjector;
         }
 
@@ -359,14 +497,14 @@ class ComponentInstaller implements
             "\n  <question>Please select which config file you wish to inject '%s' into:</question>\n",
             $name
         ));
-        array_push($ask, '  Make your selection (default is <comment>0</comment>):');
+        $ask[] = '  Make your selection (default is <comment>0</comment>):';
 
         while (true) {
             $answer = $this->io->ask($ask, 0);
 
             if (is_numeric($answer) && isset($options[(int) $answer])) {
                 $injector = $options[(int) $answer]->getInjector();
-                $this->promptToRememberOption($injector);
+                $this->promptToRememberOption($injector, $packageType);
                 return $injector;
             }
 
@@ -379,9 +517,10 @@ class ComponentInstaller implements
      *
      * @todo Will need to store selection in filesystem and remove when all packages are complete
      * @param Injector\InjectorInterface $injector
+     * @param int $packageType
      * return void
      */
-    private function promptToRememberOption(Injector\InjectorInterface $injector)
+    private function promptToRememberOption(Injector\InjectorInterface $injector, $packageType)
     {
         $ask = ["\n  <question>Remember this option for other packages of the same type? (y/N)</question>"];
 
@@ -390,7 +529,7 @@ class ComponentInstaller implements
 
             switch ($answer) {
                 case 'y':
-                    $this->cacheInjector($injector);
+                    $this->cacheInjector($injector, $packageType);
                     return;
                 case 'n':
                     // intentionally fall-through
@@ -406,28 +545,23 @@ class ComponentInstaller implements
      * @param string $package Package name
      * @param string $module Module to install in configuration
      * @param Injector\InjectorInterface $injector Injector to use.
-     * @param Collection $packageTypes
+     * @param int $packageType
      * @return void
      */
-    private function injectModuleIntoConfig(
-        $package,
-        $module,
-        Injector\InjectorInterface $injector,
-        Collection $packageTypes
-    ) {
-        // Find the first package type the injector can handle.
-        $type = $packageTypes
-            ->reduce(function ($discovered, $type) use ($injector) {
-                if ($discovered) {
-                    return $discovered;
-                }
-
-                $discovered = $injector->registersType($type) ? $type : $discovered;
-                return $discovered;
-            }, false);
-
+    private function injectModuleIntoConfig($package, $module, Injector\InjectorInterface $injector, $packageType)
+    {
         $this->io->write(sprintf('<info>Installing %s from package %s</info>', $module, $package));
-        $injector->inject($module, $type, $this->io);
+
+        try {
+            if (! $injector->inject($module, $packageType)) {
+                $this->io->write('<info>    Package is already registered; skipping</info>');
+            }
+        } catch (Exception\RuntimeException $ex) {
+            $this->io->write(sprintf(
+                '<error>    %s</error>',
+                $ex->getMessage()
+            ));
+        }
     }
 
     /**
@@ -476,7 +610,13 @@ class ComponentInstaller implements
     {
         $injectors->each(function ($injector) use ($module, $package) {
             $this->io->write(sprintf('<info>Removing %s from package %s</info>', $module, $package));
-            $injector->remove($module, $this->io);
+
+            if ($injector->remove($module)) {
+                $this->io->write(sprintf(
+                    '<info>    Removed package from %s</info>',
+                    $injector->getConfigFile()
+                ));
+            }
         });
     }
 
@@ -488,7 +628,7 @@ class ComponentInstaller implements
      */
     private function moduleIsValid($module)
     {
-        return (is_string($module) && ! empty($module));
+        return is_string($module) && ! empty($module);
     }
 
     /**
@@ -522,36 +662,29 @@ class ComponentInstaller implements
     }
 
     /**
-     * Attempt to retrieve a cached injector, based on the current package types.
+     * Attempt to retrieve a cached injector for the current package type.
      *
-     * @param Collection $packageTypes
+     * @param int $packageType
      * @return null|Injector\InjectorInterface
      */
-    private function getCachedInjector(Collection $packageTypes)
+    private function getCachedInjector($packageType)
     {
-        return $packageTypes->reduce(function ($injector, $type) {
-            if (null !== $injector || ! isset($this->cachedInjectors[$type])) {
-                return $injector;
-            }
+        if (isset($this->cachedInjectors[$packageType])) {
+            return $this->cachedInjectors[$packageType];
+        }
 
-            return $this->cachedInjectors[$type];
-        }, null);
+        return null;
     }
 
     /**
      * Cache an injector for later use.
      *
      * @param Injector\InjectorInterface $injector
+     * @param int $packageType
      * @return void
      */
-    private function cacheInjector(Injector\InjectorInterface $injector)
+    private function cacheInjector(Injector\InjectorInterface $injector, $packageType)
     {
-        Collection::create($injector->getTypesAllowed())
-            ->reject(function ($type) {
-                return isset($this->cachedInjectors[$type]);
-            })
-            ->each(function ($type) use ($injector) {
-                $this->cachedInjectors[$type] = $injector;
-            });
+        $this->cachedInjectors[$packageType] = $injector;
     }
 }

@@ -1,15 +1,20 @@
 <?php
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2016 Zend Technologies Ltd (http://www.zend.com)
+ * @see       https://github.com/zendframework/zend-component-installer for the canonical source repository
+ * @copyright Copyright (c) 2016-2017 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   https://github.com/zendframework/zend-component-installer/blob/master/LICENSE.md New BSD License
  */
 
 namespace Zend\ComponentInstaller\Injector;
 
-use Composer\IO\IOInterface;
+use Zend\ComponentInstaller\ConfigDiscovery\ExpressiveConfig as ExpressiveConfigDiscovery;
 
 class ExpressiveConfigInjector extends AbstractInjector
 {
+    use ConditionalDiscoveryTrait;
+
+    const DEFAULT_CONFIG_FILE = 'config/config.php';
+
     /**
      * {@inheritDoc}
      */
@@ -22,7 +27,15 @@ class ExpressiveConfigInjector extends AbstractInjector
      *
      * @var string
      */
-    protected $configFile = 'config/config.php';
+    protected $configFile = self::DEFAULT_CONFIG_FILE;
+
+    /**
+     * Discovery class, for testing if this injector is valid for the given
+     * configuration.
+     *
+     * @var string
+     */
+    protected $discoveryClass = ExpressiveConfigDiscovery::class;
 
     /**
      * Patterns and replacements to use when registering a code item.
@@ -78,27 +91,5 @@ class ExpressiveConfigInjector extends AbstractInjector
         );
 
         parent::__construct($projectRoot);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * Prepends the package with a `\\` in order to ensure it is fully
-     * qualified, preventing issues in config files that are namespaced.
-     */
-    public function inject($package, $type, IOInterface $io)
-    {
-        parent::inject('\\' . $package, $type, $io);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * Prepends the package with a `\\` in order to ensure it is fully
-     * qualified, preventing issues in config files that are namespaced.
-     */
-    public function remove($package, IOInterface $io)
-    {
-        parent::remove('\\' . $package, $io);
     }
 }

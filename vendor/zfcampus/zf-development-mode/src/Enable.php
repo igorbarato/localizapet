@@ -30,7 +30,7 @@ class Enable
 
     /**
      * @param string $projectDir Location to resolve project from.
-     * @param null|resource Stream to which to write errors; defaults to STDERR
+     * @param null|resource $errorStream Stream to which to write errors; defaults to STDERR
      */
     public function __construct($projectDir = '', $errorStream = null)
     {
@@ -65,6 +65,13 @@ class Enable
             return 1;
         }
 
+        try {
+            $this->removeConfigCacheFile();
+        } catch (RuntimeException $ex) {
+            fwrite($this->errorStream, $ex->getMessage());
+            return 1;
+        }
+
         copy($develConfigDist, $develConfig);
 
         $develLocalDist = $this->projectDir
@@ -76,13 +83,6 @@ class Enable
                 ? sprintf('%s/%s', $this->projectDir, self::DEVEL_LOCAL)
                 : self::DEVEL_LOCAL;
             copy($develLocalDist, $develLocal);
-        }
-
-        try {
-            $this->removeConfigCacheFile($this->getConfigCacheFile());
-        } catch (RuntimeException $e) {
-            fwrite($this->errorStream, $e->getMessage());
-            return 1;
         }
 
         echo 'You are now in development mode.', PHP_EOL;

@@ -20,20 +20,20 @@ return [
                     ],
                 ],
             ],
-            'post' => [
-                'type' => 'segment',
-                'options' => [
-                    'route' => '/blog[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
-                    ],
-                    'defaults' => [
-                        'controller' => Controller\WebServiceController::class,
-                        'action' => 'index'
-                    ]
-                ]
-            ],
+//            'post' => [
+//                'type' => 'segment',
+//                'options' => [
+//                    'route' => '/blog[/:action[/:id]]',
+//                    'constraints' => [
+//                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                        'id' => '[0-9]+',
+//                    ],
+//                    'defaults' => [
+//                        'controller' => Controller\WebServiceController::class,
+//                        'action' => 'index'
+//                    ]
+//                ]
+//            ],
             'pet' => [
                 'type' => 'segment',
                 'options' => [

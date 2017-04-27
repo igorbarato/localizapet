@@ -44,6 +44,8 @@ return array(
     'ZF\\DevelopmentMode\\' => array($vendorDir . '/zfcampus/zf-development-mode/src'),
     'WebService\\' => array($baseDir . '/module/WebService/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Localizapet\\' => array($baseDir . '/module/Localizapet/src'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
     'Application\\' => array($baseDir . '/module/Application/src'),
     'ApplicationTest\\' => array($baseDir . '/module/Application/test'),

@@ -25,17 +25,22 @@ trait ConfigDiscoveryTrait
     private $applicationConfigPath = 'config/application.config.php';
 
     /**
+     * @var string
+     */
+    private $expressiveConfigPath = 'config/config.php';
+
+    /**
      * @var string Base name for configuration cache.
      */
     private $configCacheBase = 'module-config-cache';
 
     /**
      * Removes the application configuration cache file, if present.
-     *
-     * @param string $configCacheFile
      */
-    private function removeConfigCacheFile($configCacheFile)
+    private function removeConfigCacheFile()
     {
+        $configCacheFile = $this->getConfigCacheFile();
+
         if (! $configCacheFile || ! file_exists($configCacheFile)) {
             return;
         }
@@ -50,16 +55,22 @@ trait ConfigDiscoveryTrait
      */
     private function getConfigCacheFile()
     {
-        $configCacheDir = $this->getConfigCacheDir();
-        $configCacheKey = $this->getConfigCacheKey();
+        $config = $this->getApplicationConfig();
 
-        if (empty($configCacheDir)) {
+        if (isset($config['config_cache_path'])) {
+            return $config['config_cache_path'];
+        }
+
+        $configCacheDir = $this->getConfigCacheDir();
+
+        if (! $configCacheDir) {
             return false;
         }
 
         $path = sprintf('%s/%s.', $configCacheDir, $this->configCacheBase);
 
-        if (! empty($configCacheKey)) {
+        $configCacheKey = $this->getConfigCacheKey();
+        if ($configCacheKey) {
             $path .= $configCacheKey . '.';
         }
 
@@ -71,11 +82,11 @@ trait ConfigDiscoveryTrait
      *
      * @return null|string
      */
-    public function getConfigCacheDir()
+    private function getConfigCacheDir()
     {
         $config = $this->getApplicationConfig();
-        if (! isset($config['module_listener_options']['cache_dir'])) {
-            return;
+        if (empty($config['module_listener_options']['cache_dir'])) {
+            return null;
         }
 
         return $config['module_listener_options']['cache_dir'];
@@ -89,8 +100,8 @@ trait ConfigDiscoveryTrait
     private function getConfigCacheKey()
     {
         $config = $this->getApplicationConfig();
-        if (! isset($config['module_listener_options']['config_cache_key'])) {
-            return;
+        if (empty($config['module_listener_options']['config_cache_key'])) {
+            return null;
         }
 
         return $config['module_listener_options']['config_cache_key'];
@@ -105,7 +116,7 @@ trait ConfigDiscoveryTrait
      * @throws RuntimeException if config/application.config.php does not
      *     return an array
      */
-    function getApplicationConfig()
+    private function getApplicationConfig()
     {
         if (null !== $this->applicationConfig) {
             return $this->applicationConfig;
@@ -114,6 +125,9 @@ trait ConfigDiscoveryTrait
         $configFile = isset($this->projectDir)
             ? sprintf('%s/%s', $this->projectDir, $this->applicationConfigPath)
             : $this->applicationConfigPath;
+
+        $configFile = file_exists($configFile) ? $configFile : $this->expressiveConfigPath;
+
         if (! file_exists($configFile)) {
             $this->applicationConfig = [];
             return $this->applicationConfig;
@@ -123,8 +137,8 @@ trait ConfigDiscoveryTrait
 
         if (! is_array($this->applicationConfig)) {
             throw new RuntimeException(
-                'Invalid configuration returned from config/application.config.php;' . PHP_EOL
-                . 'is this a zendframework application?' . PHP_EOL
+                'Invalid configuration returned from config/application.config.php or config/config.php;' . PHP_EOL
+                . 'is this a Zend Framework or Zend Expressive application?' . PHP_EOL
             );
         }
 

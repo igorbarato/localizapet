@@ -2,6 +2,189 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.0.0 - 2017-04-25
+
+First stable release.
+
+### Added
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+## 0.7.1 - 2017-04-11
+
+### Added
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#38](https://github.com/zendframework/zend-component-installer/pull/38) fixes
+  an issue with detection of config providers in `ConfigAggregator`-based
+  configuration files. Previously, entries that were globally qualified
+  (prefixed with `\\`) were not properly detected, leading to the installer
+  re-asking to inject.
+
+## 0.7.0 - 2017-02-22
+
+### Added
+
+- [#34](https://github.com/zendframework/zend-component-installer/pull/34) adds
+  support for applications using [zendframework/zend-config-aggregator](https://github.com/zendframework/zend-config-aggregator).
+
+### Changes
+
+- [#34](https://github.com/zendframework/zend-component-installer/pull/34)
+  updates the internal architecture such that the Composer `IOInterface` no
+  longer needs to be passed during config discovery or injection; instead,
+  try/catch blocks are used within code exercising these classes, which already
+  composes `IOInterface` instances. As such, a number of public methods that
+  were receiving `IOInterface` instances now remove that argument. If you were
+  extending any of these classes, you will need to update accordingly.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+## 0.6.0 - 2017-01-09
+
+### Added
+
+- [#31](https://github.com/zendframework/zend-component-installer/pull/31) adds
+  support for [zend-config-aggregator](https://github.com/zendframework/zend-config-aggregator)-based
+  application configuration.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+## 0.5.1 - 2016-12-20
+
+### Added
+
+- Nothing.
+
+### Changes
+
+- [#29](https://github.com/zendframework/zend-component-installer/pull/29)
+  updates the composer/composer dependency to `^1.2.2`, and, internally, uses
+  `Composer\Installer\PackageEvent` instead of the deprecated
+  `Composer\Script\PackageEvent`.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+## 0.5.0 - 2016-10-17
+
+### Added
+
+- [#24](https://github.com/zendframework/zend-component-installer/pull/24) adds
+  a new method to the `InjectorInterface`: `setModuleDependencies(array $modules)`.
+  This method is used in the `ComponentInstaller` when module dependencies are
+  discovered, and by the injectors to provide dependency order during
+  configuration injection.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#22](https://github.com/zendframework/zend-component-installer/pull/22) and
+  [#25](https://github.com/zendframework/zend-component-installer/pull/25) fix
+  a bug whereby escaped namespace separators caused detection of a module in
+  existing configuration to produce a false negative.
+- [#24](https://github.com/zendframework/zend-component-installer/pull/24) fixes
+  an issue resulting from the additions from [#20](https://github.com/zendframework/zend-component-installer/pull/20)
+  for detecting module dependencies. Since autoloading may not be setup yet, the
+  previous approach could cause failures during installation. The patch provided
+  in this version introduces a static analysis approach to prevent autoloading
+  issues.
+
+## 0.4.0 - 2016-10-11
+
+### Added
+
+- [#12](https://github.com/zendframework/zend-component-installer/pull/12) adds
+  a `DiscoveryChain`, for allowing discovery to use multiple discovery sources
+  to answer the question of whether or not the application can inject
+  configuration for the module or component. The stated use is for injection
+  into development configuration.
+- [#12](https://github.com/zendframework/zend-component-installer/pull/12) adds
+  a `ConfigInjectorChain`, which allows injecting a module or component into
+  multiple configuration sources. The stated use is for injection into
+  development configuration.
+- [#16](https://github.com/zendframework/zend-component-installer/pull/16) adds
+  support for defining both a module and a component in the same package,
+  ensuring that they are both injected, and at the appropriate positions in the
+  module list.
+- [#20](https://github.com/zendframework/zend-component-installer/pull/20) adds
+  support for modules that define `getModuleDependencies()`. When such a module
+  is encountered, the installer will now also inject entries for these modules
+  into the application module list, such that they *always* appear before the
+  current module. This change ensures that dependencies are loaded in the
+  correct order.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.3.1 - 2016-09-12
 
 ### Added

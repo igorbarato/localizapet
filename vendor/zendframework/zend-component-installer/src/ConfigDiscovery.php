@@ -1,7 +1,8 @@
 <?php
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2016 Zend Technologies Ltd (http://www.zend.com)
+ * @see       https://github.com/zendframework/zend-component-installer for the canonical source repository
+ * @copyright Copyright (c) 2016-2017 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   https://github.com/zendframework/zend-component-installer/blob/master/LICENSE.md New BSD License
  */
 
 namespace Zend\ComponentInstaller;
@@ -16,8 +17,14 @@ class ConfigDiscovery
     private $discovery = [
         'config/application.config.php' => ConfigDiscovery\ApplicationConfig::class,
         'config/modules.config.php' => ConfigDiscovery\ModulesConfig::class,
-        'config/development.config.php.dist' => ConfigDiscovery\DevelopmentConfig::class,
-        'config/config.php' => ConfigDiscovery\ExpressiveConfig::class,
+        'config/development.config.php.dist' => [
+            'dist' => ConfigDiscovery\DevelopmentConfig::class,
+            'work' => ConfigDiscovery\DevelopmentWorkConfig::class,
+        ],
+        'config/config.php' => [
+            'aggregator' => ConfigDiscovery\ConfigAggregator::class,
+            'manager'    => ConfigDiscovery\ExpressiveConfig::class,
+        ],
     ];
 
     /**
@@ -28,8 +35,14 @@ class ConfigDiscovery
     private $injectors = [
         'config/application.config.php' => Injector\ApplicationConfigInjector::class,
         'config/modules.config.php' => Injector\ModulesConfigInjector::class,
-        'config/development.config.php.dist' => Injector\DevelopmentConfigInjector::class,
-        'config/config.php' => Injector\ExpressiveConfigInjector::class,
+        'config/development.config.php.dist' => [
+            'dist' => Injector\DevelopmentConfigInjector::class,
+            'work' => Injector\DevelopmentWorkConfigInjector::class,
+        ],
+        'config/config.php' => [
+            'aggregator' => Injector\ConfigAggregatorInjector::class,
+            'manager'    => Injector\ExpressiveConfigInjector::class,
+        ]
     ];
 
     /**
@@ -50,8 +63,11 @@ class ConfigDiscovery
         ]);
 
         Collection::create($this->discovery)
-            // Create a discovery class for the dicovery type
+            // Create a discovery class for the discovery type
             ->map(function ($discoveryClass) use ($projectRoot) {
+                if (is_array($discoveryClass)) {
+                    return new ConfigDiscovery\DiscoveryChain($discoveryClass, $projectRoot);
+                }
                 return new $discoveryClass($projectRoot);
             })
             // Use only those where we can locate a corresponding config file
@@ -59,9 +75,17 @@ class ConfigDiscovery
                 return $discovery->locate();
             })
             // Create an injector for the config file
-            ->map(function ($discovery, $file) use ($projectRoot) {
+            ->map(function ($discovery, $file) use ($projectRoot, $availableTypes) {
                 // Look up the injector based on the file type
                 $injectorClass = $this->injectors[$file];
+                if (is_array($injectorClass)) {
+                    return new Injector\ConfigInjectorChain(
+                        $injectorClass,
+                        $discovery,
+                        $availableTypes,
+                        $projectRoot
+                    );
+                }
                 return new $injectorClass($projectRoot);
             })
             // Keep only those injectors that match types available for the package
@@ -75,7 +99,7 @@ class ConfigDiscovery
                 $discovered[] = new ConfigOption($file, $injector);
             });
 
-        return (1 === $discovered->count())
+        return 1 === $discovered->count()
             ? new Collection([])
             : $discovered;
     }

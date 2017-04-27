@@ -19,7 +19,7 @@ use Zend\Stdlib\AbstractOptions;
 class MongoDBOptions extends AbstractOptions
 {
     /**
-     * Database name
+     * DAO name
      *
      * @var string
      */

@@ -1,4 +1,6 @@
 # Component Installer for Zend Framework 3 Applications
+[![Build Status](https://travis-ci.org/zendframework/zend-component-installer.svg?branch=master)](https://travis-ci.org/zendframework/zend-component-installer)
+[![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-component-installer/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-component-installer?branch=master)
 
 This repository contains the Composer plugin class `Zend\ComponentInstaller\ComponentInstaller`,
 which provides Composer event hooks for the events:
@@ -57,6 +59,7 @@ one or more of the following keys under the `extra.zf` configuration in their
 
 - A **config-provider** is for use with applications that utilize
   [expressive-config-manager](https://github.com/mtymek/expressive-config-manager)
+  or [zend-config-aggregator](https://github.com/zendframework/zend-config-aggregator)
   (which may or may not be Expressive applications). The class listed must be an
   invokable that returns an array of configuration, and will be injected at the
   top of:

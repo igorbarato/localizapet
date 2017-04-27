@@ -26,5 +26,6 @@ return [
     'Zend\Validator',
     'Zend\Db',
     'Application',
-    'WebService'
+    'WebService',
+    'Localizapet'
 ];
