@@ -35,10 +35,9 @@ class SoapController extends AbstractActionController
             'stream_context' => stream_context_create($opts)
         );
 //        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/soap.php?wsdl');
-        $client = new \Zend\Soap\Client('"http://localhost/zend/localizapet/public/soap.php?wsdl');
+        $client = new \Zend\Soap\Client('http://localizapet.pe.hu/localizapet/public/soap.php?wsdl');
         libxml_disable_entity_loader(false);
         $client->setOptions($params);
-        $client->setProxyHost('127.0.0.1');
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
 
@@ -46,20 +45,35 @@ class SoapController extends AbstractActionController
         $temp = $client->listar();
 //            $temp = $client->listar();
 //            \Zend\Debug\Debug::dump($temp);
-        echo base64_encode($temp[0]['Image']);
+        echo base64_encode($temp[0]['image']);
+
 
 
 
     }
 
+    public function nosoapAction(){
+        $client = new Teste();
+        $temp = $client->listar();
+//            $temp = $client->listar();
+//            \Zend\Debug\Debug::dump($temp);
+        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $host = $_SERVER[HTTP_HOST];
+        $uri = $_SERVER[REQUEST_URI];
+        echo "Host:" . $host . "<br>";
+        echo "Path:" . $uri . "<br>";
+        echo $actual_link . "<br>";
+        echo base64_encode($temp[0]['image']);
+    }
+
     public function serverAction(){
-        $url="http://localizapet.esx/zend/localizapet/public/soap.php?wsdl";
-//        $url="http://localizapet.esy.es/public/soap.php?wsdl";
+        $url="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?wsdl";
+//        $url="http://localizapet.pe.hu/localizapet/public/soap.php?wsdl";
         if (isset($_GET['wsdl'])) {
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(Teste::class);
 //                            ->setBindingStyle(array('style' => 'document'))
-             $autodiscover->setUri("http://localizapet.esx/zend/localizapet/public/soap.php");
+             $autodiscover->setUri("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 //            $autodiscover->setServiceName('Teste');
 //            $autodiscover->setUri("http://localizapet.esy.es/public/soap.php");
             $viewModel = new viewModel();

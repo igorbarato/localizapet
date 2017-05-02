@@ -31,16 +31,16 @@ class Teste
      * @return array
      */
     public function listar(){
-        $servername = 'localhost';
-         $username = 'root';
-         $password = '';
-         $database = 'localizapet_zend';
+//        $servername = 'localhost';
+//         $username = 'root';
+//         $password = '';
+//         $database = 'localizapet_zend';
          $charset = 'utf8';
 
-//        $servername = 'mysql.hostinger.com.br';
-//        $username = 'u368622186_root';
-//        $password = 'o0iDe+KyC^$`fB[ZLh';
-//        $database = 'u368622186_pet';
+        $servername = '93.188.160.86';
+        $username = 'u509472421_pet';
+        $password = '6QIiLTUJ4go1';
+        $database = 'u509472421_pet';
 
         $conexao = new \mysqli(
             $servername,

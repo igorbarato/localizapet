@@ -30,6 +30,16 @@ return [
                     ]
                 ]
             ],
+            'nosoap' => [
+                'type' => 'literal',
+                'options' => [
+                    'route' => '/nosoap',
+                    'defaults' => [
+                        'controller' => Controller\SoapController::class,
+                        'action' => 'nosoap'
+                    ]
+                ]
+            ],
 
         ]
 
