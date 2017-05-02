@@ -2,75 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e34f089-798b-40dc-adc1-21820300505d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Controller/SoapController.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Controller/SoapController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Model/Teste.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Model/Teste.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/view/web-service/animal/index.phtml" afterPath="$PROJECT_DIR$/module/Localizapet/view/web-service/animal/index.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/WebService/src/Controller/AnimalController.php" afterPath="$PROJECT_DIR$/module/WebService/src/Controller/AnimalController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/WebService/src/Controller/WebServiceController.php" afterPath="$PROJECT_DIR$/module/WebService/src/Controller/WebServiceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/WebService/src/DAO/DaoAnimal.php" afterPath="$PROJECT_DIR$/module/WebService/src/DAO/DaoAnimal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/WebService/view/web-service/animal/index.phtml" afterPath="$PROJECT_DIR$/module/WebService/view/web-service/animal/index.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/CHANGELOG.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/CONTRIBUTING.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/composer.json" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/composer.lock" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/AbstractRestfulController.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/AbstractRestfulController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/ControllerManager.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/ControllerManager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/AcceptableViewModelSelector.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/AcceptableViewModelSelector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Forward.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Forward.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Layout.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Layout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Params.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Params.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Redirect.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Redirect.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Service/ForwardFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Service/ForwardFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Url.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/Plugin/Url.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/PluginManager.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Controller/PluginManager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/DispatchListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/DispatchListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/MiddlewareListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/MiddlewareListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ModuleRouteListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ModuleRouteListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ResponseSender/HttpResponseSender.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ResponseSender/HttpResponseSender.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ResponseSender/PhpEnvironmentResponseSender.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ResponseSender/PhpEnvironmentResponseSender.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ResponseSender/SimpleStreamResponseSender.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/ResponseSender/SimpleStreamResponseSender.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/RouteListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/RouteListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/SendResponseListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/SendResponseListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/AbstractPluginManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/AbstractPluginManagerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ApplicationFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ApplicationFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ConfigFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ConfigFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ControllerManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ControllerManagerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/DispatchListenerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/DispatchListenerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/EventManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/EventManagerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpDefaultRenderingStrategyFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpDefaultRenderingStrategyFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpExceptionStrategyFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpExceptionStrategyFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpMethodListenerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpMethodListenerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpRouteNotFoundStrategyFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpRouteNotFoundStrategyFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpViewManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/HttpViewManagerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/InjectTemplateListenerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/InjectTemplateListenerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ModuleManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ModuleManagerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/RequestFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/RequestFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ResponseFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ResponseFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ServiceListenerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ServiceListenerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewFeedStrategyFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewFeedStrategyFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewHelperManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewHelperManagerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewJsonStrategyFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewJsonStrategyFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewManagerFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewPhpRendererFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewPhpRendererFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewPhpRendererStrategyFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewPhpRendererStrategyFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewPrefixPathStackResolverFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewPrefixPathStackResolverFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewResolverFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewResolverFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewTemplateMapResolverFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewTemplateMapResolverFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewTemplatePathStackFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/Service/ViewTemplatePathStackFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/CreateViewModelListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/CreateViewModelListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/DefaultRenderingStrategy.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/DefaultRenderingStrategy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/ExceptionStrategy.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/ExceptionStrategy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/InjectTemplateListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/InjectTemplateListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/InjectViewModelListener.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/InjectViewModelListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/RouteNotFoundStrategy.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/RouteNotFoundStrategy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/ViewManager.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-mvc/src/View/Http/ViewManager.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/development.config.php" afterPath="$PROJECT_DIR$/config/development.config.php" />
     </list>
     <ignored path="localizapet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,14 +24,84 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SoapController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SoapController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Controller/SoapController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26034483">
+            <state vertical-scroll-proportion="-5.8076925">
               <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
               <folding>
                 <element signature="e#42#70#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="local.php.dist" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/autoload/local.php.dist">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="global.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/autoload/global.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="development.local.php.dist" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/autoload/development.local.php.dist">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/autoload/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zend-developer-tools.local-development.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/autoload/zend-developer-tools.local-development.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/application.config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="development.config.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/development.config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20517242">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,16 +111,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-14.384615">
               <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.phtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module/Localizapet/view/web-service/animal/index.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="84" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -151,7 +143,6 @@
         <option value="$PROJECT_DIR$/module/WebService/config/module.config.php" />
         <option value="$PROJECT_DIR$/module/WebService/src/DAO/Entity.php" />
         <option value="$PROJECT_DIR$/module/WebService/src/Soap/Servicos.php" />
-        <option value="$PROJECT_DIR$/config/development.config.php" />
         <option value="$PROJECT_DIR$/module/WebService/view/web-service/registro/index.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Module.php" />
         <option value="$PROJECT_DIR$/config/modules.config.php" />
@@ -165,6 +156,7 @@
         <option value="$PROJECT_DIR$/module/Localizapet/view/web-service/animal/index.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Model/Teste.php" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Controller/SoapController.php" />
+        <option value="$PROJECT_DIR$/config/development.config.php" />
       </list>
     </option>
   </component>
@@ -781,20 +773,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/Application/view/layout/layout.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/WebService/src/DAO/Dao.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -962,42 +940,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/development.config.php.dist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/development.config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/autoload/zend-developer-tools.local-development.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="58.846153">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/autoload/development.local.php.dist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/autoload/global.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1150,11 +1093,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Controller/SoapController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26034483">
+        <state vertical-scroll-proportion="-5.8076925">
           <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
           <folding>
             <element signature="e#42#70#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/autoload/local.php.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/autoload/global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/autoload/development.local.php.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/autoload/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/autoload/zend-developer-tools.local-development.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/application.config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/development.config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20517242">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
