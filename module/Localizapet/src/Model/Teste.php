@@ -37,7 +37,7 @@ class Teste
 //         $database = 'localizapet_zend';
          $charset = 'utf8';
 
-        $servername = '93.188.160.86';
+        $servername = 'mysql.hostinger.com.br';
         $username = 'u509472421_pet';
         $password = '6QIiLTUJ4go1';
         $database = 'u509472421_pet';
