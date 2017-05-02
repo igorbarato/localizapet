@@ -73,7 +73,7 @@ class SoapController extends AbstractActionController
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(Teste::class);
 //                            ->setBindingStyle(array('style' => 'document'))
-             $autodiscover->setUri("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+             $autodiscover->setUri("http://localizapet.pe.hu/localizapet/public/soap.php");
 //            $autodiscover->setServiceName('Teste');
 //            $autodiscover->setUri("http://localizapet.esy.es/public/soap.php");
             $viewModel = new viewModel();
