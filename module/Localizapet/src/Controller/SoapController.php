@@ -34,20 +34,17 @@ class SoapController extends AbstractActionController
             "connection_timeout" => 180,
             'stream_context' => stream_context_create($opts)
         );
-//        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/soap.php?wsdl');
+//        $client = new \Zend\Soap\Client('http://localhost/public/soap.php?wsdl');
         $client = new \Zend\Soap\Client('http://localizapet.pe.hu/localizapet/public/soap.php?wsdl');
-//        libxml_disable_entity_loader(false);
 //        $client->setOptions($params);
         $client->setEncoding('UTF-8');
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
-//        $teste = $client->getSoapClient();
-//        print_r($teste);
-//        $client = new Teste();
+        $bla = $client->getLastRequest();
         $temp = $client->listar();
-//            $temp = $client->listar();
-            \Zend\Debug\Debug::dump($temp);
+        \Zend\Debug\Debug::dump($bla);
         echo base64_encode($temp[0]['image']);
+
 
 
 
@@ -65,7 +62,7 @@ class SoapController extends AbstractActionController
         echo "Host:" . $host . "<br>";
         echo "Path:" . $uri . "<br>";
         echo $actual_link . "<br>";
-        echo base64_encode($temp[0]['image']);
+        echo "<img src=\"data:image/jpeg;base64, ". base64_encode($temp[0]['image']) . "\" >";
     }
 
     public function serverAction(){

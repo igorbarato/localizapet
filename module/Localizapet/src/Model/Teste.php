@@ -37,7 +37,9 @@ class Teste
 //         $database = 'localizapet_zend';
          $charset = 'utf8';
 
+
         $servername = 'mysql.hostinger.com.br';
+//        $servername = '93.188.160.86';
         $username = 'u509472421_pet';
         $password = '6QIiLTUJ4go1';
         $database = 'u509472421_pet';
@@ -56,12 +58,13 @@ class Teste
         }
 //        return "Connected successfully";
 
-        $query = 'SELECT * FROM temp;';
+        $query = 'SELECT image FROM temp;';
 
         $result = mysqli_query($conexao, $query);
 
         $rows = [];
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            mb_convert_encoding($row['image'],'UTF-8');
             array_push($rows, $row);
         }
 
