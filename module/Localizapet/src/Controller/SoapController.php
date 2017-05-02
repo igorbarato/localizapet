@@ -38,7 +38,7 @@ class SoapController extends AbstractActionController
         $client = new \Zend\Soap\Client('http://localizapet.pe.hu/localizapet/public/soap.php?wsdl');
 //        libxml_disable_entity_loader(false);
 //        $client->setOptions($params);
-        $client->setEncoding('ISO-8859-1');
+        $client->setEncoding('UTF-8');
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
 //        $teste = $client->getSoapClient();
@@ -120,8 +120,8 @@ class SoapController extends AbstractActionController
             );
             $soap = new Server(null, $options);
             $soap->setClass(Teste::class);
-            $soap->setEncoding('ISO-8859-1');
-//            $soap->setEncoding('UTF-8');
+//            $soap->setEncoding('ISO-8859-1');
+            $soap->setEncoding('UTF-8');
             $soap->handle();
             exit();
         }
