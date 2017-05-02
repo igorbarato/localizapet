@@ -36,15 +36,16 @@ class SoapController extends AbstractActionController
         );
 //        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/soap.php?wsdl');
         $client = new \Zend\Soap\Client('http://localizapet.pe.hu/localizapet/public/soap.php?wsdl');
-        libxml_disable_entity_loader(false);
-        $client->setOptions($params);
+//        libxml_disable_entity_loader(false);
+//        $client->setOptions($params);
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
-
+        $teste = $client->getSoapClient();
+        print_r($teste);
 //        $client = new Teste();
         $temp = $client->listar();
 //            $temp = $client->listar();
-//            \Zend\Debug\Debug::dump($temp);
+            \Zend\Debug\Debug::dump($temp);
         echo base64_encode($temp[0]['image']);
 
 
@@ -67,7 +68,7 @@ class SoapController extends AbstractActionController
     }
 
     public function serverAction(){
-        $url="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?wsdl";
+        $url="http://localizapet.pe.hu/localizapet/public/soap.php?wsdl";
 //        $url="http://localizapet.pe.hu/localizapet/public/soap.php?wsdl";
         if (isset($_GET['wsdl'])) {
             $autodiscover = new AutoDiscover();
@@ -118,7 +119,7 @@ class SoapController extends AbstractActionController
             );
             $soap = new Server(null, $options);
             $soap->setClass(Teste::class);
-            $soap->setEncoding('ISO-8859-1');
+//            $soap->setEncoding('ISO-8859-1');
 //            $soap->setEncoding('UTF-8');
             $soap->handle();
             exit();
