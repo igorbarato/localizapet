@@ -15,7 +15,9 @@ class DaoAnimal
     public function paginate()
     {
         $dao = new Dao();
-        return $dao->query('SELECT * FROM animais;');
+        $temp =  $dao->query('SELECT * FROM animais');
+//        \Zend\Debug\Debug::dump($temp);
+        return $temp;
     }
 
     public function get($id)

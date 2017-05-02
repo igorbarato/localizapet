@@ -30,9 +30,13 @@ class AnimalController extends AbstractActionController
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
         $animaldao = new DaoAnimal();
-        return $view = new ViewModel([
-            'animais' => $animaldao->paginate()
+        $temp = $animaldao->paginate();
+//        \Zend\Debug\Debug::dump($temp);
+
+        $view = new ViewModel([
+            'animais' => $temp
         ]);
+        return $view;
     }
     
    public function addAction()

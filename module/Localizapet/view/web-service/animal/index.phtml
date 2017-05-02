@@ -1,5 +1,5 @@
 <?php $this->headTitle("Animal"); ?>
-<h1>Animais</h1>
+<h1>Animai</h1>
 <table class="table">
     <tr>
         <th>ID</th>
@@ -12,8 +12,8 @@
         <th>ID Usuario</th> 
     </tr>
     <?php
-    $animais = $this->$animais;
-    Zend\Debug\Debug::dump($animais);
+    $animais[] = $this->$animais;
+//    Zend\Debug\Debug::dump($animais);
     ?>
     <?php foreach($animais as $animal): ?>
         <tr>

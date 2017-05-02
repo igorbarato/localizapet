@@ -1,8 +1,8 @@
 <?php $this->headTitle("Animal"); ?>
-<h1>Animais</h1>
+<h1>Animai</h1>
 <table class="table">
     <tr>
-        <th>ID</th>
+        <th>Igor</th>
         <th>Nome</th>
         <th>Foto</th>
         <th>Sexo</th>
@@ -12,10 +12,11 @@
         <th>ID Usuario</th> 
     </tr>
     <?php
-    $animais = $this->$animais;
-    Zend\Debug\Debug::dump($animais);
+//    $temp[] = $this->$animais;
+//    echo "OK";
+//    Zend\Debug\Debug::dump($this);
     ?>
-    <?php foreach($animais as $animal): ?>
+    <?php foreach($temp as $animal): ?>
         <tr>
             <td><?= $this->escapeHtml($animal['animal_id']); ?></td>
             <td><?= $this->escapeHtml($animal['nome']); ?></td>

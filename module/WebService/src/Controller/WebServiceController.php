@@ -155,7 +155,8 @@ class WebServiceController extends AbstractActionController
                 'cache_wsdl' => WSDL_CACHE_NONE,
                 'location' => $url
             );
-            $soap = new Server(null, $options);
+            $soap = new Server();
+            $soap->setOptions($options);
             $soap->setClass(\WebService\Soap\Servicos::class);
             $soap->handle();
             exit();
