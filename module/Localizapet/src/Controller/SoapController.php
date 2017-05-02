@@ -57,7 +57,7 @@ class SoapController extends AbstractActionController
         $client = new Teste();
         $temp = $client->listar();
 //            $temp = $client->listar();
-//            \Zend\Debug\Debug::dump($temp);
+            \Zend\Debug\Debug::dump($temp);
         $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $host = $_SERVER[HTTP_HOST];
         $uri = $_SERVER[REQUEST_URI];
