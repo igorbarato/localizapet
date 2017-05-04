@@ -1,103 +1,311 @@
 <?php
 
-namespace WebService\Model;
+namespace Localizapet\Model;
 
-use WebService\Model\Animal;
-use WebService\Model\Usuario;
 
 class Registro {
     
     /** @var int */
-    public $regitro_id;
-    
+    private $id;
+
     /** @var string */
-    public $data;
+    private $nome;
+
+    /** @var string */
+    private $sexo;
+
+    /** @var string */
+    private $detalhes;
+
+    /** @var string */
+    private $foto;
+
+    /** @var int */
+    private $raca_id;
+
+    /** @var string */
+    private $data;
+
+    /** @var string */
+    private $endereco;
     
     /** @var double */
-    public $latitude;
+    private $latitude;
     
     /** @var double */
-    public $longitude;
+    private $longitude;
     
     /** @var int */
-    public $tipo_registro;
+    private $tipo_registro;
     
     /** @var int */
-    public $status;
+    private $status;
     
     /** @var int */
-    public $animal_id;
-    
-    /** @var int */
-    public $usuario_id;
-    
-    function __construct($regitro_id, $data, $latitude, $longitude, 
-            $tipo_registro, $status, $animal_id, $usuario_id) {
-        $this->regitro_id = $regitro_id;
+    private $usuario_id;
+
+    /**
+     * Registro constructor.
+     * @param int $id
+     * @param string $nome
+     * @param string $sexo
+     * @param string $detalhes
+     * @param string $foto
+     * @param int $raca_id
+     * @param string $data
+     * @param string $endereco
+     * @param float $latitude
+     * @param float $longitude
+     * @param int $tipo_registro
+     * @param int $status
+     * @param int $usuario_id
+     */
+    public function __construct(
+        $id = null,
+        $nome = null,
+        $sexo = null,
+        $detalhes = null,
+        $foto = null,
+        $raca_id = null,
+        $data = null,
+        $endereco = null,
+        $latitude = null,
+        $longitude = null,
+        $tipo_registro = null,
+        $status = null,
+        $usuario_id = null)
+    {
+
+        $this->id = $id;
+        $this->nome = $nome;
+        $this->sexo = $sexo;
+        $this->detalhes = $detalhes;
+        $this->foto = $foto;
+        $this->raca_id = $raca_id;
         $this->data = $data;
+        $this->endereco = $endereco;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->tipo_registro = $tipo_registro;
         $this->status = $status;
-        $this->animal_id = $animal_id;
         $this->usuario_id = $usuario_id;
     }
-    
-    function getRegitro_id() {
-        return $this->regitro_id;
+
+    function __destruct()
+    {
+        unset($this->data);
     }
 
-    function getData() {
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+
+    /**
+     * @param string $sexo
+     */
+    public function setSexo($sexo)
+    {
+        $this->sexo = $sexo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDetalhes()
+    {
+        return $this->detalhes;
+    }
+
+    /**
+     * @param string $detalhes
+     */
+    public function setDetalhes($detalhes)
+    {
+        $this->detalhes = $detalhes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+
+    /**
+     * @param string $foto
+     */
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRacaId()
+    {
+        return $this->raca_id;
+    }
+
+    /**
+     * @param int $raca_id
+     */
+    public function setRacaId($raca_id)
+    {
+        $this->raca_id = $raca_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getData()
+    {
         return $this->data;
     }
 
-    function getLatitude() {
-        return $this->latitude;
-    }
-
-    function getLongitude() {
-        return $this->longitude;
-    }
-
-    function getTipo_registro() {
-        return $this->tipo_registro;
-    }
-
-    function getStatus() {
-        return $this->status;
-    }
-
-    function getAnimal() {
-        return $this->animal;
-    }
-
-    function setRegitro_id($regitro_id) {
-        $this->regitro_id = $regitro_id;
-    }
-
-    function setData($data) {
+    /**
+     * @param string $data
+     */
+    public function setData($data)
+    {
         $this->data = $data;
     }
 
-    function setLatitude($latitude) {
+    /**
+     * @return string
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @param string $endereco
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float $latitude
+     */
+    public function setLatitude($latitude)
+    {
         $this->latitude = $latitude;
     }
 
-    function setLongitude($longitude) {
+    /**
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     */
+    public function setLongitude($longitude)
+    {
         $this->longitude = $longitude;
     }
 
-    function setTipo_registro($tipo_registro) {
+    /**
+     * @return int
+     */
+    public function getTipoRegistro()
+    {
+        return $this->tipo_registro;
+    }
+
+    /**
+     * @param int $tipo_registro
+     */
+    public function setTipoRegistro($tipo_registro)
+    {
         $this->tipo_registro = $tipo_registro;
     }
 
-    function setStatus($status) {
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
         $this->status = $status;
     }
 
-    function setAnimal($animal) {
-        $this->animal = $animal;
+    /**
+     * @return int
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuario_id;
     }
-    
-    
+
+    /**
+     * @param int $usuario_id
+     */
+    public function setUsuarioId($usuario_id)
+    {
+        $this->usuario_id = $usuario_id;
+    }
+
+
+
+
 }

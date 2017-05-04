@@ -113,7 +113,7 @@ class Connection extends AbstractConnection
                     break;
                 case 'database':
                 case 'dbname':
-                    $params['DAO'] = (string) $value;
+                    $params['Database'] = (string) $value;
                     break;
                 case 'charset':
                     $params['CharacterSet'] = (string) $value;

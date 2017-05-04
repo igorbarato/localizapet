@@ -1,0 +1,38 @@
+<?php $this->headTitle("Registros"); ?>
+<h1>Registros</h1>
+
+<table class="table">
+    <tr>
+        <th>Tipo de Registro</th>
+        <th>Nome</th>
+        <th>Sexo</th>
+        <th>Detalhes</th>
+        <th>Foto</th>
+        <th>Espécie</th>
+        <th>Raça</th>
+        <th>Data</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Status</th>
+        <th>ID Usuário</th>
+    </tr>
+    <?php 
+    $registros = $this->registros;
+    \Zend\Debug\Debug::dump($registros);?>
+    <?php foreach ($registros as $registro): ?>
+        <tr>
+            <td><?= $this->escapeHtml($registro['tipo_registro']); ?></td>
+            <td><?= $this->escapeHtml($registro['nome']); ?></td>
+            <td><?= $this->escapeHtml($registro['sexo']); ?></td>
+            <td><?= $this->escapeHtml($registro['detalhes']); ?></td>
+            <td><?= $this->escapeHtml($registro['foto']); ?></td>
+            <td><?= $this->escapeHtml($registro['especie']); ?></td>
+            <td><?= $this->escapeHtml($registro['raca']); ?></td>
+            <td><?= $this->escapeHtml($registro['data']); ?></td>
+            <td><?= $this->escapeHtml($registro['latitude']); ?></td>
+            <td><?= $this->escapeHtml($registro['longitude']); ?></td>
+            <td><?= $this->escapeHtml($registro['status']); ?></td>
+            <td><?= $this->escapeHtml($registro['usuario_id']); ?></td>
+        </tr>
+    <?php endforeach;?>
+</table>

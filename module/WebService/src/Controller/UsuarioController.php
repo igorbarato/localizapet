@@ -45,7 +45,7 @@ class UsuarioController extends AbstractActionController
             }
             ////////////////////////
             //Verifica no banco se há o login e senha e retorna o ID do usuário
-//            $db = new \WebService\DAO\DAO();
+//            $db = new \WebService\Database\Database();
 //            $result = $db->login($login, $senha);
             ///////////////////////////
             

@@ -1,9 +1,10 @@
 <?php
 
 
-namespace WebService\Form;
+namespace Localizapet\Form;
 
 
+use Localizapet\Database\DaoRacas;
 use Zend\Form\Form;
 
 class RegistroForm extends Form
@@ -19,12 +20,90 @@ class RegistroForm extends Form
         ]);
 
         $this->add([
+            'name' => 'nome',
+            'type' => 'text',
+            'required' => false,
+            'options' => [
+                'label'=> 'Nome'
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'sexo',
+            'type' => 'select',
+            'required' => true,
+            'options' => [
+                'label'=> 'Sexo',
+                'value_options' => [
+                    0 => 'Fêmea',
+                    1 => 'Macho'
+                ],
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'detalhes',
+            'type' => 'textarea',
+            'options' => [
+                'label'=> 'Detalhes'
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'foto',
+            'type' => 'text',
+            'options' => [
+                'label'=> 'Foto'
+            ]
+        ]);
+
+        $clientRaca = new DaoRacas();
+        $racas = $clientRaca->findAll();
+        foreach($racas as $raca){
+            if($raca['especie'] == 0) $selectRacasCachorro[$raca['id']]= $raca['raca'];
+            else $selectRacasGato[$raca['id']]= $raca['raca'];
+        }
+
+        $this->add([
+            'name' => 'especie',
+            'type' => 'select',
+            'required' => true,
+            'options' => [
+                'label'=> 'Espécie',
+                'value_options' => [
+                    0 => 'Cachorro',
+                    1 => 'Gato'
+                ]
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'raca',
+            'type' => 'select',
+            'required' => true,
+            'options' => [
+                'label'=> 'Especie',
+                'value_options' => [
+                    'Cachorro' => [
+                        'label' => 'Cachorro',
+                        'options' => $selectRacasCachorro
+                    ],
+                    'Gato' => [
+                        'label' => 'Gato',
+                        'options' => $selectRacasGato
+                    ]
+                ]
+            ]
+        ]);
+
+
+        $this->add([
             'name' => 'data',
             'type' => 'datetime',
-//            'required' => true,
+            'required' => true,
             'options' => [
                 'label'=> 'Data',
-                'format'=> 'm/d/Y H:i'
+                'format'=> 'd/m/Y H:i'
             ],
 //            'attributes' => [
 //             'min' => '2010-01-01T00:00:00Z',
@@ -32,10 +111,20 @@ class RegistroForm extends Form
 //             'step' => '1', // minutes; default step interval is 1 min
 //            ]
         ]);
+
+        $this->add([
+            'name' => 'endereco',
+            'type' => 'text',
+            'required' => true,
+            'options' => [
+                'label'=> 'Endereço'
+            ],
+        ]);
         
         $this->add([
             'name' => 'latitude',
             'type' => 'text',
+            'required' => true,
             'options' => [
                 'label'=> 'Latitude'
             ],
@@ -44,6 +133,7 @@ class RegistroForm extends Form
         $this->add([
             'name' => 'longitude',
             'type' => 'text',
+            'required' => true,
             'options' => [
                 'label'=> 'Longitude'
             ],
@@ -52,12 +142,12 @@ class RegistroForm extends Form
         $this->add([
             'name' => 'tipo_registro',
             'type' => 'select',
-//            'required' => true,
+            'required' => true,
             'options' => [
-                'label'=> 'Tipo de Registro',
+                'label'=> 'O que aconteceu?',
                 'value_options' => [
-                    0 => 'Encontrado',
-                    1 => 'Desaparecido'
+                    0 => 'Eu perdi meu animal',
+                    1 => 'Eu encontrei um animal perdido'
                 ],
             ]
         ]);
@@ -65,21 +155,13 @@ class RegistroForm extends Form
         $this->add([
             'name' => 'status',
             'type' => 'select',
-//            'required' => true,
+            'required' => true,
             'options' => [
                 'label'=> 'Status',
                 'value_options' => [
                     0 => 'Pendente',
                     1 => 'Concluído'
                 ],
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'animal_id',
-            'type' => 'number',
-            'options' => [
-                'label'=> 'Animal ID'
             ]
         ]);
         

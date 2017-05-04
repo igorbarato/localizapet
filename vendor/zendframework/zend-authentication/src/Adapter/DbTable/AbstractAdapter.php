@@ -18,7 +18,7 @@ use Zend\Db\Sql;
 abstract class AbstractAdapter extends BaseAdapter
 {
     /**
-     * DAO Connection
+     * Database Connection
      *
      * @var DbAdapter
      */

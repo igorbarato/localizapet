@@ -37,7 +37,7 @@ class Dao
         );
         //Setando UTF8 para que não haja problemas com acentuações
         $this->conexao->set_charset($this->charset);
-        //Inicia conexão com DAO
+        //Inicia conexão com Database
         if ($this->conexao->connect_error) {
             die("Connection failed: " . $this->conexao->connect_error);
         }

@@ -3,6 +3,7 @@
 namespace Localizapet;
 
 use Localizapet\Controller\SoapController;
+use Localizapet\Controller\RegistroController;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 class Module implements ConfigProviderInterface
@@ -60,6 +61,9 @@ class Module implements ConfigProviderInterface
             'factories' => [
                 SoapController::class => function ($container) {
                     return new SoapController();
+                },
+                RegistroController::class => function () {
+                    return new RegistroController();
                 }
             ]
         ];

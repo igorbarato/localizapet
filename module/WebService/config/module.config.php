@@ -48,20 +48,20 @@ return [
                     ]
                 ]
             ],
-            'registro' => [
-                'type' => 'segment',
-                'options' => [
-                    'route' => '/registro[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
-                    ],
-                    'defaults' => [
-                        'controller' => Controller\RegistroController::class,
-                        'action' => 'index'
-                    ]
-                ]
-            ],
+//            'registro' => [
+//                'type' => 'segment',
+//                'options' => [
+//                    'route' => '/registro[/:action[/:id]]',
+//                    'constraints' => [
+//                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                        'id' => '[0-9]+',
+//                    ],
+//                    'defaults' => [
+//                        'controller' => Controller\RegistroController::class,
+//                        'action' => 'index'
+//                    ]
+//                ]
+//            ],
             'login' => [
                 'type' => 'segment',
                 'options' => [

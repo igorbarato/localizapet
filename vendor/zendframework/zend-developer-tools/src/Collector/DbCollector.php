@@ -13,7 +13,7 @@ use Zend\Mvc\MvcEvent;
 use BjyProfiler\Db\Profiler\Profiler;
 
 /**
- * DAO (Zend\Db) Data Collector.
+ * Database (Zend\Db) Data Collector.
  *
  */
 class DbCollector implements CollectorInterface, AutoHideInterface, \Serializable

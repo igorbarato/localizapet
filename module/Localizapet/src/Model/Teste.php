@@ -52,7 +52,7 @@ class Teste
         );
         //Setando UTF8 para que não haja problemas com acentuações
         $conexao->set_charset($charset);
-        //Inicia conexão com DAO
+        //Inicia conexão com Database
         if ($conexao->connect_error) {
 //            die("Connection failed: " . $conexao->connect_error);
         }

@@ -29,7 +29,7 @@ class Raca extends Especie
     
  
 //    public function cadastraRaca($nome, $especie_id){
-//        $db = new DAO();
+//        $db = new Database();
 //        
 //        $this->setNome($nome);
 //        $this->setEspecie_id($especie_id);

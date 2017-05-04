@@ -40,9 +40,8 @@ class SoapController extends AbstractActionController
         $client->setEncoding('UTF-8');
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
-        $bla = $client->getLastRequest();
         $temp = $client->listar();
-        \Zend\Debug\Debug::dump($bla);
+        \Zend\Debug\Debug::dump($temp);
         echo base64_encode($temp[0]['image']);
 
 
@@ -52,17 +51,32 @@ class SoapController extends AbstractActionController
     }
 
     public function nosoapAction(){
-        $client = new Teste();
-        $temp = $client->listar();
-//            $temp = $client->listar();
+        $client = new Localizapet\Database\DaoRegistros();
+        $registro = new Localizapet\Model\Registro(
+            76,
+            'Pumer',
+            1,
+            'Cachorro de idade',
+            null,
+            1,
+            1421766000,
+            'Rua Marajó, 1830 - Vila Virgínia, Ribeirão Preto - SP',
+            -21.194456,
+            -47.837697,
+            0,
+            1,
+            1
+        );
+
+        $client->save($registro);
+            $temp = $client->findAll();
             \Zend\Debug\Debug::dump($temp);
-        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $host = $_SERVER[HTTP_HOST];
-        $uri = $_SERVER[REQUEST_URI];
-        echo "Host:" . $host . "<br>";
-        echo "Path:" . $uri . "<br>";
-        echo $actual_link . "<br>";
-        echo "<img src=\"data:image/jpeg;base64, ". base64_encode($temp[0]['image']) . "\" >";
+
+        $clientRaca = new Localizapet\Database\DaoRacas();
+        \Zend\Debug\Debug::dump($clientRaca->findAll());
+
+//        echo "<img src=\"data:image/jpeg;base64, ". base64_encode($temp[0]['foto']) . "\" >";
+//        echo "<img src=\"data:image/jpeg;base64, ". base64_encode($temp[1]['foto']) . "\" >";
     }
 
     public function serverAction(){

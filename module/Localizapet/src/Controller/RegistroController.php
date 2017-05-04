@@ -1,19 +1,21 @@
 <?php
 
-namespace WebService\Controller;
+namespace Localizapet\Controller;
 
-use WebService\Form\PostForm;
-use WebService\Model\PostTable;
+use Localizapet\Database\DaoRegistros;
+use Localizapet\Form\RegistroForm;
+use Localizapet\Form\PostForm;
+use Localizapet\Model\PostTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Soap\Client;
 use Zend\Soap\AutoDiscover;
 use Zend\Soap\Server;
 use Zend\Http\PhpEnvironment\Request;
-use WebService\Model\Registro;
-use WebService\Model\Usuario;
-use WebService;
-use WebService\Database\Database;
+use Localizapet\Model\Registro;
+use Localizapet\Model\Usuario;
+use Localizapet;
+use Localizapet\Database\Database;
 
 class RegistroController extends AbstractActionController
 {
@@ -23,16 +25,19 @@ class RegistroController extends AbstractActionController
     
     public function indexAction()
     {
-        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+//        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+
+        $client = new DaoRegistros();
+
         return new ViewModel([
-            'registros' => $client->lista_registros()
+            'registros' => $client->findAll()
         ]);
     }
     
    public function addAction()
    {
 
-        $form = new WebService\Form\RegistroForm();
+        $form = new RegistroForm();
         $form->get('submit')->setValue('Adicionar Registro');
         
         $request = $this->getRequest();
@@ -48,29 +53,33 @@ class RegistroController extends AbstractActionController
             return ['form' => $form];
         }
         
-        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
-        $client->setWSDLCache(false);
-        $client->setSoapVersion(SOAP_1_2);
+//        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+//        $client->setWSDLCache(false);
+//        $client->setSoapVersion(SOAP_1_2);
 //      
         //Retorna ID do usuário logado
-        $auth = new AuthenticationService();
+//        $auth = new AuthenticationService();
         
         $registro = new Registro();
-//        $usuario = new Usuario();
-//        
+        $client = new DaoRegistros();
+//
         $data = $form->getData();
-        $registro->data = strtotime($data['data']);
-        var_dump($registro->data);
-        $registro->latitude = $data['latitude'];
-        $registro->longitude = $data['longitude'];
-        $registro->tipo_registro = $data['tipo_registro'];
-        $registro->status = $data['status'];
-//        $registro->animal_id = $data['animal_id'];
-        $registro->animal_id = 1;
-//        $registro->usuario_id = $data['usuario_id'];
-        $registro->usuario_id = $auth->getIdentity()['usuario_id'];
-        
-        $client->inserir_registro($registro);
+//        $registro->setData(strtotime($data['data']));
+//        var_dump($registro->data);
+       $registro->setTipoRegistro($data['tipo_registro']);
+       $registro->setNome($data['nome']);
+       $registro->setSexo($data['sexo']);
+       $registro->setDetalhes($data['detalhes']);
+       $registro->setFoto($data['foto']);
+       $registro->setRacaId($data['raca']);
+       $registro->setData($data['data']);
+       $registro->setEndereco($data['endereco']);
+       $registro->setLatitude($data['latitude']);
+       $registro->setLongitude($data['longitude']);
+       $registro->setStatus($data['status']);
+       $registro->setUsuarioId($data['usuario_id']);
+
+        $client->save($registro);
 //        
         return $this->redirect()->toRoute('registro');
                 

@@ -1,0 +1,158 @@
+<h1>Novo Registro</h1>
+
+<?php
+    $form = $this->form;
+    $messages = $form->getMessages();
+
+    $data = $form->get('data');
+    $data->setAttribute('class','form-control');
+
+    $nome = $form->get('nome');
+    $nome->setAttribute('class','form-control');
+
+    $sexo = $form->get('sexo');
+    $sexo->setAttribute('class','form-control');
+
+    $detalhes = $form->get('detalhes');
+    $detalhes->setAttribute('class','form-control');
+
+    $foto= $form->get('foto');
+    $foto->setAttribute('class','form-control');
+
+    $especie= $form->get('especie');
+    $especie->setAttribute('class','form-control');
+
+    $raca= $form->get('raca');
+    $raca->setAttribute('class','form-control');
+
+
+    $latitude = $form->get('latitude');
+    $latitude->setAttribute('class','form-control');
+    $latitude->setAttribute('id','latitude');
+
+    $longitude = $form->get('longitude');
+    $longitude->setAttribute('class','form-control');
+    $longitude->setAttribute('id','longitude');
+
+    $tipo_registro= $form->get('tipo_registro');
+    $tipo_registro->setAttribute('class','form-control');
+
+    $status = $form->get('status');
+    $status->setAttribute('class','form-control');
+
+    //$animal_id = $form->get('animal_id');
+    //$animal_id->setAttribute('class','form-control');
+
+    $usuario_id= $form->get('usuario_id');
+    $usuario_id->setAttribute('class','form-control');
+
+    $submit = $form->get('submit');
+    $submit->setAttribute('class','btn btn-primary');
+
+    $form->setAttribute('action', $this->url('registro', ['action'=>'add']));
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+
+?>
+
+<?php if(!empty($messages)): ?>
+    <?php foreach($messages as $key => $message_type): ?>
+        <div class="alert alert-danger">
+            <strong><?=$key?></strong>
+            <?php foreach($message_type as $message):?>
+                <?=$message?>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+<div class="form-group">
+    <?=$this->formLabel($tipo_registro);?>
+    <?=$this->formElement($tipo_registro);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($nome);?>
+    <?=$this->formElement($nome);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($sexo);?>
+    <?=$this->formElement($sexo);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($detalhes);?>
+    <?=$this->formElement($detalhes);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($foto);?>
+    <?=$this->formElement($foto);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($especie);?>
+    <?=$this->formElement($especie);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($raca);?>
+    <?=$this->formElement($raca);?>
+</div>
+
+
+<div class="form-group">
+    <?=$this->formLabel($data);?>
+    <?=$this->formElement($data);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($latitude);?>
+    <?=$this->formElement($latitude);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($longitude);?>
+    <?=$this->formElement($longitude);?>
+</div>
+
+
+<div class="form-group">
+    <?=$this->formLabel($status);?>
+    <?=$this->formElement($status);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($usuario_id);?>
+    <?=$this->formElement($usuario_id);?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
+?>
+
+<script>
+    window.onload = function (){
+      if (window.navigator && window.navigator.geolocation) {
+       var geolocation = window.navigator.geolocation;
+       geolocation.getCurrentPosition(sucesso, erro);
+      } else {
+         alert('Geolocalização não suportada em seu navegador.')
+      }
+      function sucesso(posicao){
+        console.log(posicao);
+        var latitude = posicao.coords.latitude;
+        var longitude = posicao.coords.longitude;
+        document.getElementById('latitude').value = latitude;
+        document.getElementById('longitude').value = longitude;
+//        alert('Sua latitude estimada é: ' + latitude + ' e longitude: ' + longitude )
+      }
+      function erro(error){
+        console.log(error)
+      }
+    }
+</script>

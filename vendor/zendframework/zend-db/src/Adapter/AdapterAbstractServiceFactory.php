@@ -14,7 +14,7 @@ use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * DAO adapter abstract service factory.
+ * Database adapter abstract service factory.
  *
  * Allows configuring several database instances (such as writer and reader).
  */

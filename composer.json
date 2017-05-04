@@ -98,8 +98,7 @@
   "autoload" : {
     "psr-4" : {
       "Application\\" : "module/Application/src/",
-      "Localizapet\\" : "module/Localizapet/src/",
-      "WebService\\" : "module/WebService/src"
+      "Localizapet\\" : "module/Localizapet/src/"
     }
   },
   "type" : "project",

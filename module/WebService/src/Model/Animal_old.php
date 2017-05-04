@@ -93,7 +93,7 @@ class Animal extends Raca
      */
 //    public function cadastraPet($nome, $idade, $sexo, $detalhes, $usuario, $foto,
 //            $raca_id, $especie_id, $cor, $porte){
-//        $db = new DAO();
+//        $db = new Database();
 //        
 //        $this->setNome($nome);
 //        $this->setIdade($idade);

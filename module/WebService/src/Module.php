@@ -67,9 +67,9 @@ class Module implements ConfigProviderInterface
                 UsuarioController::class => function () {
                     return new UsuarioController();
                 },
-                RegistroController::class => function () {
-                    return new RegistroController();
-                },
+//                RegistroController::class => function () {
+//                    return new RegistroController();
+//                },
                 AnimalController::class => function () {
                     return new AnimalController();
                 }
