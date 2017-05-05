@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e34f089-798b-40dc-adc1-21820300505d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/bin/templatemap_generator.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/config/module.config.php" afterPath="$PROJECT_DIR$/module/Localizapet/config/module.config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Controller/SoapController.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Controller/SoapController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Model/Raca.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Model/Raca.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Model/Registro.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Model/Registro.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Module.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Module.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/WebService/config/module.config.php" afterPath="$PROJECT_DIR$/module/WebService/config/module.config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/WebService/src/Soap/Servicos.php" afterPath="$PROJECT_DIR$/module/WebService/src/Soap/Servicos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/development.config.php" afterPath="$PROJECT_DIR$/config/development.config.php" />
     </list>
     <ignored path="localizapet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,14 +72,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Servicos.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Servicos.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31739962">
+            <state vertical-scroll-proportion="-2.0">
               <caret line="50" column="42" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="42" />
               <folding>
                 <element signature="e#70#97#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="development.config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/development.config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.576923">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.1761658">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,7 +148,6 @@
         <option value="$PROJECT_DIR$/module/Localizapet/src/Database/Database.php" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Database/DaoAnimal.php" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Database/DaoRegistros.php" />
-        <option value="$PROJECT_DIR$/config/development.config.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/config/modules.config.php" />
         <option value="$PROJECT_DIR$/module/WebService/src/Module.php" />
@@ -151,6 +165,8 @@
         <option value="$PROJECT_DIR$/module/Localizapet/src/Controller/WebServiceController.php" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Model/Registro.php" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php" />
+        <option value="$PROJECT_DIR$/config/development.config.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -615,13 +631,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/module/WebService/src/DAO/Entity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/development.config.php.dist">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -762,13 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/development.config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20517242">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1010,11 +1012,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31739962">
+        <state vertical-scroll-proportion="-2.0">
           <caret line="50" column="42" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="42" />
           <folding>
             <element signature="e#70#97#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/development.config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1761658">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
