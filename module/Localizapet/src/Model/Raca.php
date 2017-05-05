@@ -3,12 +3,20 @@ namespace Localizapet\Model;
 
 class Raca
 {
+    /**
+     * @var int
+     */
+    public $id;
 
-    private $id;
+    /**
+     * @var string
+     */
+    public $especie;
 
-    private $especie;
-
-    private $raca;
+    /**
+     * @var string
+     */
+    public $raca;
 
     public function __construct() {
     }
@@ -28,6 +36,15 @@ class Raca
     {
         $this->id = $id;
     }
+
+    /**
+     * @param string $raca
+     */
+    public function setRaca($raca)
+    {
+        $this->raca = $raca;
+    }
+
 
     /**
      * @return mixed

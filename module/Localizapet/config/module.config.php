@@ -20,6 +20,26 @@ return [
                     ]
                 ]
             ],
+            'webservicemanual' => [
+                'type' => 'literal',
+                'options' => [
+                    'route' => '/servermanual',
+                    'defaults' => [
+                        'controller' => Controller\WebServiceController::class,
+                        'action' => 'servermanual'
+                    ]
+                ]
+            ],
+            'webservice' => [
+                'type' => 'literal',
+                'options' => [
+                    'route' => '/server',
+                    'defaults' => [
+                        'controller' => Controller\WebServiceController::class,
+                        'action' => 'server'
+                    ]
+                ]
+            ],
             'temp' => [
                 'type' => 'literal',
                 'options' => [

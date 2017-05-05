@@ -4,45 +4,49 @@ namespace Localizapet\Model;
 
 
 class Registro {
-    
-    /** @var int */
+
+    /**
+     * @var int
+     */
     private $id;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $nome;
 
     /** @var string */
     private $sexo;
 
     /** @var string */
-    private $detalhes;
+    public $detalhes;
 
     /** @var string */
-    private $foto;
+    public $foto;
 
     /** @var int */
-    private $raca_id;
+    public $raca_id;
 
     /** @var string */
-    private $data;
+    public $data;
 
     /** @var string */
-    private $endereco;
+    public $endereco;
     
     /** @var double */
-    private $latitude;
+    public $latitude;
     
     /** @var double */
-    private $longitude;
+    public $longitude;
     
     /** @var int */
-    private $tipo_registro;
+    public $tipo_registro;
     
     /** @var int */
-    private $status;
+    public $status;
     
     /** @var int */
-    private $usuario_id;
+    public $usuario_id;
 
     /**
      * Registro constructor.

@@ -76,16 +76,16 @@ return [
                     ]
                 ]
             ],
-            'server' => [
-                'type' => 'literal',
-                'options' => [
-                    'route' => '/server.php',
-                    'defaults' => [
-                        'controller' => Controller\WebServiceController::class,
-                        'action' => 'server'
-                    ]
-                ]
-            ],           
+//            'server' => [
+//                'type' => 'literal',
+//                'options' => [
+//                    'route' => '/server.php',
+//                    'defaults' => [
+//                        'controller' => Controller\WebServiceController::class,
+//                        'action' => 'server'
+//                    ]
+//                ]
+//            ],
 
         ]
 

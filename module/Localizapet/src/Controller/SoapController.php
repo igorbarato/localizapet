@@ -51,6 +51,9 @@ class SoapController extends AbstractActionController
     }
 
     public function nosoapAction(){
+        $viewModel = new viewModel();
+        $viewModel->setTerminal(true);
+
         $client = new Localizapet\Database\DaoRegistros();
         $registro = new Localizapet\Model\Registro(
             76,
@@ -72,8 +75,8 @@ class SoapController extends AbstractActionController
             $temp = $client->findAll();
             \Zend\Debug\Debug::dump($temp);
 
-        $clientRaca = new Localizapet\Database\DaoRacas();
-        \Zend\Debug\Debug::dump($clientRaca->findAll());
+        $clientRaca = new Localizapet\Service\Servicos();
+        \Zend\Debug\Debug::dump($clientRaca->listaRacas());
 
 //        echo "<img src=\"data:image/jpeg;base64, ". base64_encode($temp[0]['foto']) . "\" >";
 //        echo "<img src=\"data:image/jpeg;base64, ". base64_encode($temp[1]['foto']) . "\" >";

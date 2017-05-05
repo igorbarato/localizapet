@@ -4,6 +4,7 @@ namespace Localizapet;
 
 use Localizapet\Controller\SoapController;
 use Localizapet\Controller\RegistroController;
+use Localizapet\Controller\WebServiceController;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 class Module implements ConfigProviderInterface
@@ -64,6 +65,9 @@ class Module implements ConfigProviderInterface
                 },
                 RegistroController::class => function () {
                     return new RegistroController();
+                },
+                WebServiceController::class => function () {
+                    return new WebServiceController();
                 }
             ]
         ];
