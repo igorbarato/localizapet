@@ -33,40 +33,12 @@ class WebServiceController extends AbstractActionController
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(Servicos::class);
             $autodiscover->setUri("http://localhost/zend/localizapet/public/server");
-//            $autodiscover->addFunction('listaRacas');
-//            $autodiscover->setServiceName('Teste');
             $viewModel = new ViewModel();
             $viewModel->setTerminal(true);
 
             $wsdl = $autodiscover->generate();
 //            $wsdl->addComplexType(\Localizapet\Model\Registro::class);
 //            $wsdl->addComplexType(\Localizapet\Model\Raca::class);
-            $element = array(
-                'name' => 'Registro',
-                'all' => array(
-                    array(
-                        'name' => 'id',
-                        'type' => 'xsd:int'
-                    ),
-                    array(
-                        'name' => 'nome',
-                        'type' => 'xsd:string'
-
-                    ),
-                    array(
-                        'name' => 'sexo',
-                        'type' => 'xsd:string'
-
-                    )
-                )
-            );
-            $wsdl->addElement($element);
-//            $wsdl->addType(Servicos::class, 'tns:Raca');
-//            $portType = $wsdl->addPortType('ServicosPort');
-//
-//            $wsdl->addPortOperation($portType, 'listaRacas', 'tns:listaRacasIn', 'tns:listaRacasOut');
-//            $wsdl->addMessage('listaRacasOut', array('element' => 'tns:Raca'));
-
 
             header('Content-type: application/xml');
             echo $wsdl->toXml();

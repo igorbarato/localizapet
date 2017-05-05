@@ -8,15 +8,15 @@ class Registro {
     /**
      * @var int
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      */
-    private $nome;
+    public $nome;
 
     /** @var string */
-    private $sexo;
+    public $sexo;
 
     /** @var string */
     public $detalhes;
