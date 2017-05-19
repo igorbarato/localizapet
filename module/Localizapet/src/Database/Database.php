@@ -6,15 +6,15 @@ use Zend\Stdlib\ArrayUtils;
 
 class Database
 {
-//    private $servername = 'mysql.hostinger.com.br';
-//    private $username = 'u368622186_root';
-//    private $password = 'o0iDe+KyC^$`fB[ZLh';
-//    private $database = 'u368622186_pet';
+    private $servername = 'mysql.hostinger.com.br';
+    private $username = 'u368622186_root';
+    private $password = 'o0iDe+KyC^$`fB[ZLh';
+    private $database = 'u368622186_pet';
     
-    private $servername = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'localizapet_zend';
+//    private $servername = 'localhost';
+//    private $username = 'root';
+//    private $password = '';
+//    private $database = 'localizapet_zend';
     
     private $charset = 'utf8';
 

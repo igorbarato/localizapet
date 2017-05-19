@@ -27,8 +27,8 @@ class WebServiceController extends AbstractActionController
 
     public function serverAction()
     {
-//        $url="http://localizapet.pe.hu/localizapet/public/soap.php?wsdl";
-        $url = "http://localhost/zend/localizapet/public/server?wsdl";
+        $url="http://localizapet.pe.hu/localizapet/public/soap.php?wsdl";
+//        $url = "http://localhost/zend/localizapet/public/server?wsdl";
         if (isset($_GET['wsdl'])) {
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(Servicos::class);
