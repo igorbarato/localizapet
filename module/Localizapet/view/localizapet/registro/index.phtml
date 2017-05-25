@@ -25,7 +25,7 @@
             <td><?= $this->escapeHtml($registro['nome']); ?></td>
             <td><?= $this->escapeHtml($registro['sexo']); ?></td>
             <td><?= $this->escapeHtml($registro['detalhes']); ?></td>
-            <td><?= $this->escapeHtml($registro['foto']); ?></td>
+            <td><img src="data:image/jpeg;base64, <?= base64_encode($registro['foto']);?>"/></td>
             <td><?= $this->escapeHtml($registro['especie']); ?></td>
             <td><?= $this->escapeHtml($registro['raca']); ?></td>
             <td><?= $this->escapeHtml($registro['data']); ?></td>
