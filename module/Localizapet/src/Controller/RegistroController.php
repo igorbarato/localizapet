@@ -22,69 +22,94 @@ class RegistroController extends AbstractActionController
     public function __construct()
     {
     }
-    
+
     public function indexAction()
     {
-//        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
+        $client = new \Zend\Soap\Client('http://192.168.0.80/server?wsdl');
+        ini_set("soap.wsdl_cache_enabled", 0);
+        $client->setWSDLCache(false);
+        $client->setSoapVersion(SOAP_1_1);
+        \Zend\Debug\Debug::dump($client->getFunctions());
+        $response = [];
 
-        $client = new DaoRegistros();
+//        \Zend\Debug\Debug::dump($client->__());
 
-        return new ViewModel([
-            'registros' => $client->findAll()
+        try{
+            $response = $client->call('listaRegistros', null);
+        }catch (\SoapFault $e){
+            $response = $client->getLastResponse();
+//            $response = str_replace("&#x1A",'',$response); ///My Invalid Symbol
+//            $response = str_ireplace(array('SOAP-ENV:','SOAP:'),'',$response);
+//            $response = simplexml_load_string($response);
+            \Zend\Debug\Debug::dump($response);
+        }
+        return $view = new ViewModel([
+            'registro' => $client->listaRegistros()
         ]);
     }
-    
-   public function addAction()
-   {
+
+    public function listaAction()
+    {
+        $client = new \Zend\Soap\Client('http://192.168.0.80/server?wsdl');
+        $client->setWSDLCache(false);
+        $client->setSoapVersion(SOAP_1_2);
+        \Zend\Debug\Debug::dump($client->getFunctions());
+        return $view = new ViewModel([
+            'registro' => $client->listaRegistros()
+        ]);
+    }
+
+    public function addAction()
+    {
 
         $form = new RegistroForm();
         $form->get('submit')->setValue('Adicionar Registro');
-        
+
         $request = $this->getRequest();
-        
+
         if (!$request->isPost()){
             return new ViewModel([
                 'form' => $form,
-            ]);   
+            ]);
         }
-        
+
         $form->setData($request->getPost());
         if (!$form->isValid()) {
             return ['form' => $form];
         }
-        
+
 //        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
 //        $client->setWSDLCache(false);
 //        $client->setSoapVersion(SOAP_1_2);
 //      
         //Retorna ID do usuário logado
 //        $auth = new AuthenticationService();
-        
+
         $registro = new Registro();
         $client = new DaoRegistros();
 //
         $data = $form->getData();
 //        $registro->setData(strtotime($data['data']));
 //        var_dump($registro->data);
-       $registro->setTipoRegistro($data['tipo_registro']);
-       $registro->setNome($data['nome']);
-       $registro->setSexo($data['sexo']);
-       $registro->setDetalhes($data['detalhes']);
-       $registro->setFoto($data['foto']);
-       $registro->setRacaId($data['raca']);
-       $registro->setData($data['data']);
-       $registro->setEndereco($data['endereco']);
-       $registro->setLatitude($data['latitude']);
-       $registro->setLongitude($data['longitude']);
-       $registro->setStatus($data['status']);
-       $registro->setUsuarioId($data['usuario_id']);
+        $registro->setTipoRegistro($data['tipo_registro']);
+        $registro->setNome($data['nome']);
+        $registro->setSexo($data['sexo']);
+        $registro->setDetalhes($data['detalhes']);
+        $registro->setFoto($data['foto']);
+        $registro->setRacaId($data['raca']);
+        $registro->setData($data['data']);
+        $registro->setEndereco($data['endereco']);
+        $registro->setLatitude($data['latitude']);
+        $registro->setLongitude($data['longitude']);
+        $registro->setStatus($data['status']);
+        $registro->setUsuarioId($data['usuario_id']);
 
         $client->save($registro);
 //        
         return $this->redirect()->toRoute('registro');
-                
-   }
-   
+
+    }
+
     public function editAction()
     {
         $id = (int)$this->params()->fromRoute('id', 0);
@@ -116,17 +141,17 @@ class RegistroController extends AbstractActionController
         $this->table->save($post);
         return $this->redirect()->toRoute('post');
     }
-    
+
     public function deleteAction(){
         $id = (int)$this->params()->fromRoute('id', 0);
-        
+
         if (!$id){
             return $this->redirect()->toRoute('post');
         }
-        
+
         $this->table->delete($id);
         return $this->redirect()->toRoute('post');
-            
+
     }
-    
+
 }

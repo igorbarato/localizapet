@@ -95,6 +95,22 @@ class Registro {
         $this->usuario_id = $usuario_id;
     }
 
+    public function convertArrayObject($array){
+        $this->id = $array['id'];
+        $this->nome = $array['nome'];
+        $this->sexo = $array['sexo'];
+        $this->detalhes = $array['detalhes'];
+        $this->foto = base64_encode($array['foto']);
+        $this->raca_id = $array['raca_id'];
+        $this->data = $array['data'];
+        $this->endereco = $array['endereco'];
+        $this->latitude = $array['latitude'];
+        $this->longitude = $array['longitude'];
+        $this->tipo_registro = $array['tipo_registro'];
+        $this->status = $array['status'];
+        $this->usuario_id = $array['usuario_id'];
+    }
+
     function __destruct()
     {
         unset($this->data);

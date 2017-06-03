@@ -4,6 +4,7 @@ namespace Localizapet\Service;
 //use Localizapet\Model\Raca;
 
 
+use Localizapet\Database\DaoRegistros;
 use Localizapet\Model\Raca;
 use Localizapet\Model\Registro;
 use Zend\Stdlib\ArrayObject;
@@ -52,28 +53,30 @@ class Servicos
      */
     function cadastraRegistro(Registro $registro){}
 
-
+    /**
+     * @return \Localizapet\Model\Registro $registro
+     */
     function listaRegistros(){
-        $daoRegistro = new \Localizapet\Database\DaoRegistros();
+        $daoRegistro = new DaoRegistros();
+        //Método de busca de todos os registros
         $rows = $daoRegistro->findAll();
+
+        //Trata o array retornado para uma lista de objetos
         $listaRegistros = new ArrayObject();
-//        $result = [];
         foreach($rows as $key => $row){
-//            $result[$key] = array($row['id'], $row['especie'], $row['raca']);
-            $foto = base64_encode($row['foto']);
             $registro = new Registro();
-            $registro->setId($row['id']);
-            $registro->setData($row['data']);
-            $registro->setFoto($foto);
-//            $registro->setEndereco($row['end']);
+            $registro->convertArrayObject($row);
             $listaRegistros->append($registro);
         }
+
+        //Retorna a lista de registros
         return $listaRegistros->getArrayCopy();
     }
+
     /**
-     * @return string
+     * @return String
      */
     function hello(){
-        return 'Hello';
+        return 'Hello Brasil';
     }
 }

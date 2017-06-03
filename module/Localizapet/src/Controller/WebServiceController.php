@@ -27,24 +27,36 @@ class WebServiceController extends AbstractActionController
 
     public function serverAction()
     {
-        $url="http://localizapet.pe.hu/localizapet/public/soap.php?wsdl";
-//        $url = "http://localhost/zend/localizapet/public/server?wsdl";
+        //Endereço do servidor
+        $url="http://192.168.0.80/server?wsdl";
+
+        /**
+         * Verifica se a URL possui parâmetro 'wsdl', se sim,
+         * é exibido o documento WSDL
+         */
         if (isset($_GET['wsdl'])) {
+
+            /**
+             * Instanciado AutoDiscover e passado Classe
+             * 'Servico' para identificação dos métodos
+             * que vão ser disponibilizados no WebService
+             */
             $autodiscover = new AutoDiscover();
-            $autodiscover->setClass(Servicos::class);
-            $autodiscover->setUri("http://localhost/zend/localizapet/public/server");
+            $autodiscover->setClass(Servicos::class)
+                         ->setUri("http://192.168.0.80/server");
+
+            /**
+             * Desativado renderização default do Zend Framework
+             * e renderizado saída do WSDL
+             */
             $viewModel = new ViewModel();
             $viewModel->setTerminal(true);
-
             $wsdl = $autodiscover->generate();
-//            $wsdl->addComplexType(\Localizapet\Model\Registro::class);
-//            $wsdl->addComplexType(\Localizapet\Model\Raca::class);
-
             header('Content-type: application/xml');
             echo $wsdl->toXml();
             exit();
 
-
+        // Se não, é acessado o Web Service
         } else {
             $viewModel = new ViewModel();
             $viewModel->setTerminal(true);
@@ -55,8 +67,6 @@ class WebServiceController extends AbstractActionController
             );
             $soap = new Server(null, $options);
             $soap->setClass(Servicos::class);
-//            $soap->setEncoding('ISO-8859-1');
-//            $soap->setEncoding('UTF-8');
             $soap->handle();
             exit();
         }
@@ -67,7 +77,7 @@ class WebServiceController extends AbstractActionController
 
 
 //        $url="http://localizapet.pe.hu/localizapet/public/soap.php?wsdl";
-            $url = "http://localhost/zend/localizapet/public/server?wsdl";
+            $url = "http://192.168.0.101/server?wsdl";
             if (isset($_GET['wsdl'])) {
 
                 $wsdl = new Wsdl('Servicos', 'http://localhost/zend/localizapet/public/servermanual');

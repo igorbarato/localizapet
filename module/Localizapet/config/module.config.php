@@ -10,26 +10,26 @@ return [
     ],
     'router' => [
         'routes' => [
-            'soap' => [
-                'type' => 'literal',
-                'options' => [
-                    'route' => '/soap.php',
-                    'defaults' => [
-                        'controller' => Controller\SoapController::class,
-                        'action' => 'server'
-                    ]
-                ]
-            ],
-            'webservicemanual' => [
-                'type' => 'literal',
-                'options' => [
-                    'route' => '/servermanual',
-                    'defaults' => [
-                        'controller' => Controller\WebServiceController::class,
-                        'action' => 'servermanual'
-                    ]
-                ]
-            ],
+//            'soap' => [
+//                'type' => 'literal',
+//                'options' => [
+//                    'route' => '/soap.php',
+//                    'defaults' => [
+//                        'controller' => Controller\SoapController::class,
+//                        'action' => 'server'
+//                    ]
+//                ]
+//            ],
+//            'webservicemanual' => [
+//                'type' => 'literal',
+//                'options' => [
+//                    'route' => '/servermanual',
+//                    'defaults' => [
+//                        'controller' => Controller\WebServiceController::class,
+//                        'action' => 'servermanual'
+//                    ]
+//                ]
+//            ],
             'webservice' => [
                 'type' => 'literal',
                 'options' => [
@@ -40,26 +40,26 @@ return [
                     ]
                 ]
             ],
-            'temp' => [
-                'type' => 'literal',
-                'options' => [
-                    'route' => '/temp',
-                    'defaults' => [
-                        'controller' => Controller\SoapController::class,
-                        'action' => 'index'
-                    ]
-                ]
-            ],
-            'nosoap' => [
-                'type' => 'literal',
-                'options' => [
-                    'route' => '/nosoap',
-                    'defaults' => [
-                        'controller' => Controller\SoapController::class,
-                        'action' => 'nosoap'
-                    ]
-                ]
-            ],
+//            'temp' => [
+//                'type' => 'literal',
+//                'options' => [
+//                    'route' => '/temp',
+//                    'defaults' => [
+//                        'controller' => Controller\SoapController::class,
+//                        'action' => 'index'
+//                    ]
+//                ]
+//            ],
+//            'nosoap' => [
+//                'type' => 'literal',
+//                'options' => [
+//                    'route' => '/nosoap',
+//                    'defaults' => [
+//                        'controller' => Controller\SoapController::class,
+//                        'action' => 'nosoap'
+//                    ]
+//                ]
+//            ],
             'registro' => [
                 'type' => 'segment',
                 'options' => [
