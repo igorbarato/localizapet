@@ -30,7 +30,7 @@ class Raca
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      */
     public function setId($id)
     {
@@ -47,7 +47,7 @@ class Raca
 
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRaca()
     {
@@ -55,7 +55,7 @@ class Raca
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEspecie()
     {
@@ -63,7 +63,7 @@ class Raca
     }
 
     /**
-     * @param mixed $especie
+     * @param string $especie
      */
     public function setEspecie($especie)
     {

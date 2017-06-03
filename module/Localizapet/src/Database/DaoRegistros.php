@@ -29,7 +29,12 @@ class DaoRegistros
     public function findAll()
     {
         $this->connection = new Database('registros');
-        $stmt = $this->connection->db->query('SELECT * FROM registros;');
+        $stmt = $this->connection->db->query('
+            SELECT r.id, r.data, r.endereco, r.latitude, r.longitude, r.tipo_registro,
+            r.status, r.nome, r.sexo, r.detalhes, r.foto,  racas.especie, racas.raca, usuarios.login
+            FROM registros AS r, racas, usuarios
+            WHERE r.raca_id = racas.id
+            AND r.usuario_id = usuarios.id;');
         $this->result = $stmt->fetch_all(MYSQLI_ASSOC);
         $this->connection->db->close();
         return $this->result;
@@ -50,7 +55,7 @@ class DaoRegistros
         }
         $this->connection = new Database('registros');
         $sql = 'INSERT INTO `registros`
-          (`data`, `endereço`, `latitude`, `longitude`, `tipo_registro`, `status`, `nome`, `sexo`,
+          (`data`, `endereco`, `latitude`, `longitude`, `tipo_registro`, `status`, `nome`, `sexo`,
           `detalhes`, `foto`, `raca_id`, `usuario_id`)
           VALUES
           (FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
@@ -92,7 +97,7 @@ class DaoRegistros
             UPDATE registros
             SET
                 `data` = FROM_UNIXTIME(?),
-                `endereço` = ?,
+                `endereco` = ?,
                 `latitude` = ?,
                 `longitude` = ?,
                 `tipo_registro` = ?,

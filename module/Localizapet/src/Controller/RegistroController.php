@@ -29,22 +29,25 @@ class RegistroController extends AbstractActionController
         ini_set("soap.wsdl_cache_enabled", 0);
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_1);
-        \Zend\Debug\Debug::dump($client->getFunctions());
-        $response = [];
 
-//        \Zend\Debug\Debug::dump($client->__());
+//        $client = new DaoRegistros();
+//        return $view = new ViewModel([
+//            'registros' => $client->findAll()
+//        ]);
 
-        try{
-            $response = $client->call('listaRegistros', null);
-        }catch (\SoapFault $e){
-            $response = $client->getLastResponse();
-//            $response = str_replace("&#x1A",'',$response); ///My Invalid Symbol
-//            $response = str_ireplace(array('SOAP-ENV:','SOAP:'),'',$response);
-//            $response = simplexml_load_string($response);
-            \Zend\Debug\Debug::dump($response);
+        $rows = $client->call('listaRegistros');
+        $listaRegistros = [];
+        foreach ($rows as $row){
+            $registro = new Registro();
+            $registro = $row;
+            array_push($listaRegistros, $registro);
+
         }
+//        \Zend\Debug\Debug::dump($listaRegistros);
+
         return $view = new ViewModel([
-            'registro' => $client->listaRegistros()
+//            'registros' => $client->call('listaRegistros')
+            'registros' => $listaRegistros
         ]);
     }
 

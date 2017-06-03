@@ -11,7 +11,7 @@ class Database
 //    private $password = 'o0iDe+KyC^$`fB[ZLh';
 //    private $database = 'u368622186_pet';
     
-    private $servername = '192.168.0.80';
+    private $servername = '127.0.0.1';
     private $username = 'root';
     private $password = '123';
     private $database = 'localizapet';

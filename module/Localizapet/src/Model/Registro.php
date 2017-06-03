@@ -24,8 +24,8 @@ class Registro {
     /** @var string */
     public $foto;
 
-    /** @var int */
-    public $raca_id;
+    /** @var \Localizapet\Model\Raca */
+    public $raca;
 
     /** @var string */
     public $data;
@@ -45,39 +45,24 @@ class Registro {
     /** @var int */
     public $status;
     
-    /** @var int */
-    public $usuario_id;
+    /** @var \Localizapet\Model\Usuario */
+    public $usuario;
 
-    /**
-     * Registro constructor.
-     * @param int $id
-     * @param string $nome
-     * @param string $sexo
-     * @param string $detalhes
-     * @param string $foto
-     * @param int $raca_id
-     * @param string $data
-     * @param string $endereco
-     * @param float $latitude
-     * @param float $longitude
-     * @param int $tipo_registro
-     * @param int $status
-     * @param int $usuario_id
-     */
+
     public function __construct(
         $id = null,
         $nome = null,
         $sexo = null,
         $detalhes = null,
         $foto = null,
-        $raca_id = null,
+        $raca = null,
         $data = null,
         $endereco = null,
         $latitude = null,
         $longitude = null,
         $tipo_registro = null,
         $status = null,
-        $usuario_id = null)
+        $usuario = null)
     {
 
         $this->id = $id;
@@ -85,14 +70,14 @@ class Registro {
         $this->sexo = $sexo;
         $this->detalhes = $detalhes;
         $this->foto = $foto;
-        $this->raca_id = $raca_id;
+        $this->raca = $raca;
         $this->data = $data;
         $this->endereco = $endereco;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->tipo_registro = $tipo_registro;
         $this->status = $status;
-        $this->usuario_id = $usuario_id;
+        $this->usuario = $usuario;
     }
 
     public function convertArrayObject($array){
@@ -101,14 +86,15 @@ class Registro {
         $this->sexo = $array['sexo'];
         $this->detalhes = $array['detalhes'];
         $this->foto = base64_encode($array['foto']);
-        $this->raca_id = $array['raca_id'];
+        $this->raca->especie = $array['especie'];
+        $this->raca->raca = $array['raca'];
         $this->data = $array['data'];
         $this->endereco = $array['endereco'];
         $this->latitude = $array['latitude'];
         $this->longitude = $array['longitude'];
         $this->tipo_registro = $array['tipo_registro'];
         $this->status = $array['status'];
-        $this->usuario_id = $array['usuario_id'];
+        $this->usuario->login = $array['login'];
     }
 
     function __destruct()
@@ -202,15 +188,15 @@ class Registro {
      */
     public function getRacaId()
     {
-        return $this->raca_id;
+        return $this->raca;
     }
 
     /**
-     * @param int $raca_id
+     * @param int $raca
      */
-    public function setRacaId($raca_id)
+    public function setRacaId($raca)
     {
-        $this->raca_id = $raca_id;
+        $this->raca = $raca;
     }
 
     /**
@@ -314,15 +300,15 @@ class Registro {
      */
     public function getUsuarioId()
     {
-        return $this->usuario_id;
+        return $this->usuario;
     }
 
     /**
-     * @param int $usuario_id
+     * @param int $usuario
      */
-    public function setUsuarioId($usuario_id)
+    public function setUsuarioId($usuario)
     {
-        $this->usuario_id = $usuario_id;
+        $this->usuario = $usuario;
     }
 
 

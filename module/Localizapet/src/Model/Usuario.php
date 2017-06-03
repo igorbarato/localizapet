@@ -1,5 +1,5 @@
 <?php
-namespace WebService\Model;
+namespace Localizapet\Model;
 
 class Usuario
 {
@@ -20,12 +20,19 @@ class Usuario
      * @var string
      */
     public $senha;
+
+    /**
+     *
+     * @var string
+     */
+    public $telefone;
     
 //    public function __construct($usuario_id, $login, $senha){
     public function __construct(){
         $this->usuario_id = null;
         $this->login = null;
         $this->senha = null;
+        $this->telefone = null;
     }
             
     function getUsuario_id() {
@@ -52,6 +59,21 @@ class Usuario
         $this->senha = $senha;
     }
 
+    /**
+     * @return string
+     */
+    public function getTelefone()
+    {
+        return $this->telefone;
+    }
+
+    /**
+     * @param string $telefone
+     */
+    public function setTelefone($telefone)
+    {
+        $this->telefone = $telefone;
+    }
 
 }
 

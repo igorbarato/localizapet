@@ -44,7 +44,7 @@ class WebServiceController extends AbstractActionController
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(Servicos::class)
                          ->setUri("http://192.168.0.80/server");
-
+//                         ->setComplexTypeStrategy(\Zend\Soap\Wsdl\ComplexTypeStrategy\ArrayOfTypeComplex::class);
             /**
              * Desativado renderização default do Zend Framework
              * e renderizado saída do WSDL
@@ -52,6 +52,7 @@ class WebServiceController extends AbstractActionController
             $viewModel = new ViewModel();
             $viewModel->setTerminal(true);
             $wsdl = $autodiscover->generate();
+//            $wsdl->addComplexType(\Localizapet\Model\Racas::class);
             header('Content-type: application/xml');
             echo $wsdl->toXml();
             exit();
