@@ -51,7 +51,7 @@ class RegistroController extends AbstractActionController
         ]);
     }
 
-    public function listaAction()
+    public function listAction()
     {
         $client = new \Zend\Soap\Client('http://192.168.0.80/server?wsdl');
         $client->setWSDLCache(false);

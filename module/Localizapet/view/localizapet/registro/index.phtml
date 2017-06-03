@@ -1,51 +1,29 @@
-<?php $this->headTitle("Registros"); ?>
-<h1>Registros</h1>
-
-<table class="table">
-    <tr>
-        <th>Foto</th>
-        <th>Tipo de registro</th>
-        <th>Nome</th>
-        <th>Data</th>
-        <th>Sexo</th>
-        <th>Raça</th>
-        <th>Detalhes</th>
-        <th>Endereço</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Status</th>
-        <th>ID Usuário</th>
-    </tr>
-    <?php
-    $registros = $this->registros;
-    \Zend\Debug\Debug::dump($registros);?>
-    <?php foreach ($registros as $registro): ?>
-        <tr>
-            <td><img width="100px" height="auto" src="data:image/jpeg;base64,<?=$registro->{'foto'}?>"/></td>
-            <td><?= $registro->id ?></td>
-            <td><?= $registro->nome ?></td>
-            <td><?= $registro->tipo_registro ?></td>
-            <td><?= $registro->data ?></td>
-            <td><?= $registro->sexo ?></td>
-            <td><?= $registro->raca->raca ?></td>
-            <td><?= $registro->raca->especie ?></td>
-            <td><?= $registro->detalhes ?></td>
-            <td><?= $registro->endereco ?></td>
-            <td><?= $registro->latitude ?></td>
-            <td><?= $registro->longitude ?></td>
-            <td><?= $registro->status ?></td>
-            <td><?= $registro->usuario->login ?></td>
-        </tr>
-    <?php endforeach;?>
-</table>
-<div id="map" style="height: 300px;"></div>
+<?php $this->headTitle("Home"); ?>
+<div id="map"></div>
 <script>
     var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -21.1936966, lng: -47.8377907},
-            zoom: 15
+            mapTypeControl: false,
+            streetViewControl: false,
+            zoom: 17,
+            styles: [
+                {
+                    featureType: "poi",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                },
+                {
+                    featureType: "transit",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                }
+            ]
         });
+
 
         var icons = {
             C:{
@@ -66,80 +44,81 @@
             }
         };
 
-        var ibOptions = {
-            disableAutoPan: false
-            ,maxWidth: 0
-            ,pixelOffset: new google.maps.Size(-140, 0)
-            ,zIndex: null
-            ,boxStyle: {
-                padding: "0px 0px 0px 0px",
-                width: "252px",
-                height: "40px"
-            },
-            closeBoxURL : "",
-            infoBoxClearance: new google.maps.Size(1, 1),
-            isHidden: false,
-            pane: "floatPane",
-            content: "<p>Conteúdo do InfoBox</p>",
-            enableEventPropagation: false
-        };
-
         var locations = [
             <?php foreach ($registros as $registro): ?>
             {
                 id: <?= $registro->id ?>,
                 nome: '<?= $registro->nome ?>',
+                data: '<?php print date("d/m/Y", strtotime($registro->data)); ?>',
                 latitude: <?= $registro->latitude ?>,
                 longitude: <?= $registro->longitude ?>,
                 label: <?php ($registro->raca->especie == 0) ? print "\"C\"" : print "\"G\"";?>,
-                type:  <?php ($registro->tipo_registro == 0) ? print "\"perdido\"" : print "\"encontrado\"";?> },
+                type:  <?php ($registro->tipo_registro == 0) ? print "\"perdido\"" : print "\"encontrado\"";?>,
+                foto: "<?=$registro->foto?>",
+                sexo: "<?php ($registro->sexo == 0) ? print "Fêmea" : print "Macho";?>",
+                raca: "<?= $registro->raca->raca ?>"},
             <?php endforeach;?>
         ];
 
-        var myOptions = {
-            content: "<p>Conteúdo do InfoBox</p>"
-        };
+
+
+        var infowindow = new google.maps.InfoWindow()
+//        infowindow.setContent(content);
 
         for (i = 0; i < locations.length; i++) {
 
-            var contentString = '<div>Hello</div>';
-
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-
-            marker = new google.maps.Marker({
+                marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i]['latitude'], locations[i]['longitude']),
                 title: locations[i]['nome'],
                 icon: icons[locations[i].label][locations[i].type].icon,
-                map: map
+                    desc:   '<div class="widget-header ' + locations[i].type + '"></div>' +
+                            '<div class="box-pet">' +
+                                '<img class="img-circle img-border-light" src="data:image/jpeg;base64,'+locations[i].foto+'"/>' +
+                                '<h4 class="text-center">' + locations[i].nome + '</h4>' +
+                                '<div><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> '+ locations[i].data + '</div>' +
+                                '<div><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Sexo: '+ locations[i].sexo + '</div>' +
+                                '<div><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Raça: '+ locations[i].raca + '</div>' +
+                                '<button type="button" class="btn btn-primary btn-block">' +
+                                   '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> detalhes' +
+                                '</button>' +
+                            '</div>',
+                    map: map
             });
 
-            marker.addListener('click', (function(i) {
-                return function() {
 
-                    ibOptions.content = boxText;
-                    var ib = new InfoBox(ibOptions);
-                    ib.open(map, marker);
-                    map.panTo(ib.getPosition());
-                }
-            }));
+            google.maps.event.addListener(marker,'click', (function(marker,infowindow){
+                return function() {
+                    infowindow.setContent(marker.desc);
+                    infowindow.open(map,marker);
+                    var iwOuter = $('.gm-style-iw');
+
+                    /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+                     * Recorremos ao jQuery e criamos uma variável iwBackground,
+                     * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+                     */
+                    var iwBackground = iwOuter.prev();
+
+                    // Remover o div da sombra do fundo
+                    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+                    // Remover o div de fundo branco
+                    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+                    // Desloca a sombra da seta a 76px da margem esquerda
+//                    iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+                    // Desloca a seta a 76px da margem esquerda
+//                    iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+                };
+            })(marker,infowindow));
+
         }
+
+
+
 
     }
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkUY4pGfhYU_aL2UQyy2BrG5A8IBjuEws&callback=initMap">
 </script>
-
-<div class="info-box-wrap">
-    <div class="info-box-text-wrap">
-        <h6 class="address">{{address}}, {{city}} {{zip}} {{state}}</h6>
-        <p class="price">{{price}}</p>
-    </div>
-    <div class="action-btns">
-        <i class="tour fa fa-check-square-o"></i>
-        <i class="fav fa fa-heart-o"></i>
-        <i class="dislike fa fa-ban"></i>
-    </div>
-</div>

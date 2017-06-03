@@ -1,0 +1,40 @@
+<?php $this->headTitle("Registros"); ?>
+<h1>Registros</h1>
+
+<table class="table">
+    <tr>
+        <th>Foto</th>
+        <th>Tipo de registro</th>
+        <th>Nome</th>
+        <th>Data</th>
+        <th>Sexo</th>
+        <th>Espécie</th>
+        <th>Raça</th>
+        <th>Detalhes</th>
+        <th>Endereço</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Status</th>
+        <th>Usuário</th>
+    </tr>
+    <?php
+    $registros = $this->registros;
+    //\Zend\Debug\Debug::dump($registros);?>
+    <?php foreach ($registros as $registro): ?>
+        <tr>
+            <td><img width="100px" height="auto" src="data:image/jpeg;base64,<?=$registro->{'foto'}?>"/></td>
+            <td><?= $registro->tipo_registro ?></td>
+            <td><?= $registro->nome ?></td>
+            <td><?= $registro->data ?></td>
+            <td><?= $registro->sexo ?></td>
+            <td><?= $registro->raca->especie ?></td>
+            <td><?= $registro->raca->raca ?></td>
+            <td><?= $registro->detalhes ?></td>
+            <td><?= $registro->endereco ?></td>
+            <td><?= $registro->latitude ?></td>
+            <td><?= $registro->longitude ?></td>
+            <td><?= $registro->status ?></td>
+            <td><?= $registro->usuario->login ?></td>
+        </tr>
+    <?php endforeach;?>
+</table>

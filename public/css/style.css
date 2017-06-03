@@ -3,8 +3,16 @@ body {
     padding-bottom: 40px;
 }
 
+.navbar {
+    background: #171616 !important;
+}
+
+.navbar-brand {
+    padding:0;
+}
+
 .zf-green {
-    color: #68b604;
+    color: #96ca2d;
 }
 
 .btn-success {
@@ -30,4 +38,63 @@ div.container a.navbar-brand > img {
     display: inline;
     margin-right: 4px;
     margin-top: -2px;
+}
+
+div.box-pet{
+    background: #fff;
+    position: relative;
+    padding: 30px 15px 15px;
+    line-height: 25px;
+}
+
+div.box-pet img {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    left: 50%;
+    margin-left: -32px;
+    top: -32px;
+}
+
+.widget-header {
+    min-height: 50px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.widget-header.perdido {
+    background: #ff776b;
+}
+
+.widget-header.encontrado {
+    background: #97ec7d;
+}
+
+
+html,body {width:100%;height:100%;margin:0;padding:0;}
+
+#map {
+    background:red;display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    margin-top:50px; /* adjust top margin to your header height */
+}
+
+.gm-style-iw {
+    left: 23px !important;
+    width: 200px !important;
+    top: 17px !important;
+}
+
+.gm-style-iw > div {
+    border-radius: 5px;
+}
+
+.gm-style-iw > div > div{
+    width: 200px;
 }

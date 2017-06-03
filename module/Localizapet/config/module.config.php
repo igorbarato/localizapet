@@ -10,16 +10,16 @@ return [
     ],
     'router' => [
         'routes' => [
-//            'soap' => [
-//                'type' => 'literal',
-//                'options' => [
-//                    'route' => '/soap.php',
-//                    'defaults' => [
-//                        'controller' => Controller\SoapController::class,
-//                        'action' => 'server'
-//                    ]
-//                ]
-//            ],
+            'home' => [
+                'type' => 'literal',
+                'options' => [
+                    'route'    => '/',
+                    'defaults' => [
+                        'controller' => Controller\RegistroController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
 //            'webservicemanual' => [
 //                'type' => 'literal',
 //                'options' => [
