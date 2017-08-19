@@ -74,6 +74,27 @@ class Servicos
     }
 
     /**
+     * @param Array
+     * @return \Localizapet\Model\Registro $registro
+     */
+    function buscaRegistros($buscas){
+        $daoRegistro = new DaoRegistros();
+        //Método de busca de todos os registros
+        $rows = $daoRegistro->findPerParameter($buscas);
+
+        //Trata o array retornado para uma lista de objetos
+        $listaRegistros = new ArrayObject();
+        foreach($rows as $key => $row){
+            $registro = new Registro();
+            $registro->convertArrayObject($row);
+            $listaRegistros->append($registro);
+        }
+
+        //Retorna a lista de registros
+        return $listaRegistros->getArrayCopy();
+    }
+
+    /**
      * @return String
      */
     function hello(){

@@ -72,7 +72,12 @@ div.box-pet img {
 }
 
 
-html,body {width:100%;height:100%;margin:0;padding:0;}
+body.home {
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
 
 #map {
     background:red;display: block;

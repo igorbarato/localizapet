@@ -48,6 +48,24 @@ class DaoRegistros
         return $this->result;
     }
 
+    public function findPerParameter($buscas)
+    {
+        $this->connection = new Database('registros');
+        $sql = "SELECT r.id, r.data, r.endereco, r.latitude, r.longitude, r.tipo_registro,
+            r.status, r.nome, r.sexo, r.detalhes, r.foto,  racas.especie, racas.raca, usuarios.login
+            FROM registros AS r, racas, usuarios
+            WHERE r.raca_id = racas.id
+            AND r.usuario_id = usuarios.id ";
+        foreach($buscas as $key => $busca){
+            $sql = $sql . "AND ".  $busca['operando'] . $busca['operador'] . $busca['valor'];
+        }
+        \Zend\Debug\Debug::dump($sql);
+        $stmt = $this->connection->db->query($sql);
+        $this->result = $stmt->fetch_all(MYSQLI_ASSOC);
+        $this->connection->db->close();
+        return $this->result;
+    }
+
     public function save(Registro $registro)
     {
         if (!empty($registro->getId())) {

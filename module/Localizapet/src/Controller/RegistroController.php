@@ -3,6 +3,7 @@
 namespace Localizapet\Controller;
 
 use Localizapet\Database\DaoRegistros;
+use Localizapet\Form\RegistroBuscaForm;
 use Localizapet\Form\RegistroForm;
 use Localizapet\Form\PostForm;
 use Localizapet\Model\PostTable;
@@ -53,12 +54,50 @@ class RegistroController extends AbstractActionController
 
     public function listAction()
     {
+
+        $form = new RegistroBuscaForm();
+        $form->get('submit')->setValue('Adicionar Registro');
+
+        $request = $this->getRequest();
+
+        if (!$request->isPost()){
+            return new ViewModel([
+                'form' => $form,
+            ]);
+        }
+
+        $form->setData($request->getPost());
+        if (!$form->isValid()) {
+            return ['form' => $form];
+        }
+
         $client = new \Zend\Soap\Client('http://192.168.0.80/server?wsdl');
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
-        \Zend\Debug\Debug::dump($client->getFunctions());
+
+
+        $busca = [
+                'operando' =>'r.raca_id',
+                'operador'  => '=',
+                'valor'     => '16'
+        ];
+        $buscas = [];
+        array_push($buscas, $busca);
+
+        $rows = $client->buscaRegistros($buscas);
+
+        $listaRegistros = [];
+        foreach ($rows as $row){
+            $registro = new Registro();
+            $registro = $row;
+            array_push($listaRegistros, $registro);
+
+        }
+//        \Zend\Debug\Debug::dump($listaRegistros);
+
         return $view = new ViewModel([
-            'registro' => $client->listaRegistros()
+//            'registros' => $client->call('listaRegistros')
+            'registros' => $listaRegistros
         ]);
     }
 
