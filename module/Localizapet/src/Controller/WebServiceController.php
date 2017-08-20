@@ -28,7 +28,7 @@ class WebServiceController extends AbstractActionController
     public function serverAction()
     {
         //Endereço do servidor
-        $url="http://192.168.0.80/server?wsdl";
+        $url="http://localizapet.site/server?wsdl";
 
         /**
          * Verifica se a URL possui parâmetro 'wsdl', se sim,
@@ -43,7 +43,7 @@ class WebServiceController extends AbstractActionController
              */
             $autodiscover = new AutoDiscover();
             $autodiscover->setClass(Servicos::class)
-                         ->setUri("http://192.168.0.80/server");
+                         ->setUri("http://localizapet.site/server");
 //                         ->setComplexTypeStrategy(\Zend\Soap\Wsdl\ComplexTypeStrategy\ArrayOfTypeComplex::class);
             /**
              * Desativado renderização default do Zend Framework

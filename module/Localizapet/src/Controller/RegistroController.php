@@ -26,7 +26,7 @@ class RegistroController extends AbstractActionController
 
     public function indexAction()
     {
-        $client = new \Zend\Soap\Client('http://192.168.0.80/server?wsdl');
+        $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
         ini_set("soap.wsdl_cache_enabled", 0);
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_1);
@@ -71,7 +71,7 @@ class RegistroController extends AbstractActionController
             return ['form' => $form];
         }
 
-        $client = new \Zend\Soap\Client('http://192.168.0.80/server?wsdl');
+        $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
         $client->setWSDLCache(false);
         $client->setSoapVersion(SOAP_1_2);
 
