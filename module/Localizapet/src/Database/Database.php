@@ -13,7 +13,7 @@ class Database
     
     private $servername = '127.0.0.1';
     private $username = 'root';
-    private $password = '123';
+    private $password = 'csvXTGTPFl#E';
     private $database = 'localizapet';
     
     private $charset = 'utf8';
