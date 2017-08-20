@@ -12,7 +12,7 @@ class Database
 //    private $database = 'u368622186_pet';
     
     private $servername = '127.0.0.1';
-    private $username = 'root';
+    private $username = 'zend';
     private $password = 'csvXTGTPFl#E';
     private $database = 'localizapet';
     
