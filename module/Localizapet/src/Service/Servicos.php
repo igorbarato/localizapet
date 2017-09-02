@@ -11,7 +11,9 @@ use Zend\Stdlib\ArrayObject;
 
 class Servicos
 {
-
+    /**
+     * @return \Localizapet\Model\Raca $raca
+     */
     function listaRacas(){
         $racas = new \Localizapet\Database\DaoRacas();
         $rows = $racas->findAll();
