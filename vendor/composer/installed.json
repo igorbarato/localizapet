@@ -21,7 +21,7 @@
             "fabpot/php-cs-fixer": "1.7.*",
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2015-06-03 14:05:47",
+        "time": "2015-06-03T14:05:47+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -69,7 +69,7 @@
             "fabpot/php-cs-fixer": "1.7.*",
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-02-17 22:38:51",
+        "time": "2016-02-17T22:38:51+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -128,7 +128,7 @@
         "suggest": {
             "zendframework/zend-i18n": "^2.6, if defining translatable HTTP path segments"
         },
-        "time": "2016-05-31 20:47:48",
+        "time": "2016-05-31T20:47:48+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -180,7 +180,7 @@
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "^2.6.2"
         },
-        "time": "2016-09-13 14:38:50",
+        "time": "2016-09-13T14:38:50+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -226,7 +226,7 @@
             "fabpot/php-cs-fixer": "1.7.*",
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-06-30 19:48:38",
+        "time": "2016-06-30T19:48:38+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -281,7 +281,7 @@
             "zendframework/zend-hydrator": "Zend\\Hydrator component for using HydratingResultSets",
             "zendframework/zend-servicemanager": "Zend\\ServiceManager component"
         },
-        "time": "2016-08-09 19:28:55",
+        "time": "2016-08-09T19:28:55+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -348,7 +348,7 @@
             "zendframework/zend-servicemanager": "Zend\\ServiceManager component",
             "zendframework/zend-validator": "Zend\\Validator component"
         },
-        "time": "2016-07-05 18:32:50",
+        "time": "2016-07-05T18:32:50+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -425,7 +425,7 @@
             "zendframework/zend-view": "^2.6.2, required for using the zend-form view helpers",
             "zendframework/zendservice-recaptcha": "in order to use the ReCaptcha form element"
         },
-        "time": "2016-09-22 15:56:15",
+        "time": "2016-09-22T15:56:15+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -484,7 +484,7 @@
             "phpunit/phpunit": "^4.5",
             "squizlabs/php_codesniffer": "^2.3.1"
         },
-        "time": "2016-05-31 21:23:05",
+        "time": "2016-05-31T21:23:05+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -549,7 +549,7 @@
             "zendframework/zend-uri": "Zend\\Uri component",
             "zendframework/zend-validator": "Zend\\Validator component"
         },
-        "time": "2016-02-28 15:02:34",
+        "time": "2016-02-28T15:02:34+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -603,7 +603,7 @@
             "phpunit/phpunit": "^4.5",
             "squizlabs/php_codesniffer": "^2.3.1"
         },
-        "time": "2016-05-31 21:19:45",
+        "time": "2016-05-31T21:19:45+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -657,7 +657,7 @@
             "phpunit/phpunit": "^4.5",
             "squizlabs/php_codesniffer": "^2.3.1"
         },
-        "time": "2016-05-31 21:13:07",
+        "time": "2016-05-31T21:13:07+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -715,7 +715,7 @@
             "phpunit/phpunit": "^4.5",
             "squizlabs/php_codesniffer": "^2.3.1"
         },
-        "time": "2016-05-31 20:44:35",
+        "time": "2016-05-31T20:44:35+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -766,7 +766,7 @@
             "phpunit/phpunit": "~4.0",
             "zendframework/zend-config": "^2.6"
         },
-        "time": "2016-02-08 19:03:52",
+        "time": "2016-02-08T19:03:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -820,7 +820,7 @@
             "zendframework/zend-filter": "To support DefaultRouteMatcher usage",
             "zendframework/zend-validator": "To support DefaultRouteMatcher usage"
         },
-        "time": "2016-02-09 17:15:12",
+        "time": "2016-02-09T17:15:12+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -884,7 +884,7 @@
         "suggest": {
             "zendframework/zend-filter": "^2.6.1, to filter rendered results"
         },
-        "time": "2016-08-29 19:09:11",
+        "time": "2016-08-29T19:09:11+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -930,7 +930,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-10-10 12:19:37",
+        "time": "2016-10-10T12:19:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1004,7 +1004,7 @@
             "zendframework/zend-mail": "Zend\\Mail component to use the email log writer",
             "zendframework/zend-validator": "Zend\\Validator component to block invalid log messages"
         },
-        "time": "2016-08-11 13:44:10",
+        "time": "2016-08-11T13:44:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1075,7 +1075,7 @@
             "zendframework/zend-validator": "You should install this package to use the provided validators",
             "zendframework/zend-view": "You should install this package to use the provided view helpers"
         },
-        "time": "2016-06-07 21:08:30",
+        "time": "2016-06-07T21:08:30+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1130,7 +1130,7 @@
             "ext/xdebug": "XDebug, for better backtrace output",
             "zendframework/zend-escaper": "To support escaped output"
         },
-        "time": "2015-06-03 14:05:35",
+        "time": "2015-06-03T14:05:35+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1192,7 +1192,7 @@
             "san/san-session-toolbar": "SanSessionToolbar can help you see current Zend\\Session data you're using within your application.",
             "snapshotpl/zf-snap-event-debugger": "ZfSnapEventDebugger can help you debug events from Zend\\EventManager"
         },
-        "time": "2016-09-08 13:53:58",
+        "time": "2016-09-08T13:53:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1263,7 +1263,7 @@
             "doctrine/annotations": "Doctrine\\Common\\Annotations >=1.0 for annotation features",
             "zendframework/zend-stdlib": "Zend\\Stdlib component"
         },
-        "time": "2016-10-24 13:23:32",
+        "time": "2016-10-24T13:23:32+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1312,7 +1312,7 @@
             "phpunit/phpunit": "^4.8",
             "squizlabs/php_codesniffer": "^2.3.1"
         },
-        "time": "2016-06-20 22:27:55",
+        "time": "2016-06-20T22:27:55+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1366,7 +1366,7 @@
         "suggest": {
             "zendframework/zend-http": "Zend\\Http component"
         },
-        "time": "2016-04-21 16:06:27",
+        "time": "2016-04-21T16:06:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1416,7 +1416,7 @@
             "phpunit/phpunit": "^6.0.7 || ^5.7.14",
             "zendframework/zend-coding-standard": "~1.0.0"
         },
-        "time": "2017-04-25 16:43:54",
+        "time": "2017-04-25T16:43:54+00:00",
         "type": "composer-plugin",
         "extra": {
             "branch-alias": {
@@ -1454,7 +1454,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2017-02-14 16:28:37",
+        "time": "2017-02-14T16:28:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1505,7 +1505,7 @@
         "require": {
             "psr/container": "^1.0"
         },
-        "time": "2017-02-14 19:40:03",
+        "time": "2017-02-14T19:40:03+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1581,7 +1581,7 @@
             "zendframework/zend-servicemanager": "Zend\\ServiceManager component",
             "zendframework/zend-uri": "Zend\\Uri component"
         },
-        "time": "2017-03-21 15:05:56",
+        "time": "2017-03-21T15:05:56+00:00",
         "bin": [
             "bin/templatemap_generator.php"
         ],
@@ -1645,7 +1645,7 @@
             "ocramius/proxy-manager": "ProxyManager 1.* to handle lazy initialization of services",
             "zendframework/zend-stdlib": "zend-stdlib ^2.5 if you wish to use the MergeReplaceKey or MergeRemoveKey features in Config instances"
         },
-        "time": "2017-03-01 22:08:02",
+        "time": "2017-03-01T22:08:02+00:00",
         "bin": [
             "bin/generate-deps-for-config-factory",
             "bin/generate-factory-for-class"
@@ -1701,7 +1701,7 @@
             "zendframework/zend-coding-standard": "~1.0.0",
             "zendframework/zend-config": "^2.5"
         },
-        "time": "2017-01-31 14:41:02",
+        "time": "2017-01-31T14:41:02+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1749,7 +1749,7 @@
             "phpunit/phpunit": "^5.4",
             "squizlabs/php_codesniffer": "^2.3.1"
         },
-        "time": "2017-01-09 23:34:49",
+        "time": "2017-01-09T23:34:49+00:00",
         "bin": [
             "bin/zf-development-mode"
         ],
@@ -1824,7 +1824,7 @@
             "zendframework/zend-servicemanager-di": "zend-servicemanager-di provides utilities for integrating zend-di and zend-servicemanager in your zend-mvc application",
             "zendframework/zend-stratigility": "zend-stratigility is required to use middleware pipes in the MiddlewareListener"
         },
-        "time": "2017-05-01 20:21:57",
+        "time": "2017-05-01T20:21:57+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1882,7 +1882,7 @@
             "zendframework/zend-serializer": "^2.6.1, to use the SerializableStrategy",
             "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to support hydrator plugin manager usage"
         },
-        "time": "2017-05-17 18:40:45",
+        "time": "2017-05-17T18:40:45+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1945,7 +1945,7 @@
             "zendframework/zend-servicemanager": "Zend\\ServiceManager component, for using the filter chain functionality",
             "zendframework/zend-uri": "Zend\\Uri component, for the UriNormalize filter"
         },
-        "time": "2017-05-17 20:56:17",
+        "time": "2017-05-17T20:56:17+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2003,7 +2003,7 @@
         "suggest": {
             "zendframework/zend-servicemanager": "To support plugin manager support"
         },
-        "time": "2017-05-18 14:20:56",
+        "time": "2017-05-18T14:20:56+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2033,17 +2033,17 @@
     },
     {
         "name": "zendframework/zend-validator",
-        "version": "2.10.0",
-        "version_normalized": "2.10.0.0",
+        "version": "2.10.1",
+        "version_normalized": "2.10.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/zendframework/zend-validator.git",
-            "reference": "07ef29e31353592e99eb32b2feb7248681ffb630"
+            "reference": "010084ddbd33299bf51ea6f0e07f8f4e8bd832a8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/07ef29e31353592e99eb32b2feb7248681ffb630",
-            "reference": "07ef29e31353592e99eb32b2feb7248681ffb630",
+            "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/010084ddbd33299bf51ea6f0e07f8f4e8bd832a8",
+            "reference": "010084ddbd33299bf51ea6f0e07f8f4e8bd832a8",
             "shasum": ""
         },
         "require": {
@@ -2075,7 +2075,7 @@
             "zendframework/zend-session": "Zend\\Session component, ^2.8; required by the Csrf validator",
             "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
         },
-        "time": "2017-08-14 20:36:46",
+        "time": "2017-08-22T14:19:23+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2133,7 +2133,7 @@
             "container-interop/container-interop": "^1.1.0, to use the lazy listeners feature",
             "zendframework/zend-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
         },
-        "time": "2017-07-11 19:17:22",
+        "time": "2017-07-11T19:17:22+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2197,7 +2197,7 @@
             "zendframework/zend-i18n": "^2.7.3; install if you want to use the Translator processor",
             "zendframework/zend-servicemanager": "^2.7.8 || ^3.2.1; if you need an extensible plugin manager for use with the Config Factory"
         },
-        "time": "2017-02-22 14:31:10",
+        "time": "2017-02-22T14:31:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2258,7 +2258,7 @@
             "zendframework/zend-mvc": "Zend\\Mvc component",
             "zendframework/zend-servicemanager": "Zend\\ServiceManager component"
         },
-        "time": "2017-07-11 19:39:57",
+        "time": "2017-07-11T19:39:57+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

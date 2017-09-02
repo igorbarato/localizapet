@@ -57,6 +57,13 @@ class RegistroForm extends Form
             ]
         ]);
 
+        $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
+        ini_set("soap.wsdl_cache_enabled", 0);
+        $client->setWSDLCache(false);
+        $client->setSoapVersion(SOAP_1_1);
+        $rows = $client->call('listaRacas');
+        \Zend\Debug\Debug::dump($rows);
+
         $clientRaca = new DaoRacas();
         $racas = $clientRaca->findAll();
         foreach($racas as $raca){
