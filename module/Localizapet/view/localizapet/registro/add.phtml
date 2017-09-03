@@ -1,5 +1,18 @@
 <h1>Novo Registro</h1>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $( function() {
+        $( "[type='datetime']" ).datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+    } );
+</script>
+
 <?php
     $form = $this->form;
     $messages = $form->getMessages();
@@ -19,12 +32,11 @@
     $foto= $form->get('foto');
     $foto->setAttribute('class','form-control');
 
-    $especie= $form->get('especie');
-    $especie->setAttribute('class','form-control');
-
     $raca= $form->get('raca');
     $raca->setAttribute('class','form-control');
 
+    $endereco = $form->get('endereco');
+    $endereco->setAttribute('class','form-control');
 
     $latitude = $form->get('latitude');
     $latitude->setAttribute('class','form-control');
@@ -93,11 +105,6 @@
 </div>
 
 <div class="form-group">
-    <?=$this->formLabel($especie);?>
-    <?=$this->formElement($especie);?>
-</div>
-
-<div class="form-group">
     <?=$this->formLabel($raca);?>
     <?=$this->formElement($raca);?>
 </div>
@@ -106,6 +113,11 @@
 <div class="form-group">
     <?=$this->formLabel($data);?>
     <?=$this->formElement($data);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($endereco);?>
+    <?=$this->formElement($endereco);?>
 </div>
 
 <div class="form-group">

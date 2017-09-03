@@ -72,13 +72,13 @@ class DaoRegistros
             return $this->update($registro);
         }
         $this->connection = new Database('registros');
-        $sql = 'INSERT INTO `registros`
+        $sql = "INSERT INTO `registros`
           (`data`, `endereco`, `latitude`, `longitude`, `tipo_registro`, `status`, `nome`, `sexo`,
           `detalhes`, `foto`, `raca_id`, `usuario_id`)
           VALUES
-          (FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+          (STR_TO_DATE(?,'%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         if($stmt = $this->connection->db->prepare($sql)){
-            $stmt->bind_param('ssddiisisbii',
+            $stmt->bind_param('ssddiisissii',
                 $registro->getData(),
                 $registro->getEndereco(),
                 $registro->getLatitude(),

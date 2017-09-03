@@ -51,38 +51,20 @@ class RegistroForm extends Form
 
         $this->add([
             'name' => 'foto',
-            'type' => 'text',
+            'type' => 'file',
             'options' => [
                 'label'=> 'Foto'
             ]
         ]);
 
         $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
-        ini_set("soap.wsdl_cache_enabled", 0);
-        $client->setWSDLCache(false);
-        $client->setSoapVersion(SOAP_1_1);
-        $rows = $client->call('listaRacas');
-        \Zend\Debug\Debug::dump($rows);
+        $racas = $client->call('listaRacas');
+//        \Zend\Debug\Debug::dump($racas);
 
-        $clientRaca = new DaoRacas();
-        $racas = $clientRaca->findAll();
         foreach($racas as $raca){
-            if($raca['especie'] == 0) $selectRacasCachorro[$raca['id']]= $raca['raca'];
-            else $selectRacasGato[$raca['id']]= $raca['raca'];
+            if($raca->especie == 0) $selectRacasCachorro[$raca->id]= $raca->raca;
+            else $selectRacasGato[$raca->id]= $raca->raca;
         }
-
-        $this->add([
-            'name' => 'especie',
-            'type' => 'select',
-            'required' => true,
-            'options' => [
-                'label'=> 'Espécie',
-                'value_options' => [
-                    0 => 'Cachorro',
-                    1 => 'Gato'
-                ]
-            ]
-        ]);
 
         $this->add([
             'name' => 'raca',
@@ -110,13 +92,8 @@ class RegistroForm extends Form
             'required' => true,
             'options' => [
                 'label'=> 'Data',
-                'format'=> 'd/m/Y H:i'
+                'format'=> 'd/m/Y'
             ],
-//            'attributes' => [
-//             'min' => '2010-01-01T00:00:00Z',
-//             'max' => '2020-01-01T00:00:00Z',
-//             'step' => '1', // minutes; default step interval is 1 min
-//            ]
         ]);
 
         $this->add([

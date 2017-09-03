@@ -53,7 +53,10 @@ class Servicos
     /**
      * @param \Localizapet\Model\Registro $registro
      */
-    function cadastraRegistro(Registro $registro){}
+    function cadastraRegistro(Registro $registro){
+        $client = new DaoRegistros();
+        $client->save($registro);
+    }
 
     /**
      * @return \Localizapet\Model\Registro $registro

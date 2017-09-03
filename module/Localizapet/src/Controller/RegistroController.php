@@ -8,6 +8,7 @@ use Localizapet\Form\RegistroForm;
 use Localizapet\Form\PostForm;
 use Localizapet\Model\PostTable;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Uri\File;
 use Zend\View\Model\ViewModel;
 use Zend\Soap\Client;
 use Zend\Soap\AutoDiscover;
@@ -115,7 +116,12 @@ class RegistroController extends AbstractActionController
             ]);
         }
 
-        $form->setData($request->getPost());
+         $data = array_merge_recursive(
+             $request->getPost()->toArray(),
+             $request->getFiles()->toArray()
+         );
+
+        $form->setData($data);
         if (!$form->isValid()) {
             return ['form' => $form];
         }
@@ -131,13 +137,19 @@ class RegistroController extends AbstractActionController
         $client = new DaoRegistros();
 //
         $data = $form->getData();
+        $target_path = basename($data['foto']['name']);
+        if(move_uploaded_file($data['foto']['tmp_name'], $target_path)) {
+            $file = file_get_contents($data['foto']['name']);
+            $imdata = base64_encode($file);
+        }
+
 //        $registro->setData(strtotime($data['data']));
 //        var_dump($registro->data);
         $registro->setTipoRegistro($data['tipo_registro']);
         $registro->setNome($data['nome']);
         $registro->setSexo($data['sexo']);
         $registro->setDetalhes($data['detalhes']);
-        $registro->setFoto($data['foto']);
+        $registro->setFoto(base64_encode($file));
         $registro->setRacaId($data['raca']);
         $registro->setData($data['data']);
         $registro->setEndereco($data['endereco']);
@@ -145,9 +157,11 @@ class RegistroController extends AbstractActionController
         $registro->setLongitude($data['longitude']);
         $registro->setStatus($data['status']);
         $registro->setUsuarioId($data['usuario_id']);
+        \Zend\Debug\Debug::dump($registro);
 
         $client->save($registro);
-//        
+        exit();
+//
         return $this->redirect()->toRoute('registro');
 
     }
