@@ -111,7 +111,8 @@ class UsuarioController extends AbstractActionController
        $usuario->setLogin($data['senha']);
        $usuario->setLogin($data['telefone']);
 
-       $client->save($usuario);
+//       $client->save($usuario);
+       $client->call('cadastrarUsuario', $usuario);
 //        
         return $this->redirect()->toRoute('home');
                 
