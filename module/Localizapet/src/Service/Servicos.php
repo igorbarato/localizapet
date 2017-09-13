@@ -12,7 +12,7 @@ use Zend\Stdlib\ArrayObject;
 
 class Servicos
 {
-        /**
+    /**
      * @param string $login
      * @param string $senha
      * @return string $id

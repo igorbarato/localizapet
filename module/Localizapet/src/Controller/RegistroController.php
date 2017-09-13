@@ -15,7 +15,7 @@ use Zend\Soap\AutoDiscover;
 use Zend\Soap\Server;
 use Zend\Http\PhpEnvironment\Request;
 use Localizapet\Model\Registro;
-use Localizapet\Model\Usuario;
+use Localizapet\Model\UsuarioModel;
 use Localizapet;
 use Localizapet\Database\Database;
 use Zend\Authentication\AuthenticationService;

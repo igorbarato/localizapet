@@ -45,7 +45,7 @@ class Registro {
     /** @var int */
     public $status;
     
-    /** @var \Localizapet\Model\Usuario */
+    /** @var \Localizapet\Model\UsuarioModel */
     public $usuario;
 
 
