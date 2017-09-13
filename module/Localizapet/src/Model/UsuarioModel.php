@@ -1,7 +1,7 @@
 <?php
 namespace Localizapet\Model;
 
-class Usuario
+class UsuarioModel
 {
     /**
      *

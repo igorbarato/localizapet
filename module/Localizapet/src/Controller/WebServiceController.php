@@ -11,6 +11,7 @@ namespace Localizapet\Controller;
 
 use Localizapet\Model\Raca;
 use Localizapet\Model\Registro;
+use Localizapet\Model\UsuarioModel;
 use Localizapet\Service\Servicos;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Soap\AutoDiscover;

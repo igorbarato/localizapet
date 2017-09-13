@@ -18,6 +18,7 @@ use Localizapet\Model\Registro;
 use Localizapet\Model\Usuario;
 use Localizapet;
 use Localizapet\Database\Database;
+use Zend\Authentication\AuthenticationService;
 
 class RegistroController extends AbstractActionController
 {
@@ -27,6 +28,10 @@ class RegistroController extends AbstractActionController
 
     public function indexAction()
     {
+
+        $auth = new AuthenticationService();
+//        \Zend\Debug\Debug::dump($auth->getIdentity());
+
         $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
         ini_set("soap.wsdl_cache_enabled", 0);
         $client->setWSDLCache(false);
@@ -104,6 +109,8 @@ class RegistroController extends AbstractActionController
 
     public function addAction()
     {
+        $auth = new AuthenticationService();
+//        \Zend\Debug\Debug::dump($auth->getIdentity());
 
         $form = new RegistroForm();
         $form->get('submit')->setValue('Adicionar Registro');
@@ -136,6 +143,8 @@ class RegistroController extends AbstractActionController
         $registro = new Registro();
         $client = new DaoRegistros();
 //
+        $usuario = $auth->getIdentity();
+
         $data = $form->getData();
         $target_path = basename($data['foto']['name']);
         if(move_uploaded_file($data['foto']['tmp_name'], $target_path)) {
@@ -156,7 +165,7 @@ class RegistroController extends AbstractActionController
         $registro->setLatitude($data['latitude']);
         $registro->setLongitude($data['longitude']);
         $registro->setStatus($data['status']);
-        $registro->setUsuarioId($data['usuario_id']);
+        $registro->setUsuarioId($usuario['usuario_id']);
         \Zend\Debug\Debug::dump($registro);
 
         $client->save($registro);

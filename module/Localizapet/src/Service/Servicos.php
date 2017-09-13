@@ -7,10 +7,32 @@ namespace Localizapet\Service;
 use Localizapet\Database\DaoRegistros;
 use Localizapet\Model\Raca;
 use Localizapet\Model\Registro;
+use Localizapet\Model\UsuarioModel;
 use Zend\Stdlib\ArrayObject;
 
 class Servicos
 {
+        /**
+     * @param string $login
+     * @param string $senha
+     * @return string $id
+     */
+    function login($login, $senha){
+        $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
+        $result = $dao_usuarios->login($login, $senha);
+        return $result;
+    }
+
+    /**
+     * @param \Localizapet\Model\UsuarioModel $usuario
+     *
+     */
+    function cadastrarUsuario(UsuarioModel $usuario){
+        $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
+        $result = $dao_usuarios->save($usuario);
+//        return $result;
+    }
+
     /**
      * @return \Localizapet\Model\Raca $raca
      */

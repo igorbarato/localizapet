@@ -55,8 +55,8 @@
     //$animal_id = $form->get('animal_id');
     //$animal_id->setAttribute('class','form-control');
 
-    $usuario_id= $form->get('usuario_id');
-    $usuario_id->setAttribute('class','form-control');
+//    $usuario_id= $form->get('usuario_id');
+//    $usuario_id->setAttribute('class','form-control');
 
     $submit = $form->get('submit');
     $submit->setAttribute('class','btn btn-primary');
@@ -136,13 +136,9 @@
     <?=$this->formElement($status);?>
 </div>
 
-<div class="form-group">
-    <?=$this->formLabel($usuario_id);?>
-    <?=$this->formElement($usuario_id);?>
-</div>
-
 <?php
 echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('usuario_id'));
 echo $this->formHidden($form->get('id'));
 echo $this->form()->closeTag();
 ?>

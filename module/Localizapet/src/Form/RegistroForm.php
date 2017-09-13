@@ -151,7 +151,7 @@ class RegistroForm extends Form
         
         $this->add([
             'name' => 'usuario_id',
-            'type' => 'number',
+            'type' => 'hidden',
             'options' => [
                 'label'=> 'Usuário ID'
             ]

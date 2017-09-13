@@ -1,7 +1,7 @@
 <?php
 
 
-namespace WebService\Form;
+namespace Localizapet\Form;
 
 
 use Zend\Form\Form;
@@ -34,6 +34,16 @@ class UsuarioForm extends Form
             'required' => true,
             'options' => [
                 'label' => 'Senha'
+            ],
+            'validator' => ['noempty']
+        ]);
+
+        $this->add([
+            'name' => 'telefone',
+            'type' => 'text',
+            'required' => true,
+            'options' => [
+                'label' => 'Telefone'
             ],
             'validator' => ['noempty']
         ]);
