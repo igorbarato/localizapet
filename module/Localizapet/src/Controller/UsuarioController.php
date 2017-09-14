@@ -112,7 +112,7 @@ class UsuarioController extends AbstractActionController
        $usuario->setTelefone($data['telefone']);
 
 //       $client->save($usuario);
-//       \Zend\Debug\Debug::dump($data);
+       \Zend\Debug\Debug::dump($data);
        $client->cadastrarUsuario($usuario);
 //        
 //        return $this->redirect()->toRoute('home');

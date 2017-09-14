@@ -24,14 +24,31 @@ class Servicos
     }
 
     /**
-     * @param \Localizapet\Model\UsuarioModel $usuario
-     *
+     * @param string $login
+     * @param string $senha
+     * @param string $telefone
+     * 
+     * @return string $result
      */
-    function cadastrarUsuario(UsuarioModel $usuario){
+    function cadastrarUsuario($login, $senha, $telefone){
         $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
+        $usuario = new UsuarioModel();
+        $usuario->setLogin($login);
+        $usuario->setSenha($senha);
+        $usuario->setTelefone($telefone);
         $result = $dao_usuarios->save($usuario);
         return $result;
     }
+
+//    /**
+//     * @param \Localizapet\Model\UsuarioModel $usuario
+//     *
+//     */
+//    function cadastrarUsuario(UsuarioModel $usuario){
+//        $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
+//        $result = $dao_usuarios->save($usuario);
+//        return $result;
+//    }
 
     /**
      * @return \Localizapet\Model\Raca $raca
