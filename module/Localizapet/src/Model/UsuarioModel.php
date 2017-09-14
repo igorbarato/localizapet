@@ -27,7 +27,6 @@ class UsuarioModel
      */
     public $telefone;
     
-//    public function __construct($usuario_id, $login, $senha){
     public function __construct(){
         $this->usuario_id = null;
         $this->login = null;

@@ -27,7 +27,7 @@ class Servicos
      * @param string $login
      * @param string $senha
      * @param string $telefone
-     * 
+     *
      * @return string $result
      */
     function cadastrarUsuario($login, $senha, $telefone){
