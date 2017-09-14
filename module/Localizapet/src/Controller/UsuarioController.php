@@ -98,6 +98,7 @@ class UsuarioController extends AbstractActionController
         }
 
        $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
+       ini_set("soap.wsdl_cache_enabled", 0);
        $client->setWSDLCache(false);
        $client->setSoapVersion(SOAP_1_1);
 //       $client = new DaoUsuarios();
@@ -113,7 +114,11 @@ class UsuarioController extends AbstractActionController
 
 //       $client->save($usuario);
        \Zend\Debug\Debug::dump($data);
-       $client->cadastrarUsuario($usuario);
+       $client->call("cadastrarUsuario",array(
+           $data['login'],
+           $data['senha'],
+           $data['telefone']
+       ) );
 //        
 //        return $this->redirect()->toRoute('home');
                 

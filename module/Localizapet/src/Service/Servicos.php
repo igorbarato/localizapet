@@ -40,15 +40,15 @@ class Servicos
         return $result;
     }
 
-//    /**
-//     * @param \Localizapet\Model\UsuarioModel $usuario
-//     *
-//     */
-//    function cadastrarUsuario(UsuarioModel $usuario){
-//        $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
-//        $result = $dao_usuarios->save($usuario);
-//        return $result;
-//    }
+    /**
+     * @param \Localizapet\Model\UsuarioModel $usuario
+     * @return string $result
+     */
+    function cadastrarUsuarioObjeto(UsuarioModel $usuario){
+        $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
+        $result = $dao_usuarios->save($usuario);
+        return $result;
+    }
 
     /**
      * @return \Localizapet\Model\Raca $raca
