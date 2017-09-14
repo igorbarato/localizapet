@@ -82,7 +82,7 @@ class UsuarioController extends AbstractActionController
    {
 
         $form = new \Localizapet\Form\UsuarioForm();
-        $form->get('submit')->setValue('Adicionar Registro');
+        $form->get('submit')->setValue('Adicionar Usuário');
         
         $request = $this->getRequest();
         
@@ -113,13 +113,15 @@ class UsuarioController extends AbstractActionController
        $usuario->setTelefone($data['telefone']);
 
 //       $client->save($usuario);
-       \Zend\Debug\Debug::dump($data);
-       $client->call("cadastrarUsuario",array(
-           $data['login'],
-           $data['senha'],
-           $data['telefone']
-       ) );
-//        
+       \Zend\Debug\Debug::dump($usuario);
+//       $client->call("cadastrarUsuario",array(
+//           $data['login'],
+//           $data['senha'],
+//           $data['telefone']
+//       ) );
+//
+       $client->call("cadastrarUsuarioObjeto", array($usuario) );
+       \Zend\Debug\Debug::dump($client->getLastResponse());
 //        return $this->redirect()->toRoute('home');
                 
    }
