@@ -78,9 +78,9 @@
                                 '<div><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> '+ locations[i].data + '</div>' +
                                 '<div><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Sexo: '+ locations[i].sexo + '</div>' +
                                 '<div><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Raça: '+ locations[i].raca + '</div>' +
-                                '<button type="button" class="btn btn-primary btn-block">' +
+                                '<a href="/registro/ver/' + locations[i].id + '" class="btn btn-primary btn-block">' +
                                    '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> detalhes' +
-                                '</button>' +
+                                '</a>' +
                             '</div>',
                     map: map
             });

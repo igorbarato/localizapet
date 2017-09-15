@@ -169,7 +169,7 @@ class RegistroController extends AbstractActionController
         $cliente = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
         $cliente->setWSDLCache(false);
         $cliente->setSoapVersion(SOAP_1_2);
-        
+
         $id = (int)$this->params()->fromRoute('id', 0);
         $registro = $cliente->verRegistro($id);
 
