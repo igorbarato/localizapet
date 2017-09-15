@@ -88,7 +88,9 @@ class DaoUsuarios
             );
             $stmt->execute();
 
-            $this->result =  $stmt->affected_rows." Row inserted.\n";
+            if($stmt->affected_rows != -1 ) $this->result = true;
+            else $this->result = false;
+
             $stmt->close();
 
         }else{
