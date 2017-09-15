@@ -95,6 +95,7 @@ class Registro {
         $this->tipo_registro = $array['tipo_registro'];
         $this->status = $array['status'];
         $this->usuario->login = $array['login'];
+        $this->usuario->telefone = $array['telefone'];
     }
 
     function __destruct()

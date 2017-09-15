@@ -52,7 +52,7 @@ class DaoRegistros
     {
         $this->connection = new Database('registros');
         $sql = "SELECT r.id, r.data, r.endereco, r.latitude, r.longitude, r.tipo_registro,
-            r.status, r.nome, r.sexo, r.detalhes, r.foto,  racas.especie, racas.raca, usuarios.login
+            r.status, r.nome, r.sexo, r.detalhes, r.foto,  racas.especie, racas.raca, usuarios.login, usuarios.telefone
             FROM registros AS r, racas, usuarios
             WHERE r.raca_id = racas.id
             AND r.usuario_id = usuarios.id ";

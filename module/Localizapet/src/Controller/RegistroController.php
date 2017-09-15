@@ -55,6 +55,7 @@ class RegistroController extends AbstractActionController
         ]);
     }
 
+    /*** Serviço OK***/
     public function buscaAction()
     {
 
@@ -78,11 +79,7 @@ class RegistroController extends AbstractActionController
         $cliente->setWSDLCache(false);
         $cliente->setSoapVersion(SOAP_1_2);
 
-//        $cliente = new DaoRegistros();
-//        $cliente = new Localizapet\Service\Servicos();
-
         $data = $form->getData();
-        \Zend\Debug\Debug::dump($data);
         $parametros = [];
         if($data['sexo'] != -1) {
             $parametro = ['operando'=>'r.sexo', 'operador'=> '=', 'valor'=> $data['sexo']];
@@ -94,21 +91,8 @@ class RegistroController extends AbstractActionController
         }
 
         $listaRegistros = $cliente->buscaRegistros($parametros);
-//        $rows = $cliente->findPerParameter($parametros);
-//        \Zend\Debug\Debug::dump($rows);
-//        exit();
-//
-//        $listaRegistros = [];
-//        foreach ($rows as $row){
-//            $registro = new Registro();
-//            $registro = $row;
-//            array_push($listaRegistros, $registro);
-//
-//        }
-//        \Zend\Debug\Debug::dump($listaRegistros);
 
         return $view = new ViewModel([
-//            'registros' => $client->call('listaRegistros')
             'registros' => $listaRegistros,
             'form' => $form
         ]);
