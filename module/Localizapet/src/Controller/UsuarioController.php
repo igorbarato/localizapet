@@ -58,7 +58,7 @@ class UsuarioController extends AbstractActionController
                 //Database
 //                $user = new \Localizapet\Database\DaoUsuarios();
 //                $result = $user->login($login, $senha);
-                \Zend\Debug\Debug::dump($result);
+//                \Zend\Debug\Debug::dump($result);
             }
             ////////////////////////
             //Verifica no banco se há o login e senha e retorna o ID do usuário
@@ -128,7 +128,7 @@ class UsuarioController extends AbstractActionController
        ) );
 //
 //       $result = $client->call("cadastrarUsuario", $usuario);
-       \Zend\Debug\Debug::dump($result);
+//       \Zend\Debug\Debug::dump($result);
         return $this->redirect()->toRoute('usuario');
                 
    }
