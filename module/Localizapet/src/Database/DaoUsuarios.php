@@ -76,7 +76,6 @@ class DaoUsuarios
 //        if (!empty($usuario->getUsuario_id())) {
 //            return $this->update($usuario);
 //        }
-        return $usuario;
         $this->connection = new Database('usuarios');
         $sql = "INSERT INTO `usuarios` (`login`, `senha`, `telefone`)
           VALUES
@@ -90,7 +89,6 @@ class DaoUsuarios
             $stmt->execute();
 
             $this->result =  $stmt->affected_rows." Row inserted.\n";
-            $this->result = $stmt->error;
             $stmt->close();
 
         }else{

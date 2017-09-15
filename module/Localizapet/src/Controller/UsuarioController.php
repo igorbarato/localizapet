@@ -114,13 +114,13 @@ class UsuarioController extends AbstractActionController
 
 //       $client->save($usuario);
 
-//       $client->call("cadastrarUsuario",array(
-//           $data['login'],
-//           $data['senha'],
-//           $data['telefone']
-//       ) );
+       $result = $client->call("cadastrarUsuario",array(
+           $data['login'],
+           $data['senha'],
+           $data['telefone']
+       ) );
 //
-       $result = $client->call("cadastrarUsuario", "claudio", "12", "1234");
+//       $result = $client->call("cadastrarUsuario", $usuario);
        \Zend\Debug\Debug::dump($result);
 //        return $this->redirect()->toRoute('usuario');
                 
