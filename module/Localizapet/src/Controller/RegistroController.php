@@ -164,7 +164,7 @@ class RegistroController extends AbstractActionController
         $registro->setLongitude($data['longitude']);
         $registro->setStatus($data['status']);
         $registro->setUsuarioId($usuario['usuario_id']);
-        
+
         $client->save($registro);
 
         return $this->redirect()->toRoute('registro');
