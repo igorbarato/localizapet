@@ -14,7 +14,7 @@
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
-        <div class=" panel panel-success">
+        <div class=" panel panel-primary">
             <div class="panel-heading text-center "><h4>Cadastrar</h4></div>
             <div class="panel-body">
 
@@ -65,3 +65,9 @@ echo $this->form()->closeTag();
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('input[name="telefone"]').inputmask({"mask": "(99)99999-9999"});
+    } );
+</script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>

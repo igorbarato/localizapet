@@ -134,8 +134,9 @@ class RegistroController extends AbstractActionController
 //        $auth = new AuthenticationService();
 
         $registro = new Registro();
-        $client = new DaoRegistros();
-//
+//        $client = new DaoRegistros();
+        $client = new Localizapet\Service\Servicos();
+
 
         $data = $form->getData();
         $target_path = basename($data['foto']['name']);
@@ -159,7 +160,7 @@ class RegistroController extends AbstractActionController
         $registro->setStatus($data['status']);
         $registro->setUsuarioId($usuario['usuario_id']);
 
-        $client->save($registro);
+        $client->cadastraRegistro($registro);
 
         return $this->redirect()->toRoute('registro');
 
