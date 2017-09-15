@@ -43,9 +43,19 @@ class DaoRegistros
     public function find($id)
     {
         $this->connection = new Database('registros');
-        $this->result = $this->connection->find($id);
+        $sql = "SELECT r.id, r.data, r.endereco, r.latitude, r.longitude, r.tipo_registro,
+            r.status, r.nome, r.sexo, r.detalhes, r.foto,  racas.especie, racas.raca, usuarios.login, usuarios.telefone
+            FROM registros AS r, racas, usuarios
+            WHERE r.raca_id = racas.id
+            AND r.usuario_id = usuarios.id
+            AND r.id = ". $id;
+        $stmt = $this->connection->db->query($sql);
+        $this->result = $stmt->fetch_all(MYSQLI_ASSOC);
         $this->connection->db->close();
         return $this->result;
+//        $this->result = $this->connection->find($id);
+//        $this->connection->db->close();
+//        return $this->result;
     }
 
     public function findPerParameter($buscas)

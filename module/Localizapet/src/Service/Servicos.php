@@ -144,4 +144,24 @@ class Servicos
     function hello(){
         return 'Hello Brasil';
     }
+
+    /**
+     * @param int $id
+     * @return \Localizapet\Model\Registro $registro
+     */
+    function verRegistro($id){
+        $daoRegistro = new DaoRegistros();
+        //Método de busca de todos os registros
+        $rows = $daoRegistro->find($id);
+
+        //Trata o array retornado para uma lista de objetos
+        $listaRegistros = new ArrayObject();
+        foreach($rows as $key => $row){
+            $registro = new Registro();
+        $registro->convertArrayObject($row);
+        $listaRegistros->append($registro);
+        }
+        //Retorna a lista de registros
+        return $listaRegistros->getArrayCopy();
+    }
 }

@@ -165,16 +165,29 @@ class RegistroController extends AbstractActionController
 
     }
 
-    public function editAction()
+    public function verAction(){
+        $cliente = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
+        $cliente->setWSDLCache(false);
+        $cliente->setSoapVersion(SOAP_1_2);
+        
+        $id = (int)$this->params()->fromRoute('id', 0);
+        $registro = $cliente->verRegistro($id);
+
+        return $view = new ViewModel([
+            'registro' => $registro
+        ]);
+    }
+
+    public function editAction_old()
     {
         $id = (int)$this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('post');
+            return $this->redirect()->toRoute('registro');
         }
         try {
             $post = $this->table->find($id);
         } catch (\Exception $e) {
-            return $this->redirect()->toRoute('post');
+            return $this->redirect()->toRoute('registro');
         }
         $form = new PostForm();
         $form->bind($post);
