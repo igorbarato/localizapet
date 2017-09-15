@@ -1,9 +1,15 @@
 <?php
 namespace Localizapet\Model;
 
+/**
+ * UsuarioModel
+ */
 class UsuarioModel
 {
-  
+    /**
+     *
+     * @var int
+     */
     public $usuario_id = "";
     
     /**
@@ -24,11 +30,11 @@ class UsuarioModel
      */
     public $telefone;
     
-    public function __construct(){
-        $this->usuario_id = null;
-        $this->login = null;
-        $this->senha = null;
-        $this->telefone = null;
+    public function __construct($usuario=null, $login=null, $senha=null, $telefone=null){
+        $this->usuario_id = $usuario;
+        $this->login = $login;
+        $this->senha = $senha;
+        $this->telefone = $telefone;
     }
             
     function getUsuario_id() {
