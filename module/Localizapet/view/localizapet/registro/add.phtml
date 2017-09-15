@@ -1,3 +1,7 @@
+<?php
+    $form = $this->form;
+    $messages = $form->getMessages();
+?>
 <div class="row">
     <div class="col-xs-12">
         <?php if(!empty($messages)): ?>
@@ -28,8 +32,7 @@
 </script>
 
 <?php
-    $form = $this->form;
-    $messages = $form->getMessages();
+
 
     $data = $form->get('data');
     $data->setAttribute('class','form-control');
@@ -127,7 +130,10 @@
 </div>
 
 
-
+<div class="form-group">
+    <?=$this->formLabel($status);?>
+    <?=$this->formElement($status);?>
+</div>
 <div class="text-center">
     <?=$this->formSubmit($submit);?>
 </div>

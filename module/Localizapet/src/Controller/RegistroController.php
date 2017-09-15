@@ -121,11 +121,12 @@ class RegistroController extends AbstractActionController
             ]);
         }
 
-         $data = array_merge_recursive(
+        $data = array_merge_recursive(
              $request->getPost()->toArray(),
              $request->getFiles()->toArray()
          );
 
+        $usuario = $auth->getIdentity();
         $form->setData($data);
         if (!$form->isValid()) {
             return ['form' => $form];
@@ -134,14 +135,13 @@ class RegistroController extends AbstractActionController
 //        $client = new \Zend\Soap\Client('http://localizapet.esy.es/public/server.php?wsdl');
 //        $client->setWSDLCache(false);
 //        $client->setSoapVersion(SOAP_1_2);
-//      
+//
         //Retorna ID do usuário logado
 //        $auth = new AuthenticationService();
 
         $registro = new Registro();
         $client = new DaoRegistros();
 //
-        $usuario = $auth->getIdentity();
 
         $data = $form->getData();
         $target_path = basename($data['foto']['name']);
@@ -164,11 +164,9 @@ class RegistroController extends AbstractActionController
         $registro->setLongitude($data['longitude']);
         $registro->setStatus($data['status']);
         $registro->setUsuarioId($usuario['usuario_id']);
-        \Zend\Debug\Debug::dump($registro);
-
+        
         $client->save($registro);
-        exit();
-//
+
         return $this->redirect()->toRoute('registro');
 
     }
