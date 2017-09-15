@@ -89,7 +89,7 @@ class DaoUsuarios
             $stmt->execute();
 
             $this->result =  $stmt->affected_rows." Row inserted.\n";
-
+            $this->result = $stmt->error;
             $stmt->close();
 
         }else{
