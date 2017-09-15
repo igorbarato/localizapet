@@ -91,7 +91,7 @@ class RegistroController extends AbstractActionController
         }
 
         $listaRegistros = $cliente->buscaRegistros($parametros);
-
+//        \Zend\Debug\Debug::dump($listaRegistros);
         return $view = new ViewModel([
             'registros' => $listaRegistros,
             'form' => $form

@@ -73,6 +73,7 @@ echo $this->form()->closeTag();
         <th>Longitude</th>
         <th>Status</th>
         <th>Usuário</th>
+        <th>Telefone</th>
     </tr>
     <?php
     $registros = $this->registros;
@@ -92,6 +93,7 @@ echo $this->form()->closeTag();
             <td><?= $registro->longitude ?></td>
             <td><?= $registro->status ?></td>
             <td><?= $registro->usuario->login ?></td>
+            <td><a href="tel:<?= $registro->usuario->telefone ?>"><?= $registro->usuario->telefone ?></a></td>
         </tr>
     <?php endforeach;?>
 </table>
