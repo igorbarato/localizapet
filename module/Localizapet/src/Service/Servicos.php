@@ -91,7 +91,7 @@ class Servicos
 
     /**
      * @param \Localizapet\Model\Registro $registro
-     * @return $result
+     * @return string $result
      */
     function cadastraRegistro(Registro $registro){
         $client = new DaoRegistros();
