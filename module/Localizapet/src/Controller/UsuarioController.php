@@ -121,7 +121,6 @@ class UsuarioController extends AbstractActionController
 //       ) );
 //
        $result = $client->call("cadastrarUsuarioObjeto", $usuario);
-       \Zend\Debug\Debug::dump($client->getLastResponse());
 //        return $this->redirect()->toRoute('home');
                 
    }

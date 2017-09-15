@@ -73,9 +73,9 @@ class DaoUsuarios
 
     public function save(UsuarioModel $usuario)
     {
-        if (!empty($usuario->getUsuario_id())) {
-            return $this->update($usuario);
-        }
+//        if (!empty($usuario->getUsuario_id())) {
+//            return $this->update($usuario);
+//        }
         $this->connection = new Database('usuarios');
         $sql = "INSERT INTO `usuarios` (`login`, `senha`, `telefone`)
           VALUES

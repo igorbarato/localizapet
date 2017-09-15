@@ -10,7 +10,7 @@ class UsuarioModel
      *
      * @var int
      */
-    public $usuario_id = "";
+    public $usuario_id;
     
     /**
      *
