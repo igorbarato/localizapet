@@ -57,45 +57,54 @@ echo $this->formSubmit($submit);
 echo $this->formHidden($form->get('id'));
 echo $this->form()->closeTag();
 ?>
-
+<br>
 <table class="table table-hover">
     <tr>
         <th>Foto</th>
+        <th>Informações do Animal</th>
         <th>Tipo de registro</th>
-        <th>Nome</th>
         <th>Data</th>
-        <th>Sexo</th>
-        <th>Espécie</th>
-        <th>Raça</th>
-        <th>Detalhes</th>
         <th>Endereço</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
         <th>Status</th>
         <th>Usuário</th>
-        <th>Telefone</th>
     </tr>
     <?php
     $registros = $this->registros;
+    if(isset($registros)):
 //    \Zend\Debug\Debug::dump($registros);?>
     <?php foreach ($registros as $registro): ?>
-        <tr>
+        <tr class="<?=($registro->tipo_registro == 0) ? 'danger' : 'success'?>">
             <td><img width="100px" height="auto" src="data:image/jpeg;base64,<?=$registro->{'foto'}?>"/></td>
+            <td>
+            <?php if($registro->nome != "") echo "<span style='font-size: 16px'><strong>" . $registro->nome . "</strong></span><br>";  ?>
+            <i class="fa fa-venus-mars" aria-hidden="true"></i> <?= ($registro->sexo == 0 ) ? "Fêmea" : "Macho" ?>
+            <br><i class="fa fa-paw" aria-hidden="true"></i> <?= ($registro->raca->especie == 0) ? "Cachorro" : "Gato" ?>
+            <br><i class="fa fa-paw" aria-hidden="true"></i> <?= $registro->raca->raca ?>
+            <br><i class="fa fa-info-circle" aria-hidden="true"></i> <?= $registro->detalhes ?>
+            </td>
             <td><?= ($registro->tipo_registro == 0) ? "Perdido" : "Encontrado" ?></td>
-            <td><?= $registro->nome ?></td>
             <td><?= $registro->data ?></td>
-            <td><?= ($registro->sexo == 0 ) ? "Fêmea" : "Macho" ?></td>
-            <td><?= ($registro->raca->especie == 0) ? "Cachorro" : "Gato" ?></td>
-            <td><?= $registro->raca->raca ?></td>
-            <td><?= $registro->detalhes ?></td>
-            <td><?= $registro->endereco ?></td>
-            <td><?= $registro->latitude ?></td>
-            <td><?= $registro->longitude ?></td>
+            <td><?= $registro->endereco ?><br><a class="btn btn-primary" onclick="myNavFunc()"><i class="fa fa-map-marker" aria-hidden="true"></i> ver no Maps</a></td>
             <td><?= $registro->status ?></td>
-            <td><?= $registro->usuario->login ?></td>
-            <td><a href="tel:<?= $registro->usuario->telefone ?>"><?= $registro->usuario->telefone ?></a></td>
+            <td class="text-center"><?= $registro->usuario->login ?><br><a class="btn btn-primary" href="tel:<?= $registro->usuario->telefone ?>"><?= $registro->usuario->telefone ?><br><i class="fa fa-phone" aria-hidden="true"></i> ligar</a></td>
+
         </tr>
+            <script>
+                function myNavFunc(){
+                    if( (navigator.platform.indexOf("iPhone") != -1)
+                        || (navigator.platform.indexOf("iPod") != -1)
+                        || (navigator.platform.indexOf("iPad") != -1))
+                        window.open("maps://maps.google.com/maps?daddr=<?= $registro->latitude ?>,<?= $registro->longitude ?>&amp;ll=");
+                    else
+                        window.open("http://maps.google.com/maps?daddr=<?= $registro->latitude ?>,<?= $registro->longitude ?>&amp;ll=");
+                }
+            </script>
     <?php endforeach;?>
+    <?php endif;?>
 </table>
 
 <?php if(count($registros)==0) echo '<div class="text-center alert alert-warning" role="alert">Nenhum resultado encontrado</div>'; ?>
+
+
+
+
