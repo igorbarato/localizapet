@@ -5,17 +5,16 @@
 $form = $this->form;
 $messages = $form->getMessages();
 
-$data = $form->get('data');
-$data->setAttribute('class','form-control');
+//$data = $form->get('data');
+//$data->setAttribute('class','form-control');
 
 $sexo = $form->get('sexo');
 $sexo->setAttribute('class','form-control');
-
-$especie= $form->get('especie');
-$especie->setAttribute('class','form-control');
+$sexo->setValue(-1);
 
 $raca= $form->get('raca');
 $raca->setAttribute('class','form-control');
+$raca->setValue(-1);
 
 //$animal_id = $form->get('animal_id');
 //$animal_id->setAttribute('class','form-control');
@@ -23,7 +22,7 @@ $raca->setAttribute('class','form-control');
 $submit = $form->get('submit');
 $submit->setAttribute('class','btn btn-primary');
 
-$form->setAttribute('action', $this->url('registro', ['action'=>'add']));
+$form->setAttribute('action', $this->url('registro', ['action'=>'busca']));
 $form->prepare();
 
 echo $this->form()->openTag($form);
@@ -47,19 +46,11 @@ echo $this->form()->openTag($form);
 </div>
 
 <div class="form-group">
-    <?=$this->formLabel($especie);?>
-    <?=$this->formElement($especie);?>
-</div>
-
-<div class="form-group">
     <?=$this->formLabel($raca);?>
     <?=$this->formElement($raca);?>
 </div>
 
-<div class="form-group">
-    <?=$this->formLabel($data);?>
-    <?=$this->formElement($data);?>
-</div>
+
 
 <?php
 echo $this->formSubmit($submit);
@@ -67,7 +58,7 @@ echo $this->formHidden($form->get('id'));
 echo $this->form()->closeTag();
 ?>
 
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>Foto</th>
         <th>Tipo de registro</th>
@@ -85,15 +76,15 @@ echo $this->form()->closeTag();
     </tr>
     <?php
     $registros = $this->registros;
-    //\Zend\Debug\Debug::dump($registros);?>
+//    \Zend\Debug\Debug::dump($registros);?>
     <?php foreach ($registros as $registro): ?>
         <tr>
             <td><img width="100px" height="auto" src="data:image/jpeg;base64,<?=$registro->{'foto'}?>"/></td>
-            <td><?= $registro->tipo_registro ?></td>
+            <td><?= ($registro->tipo_registro == 0) ? "Perdido" : "Encontrado" ?></td>
             <td><?= $registro->nome ?></td>
             <td><?= $registro->data ?></td>
-            <td><?= $registro->sexo ?></td>
-            <td><?= $registro->raca->especie ?></td>
+            <td><?= ($registro->sexo == 0 ) ? "Fêmea" : "Macho" ?></td>
+            <td><?= ($registro->raca->especie == 0) ? "Cachorro" : "Gato" ?></td>
             <td><?= $registro->raca->raca ?></td>
             <td><?= $registro->detalhes ?></td>
             <td><?= $registro->endereco ?></td>
@@ -104,3 +95,5 @@ echo $this->form()->closeTag();
         </tr>
     <?php endforeach;?>
 </table>
+
+<?php if(count($registros)==0) echo '<div class="text-center alert alert-warning" role="alert">Nenhum resultado encontrado</div>'; ?>

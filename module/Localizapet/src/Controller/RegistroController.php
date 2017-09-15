@@ -55,11 +55,11 @@ class RegistroController extends AbstractActionController
         ]);
     }
 
-    public function listAction()
+    public function buscaAction()
     {
 
         $form = new RegistroBuscaForm();
-        $form->get('submit')->setValue('Adicionar Registro');
+        $form->get('submit')->setValue('Buscar');
 
         $request = $this->getRequest();
 
@@ -74,33 +74,43 @@ class RegistroController extends AbstractActionController
             return ['form' => $form];
         }
 
-        $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
-        $client->setWSDLCache(false);
-        $client->setSoapVersion(SOAP_1_2);
+        $cliente = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
+        $cliente->setWSDLCache(false);
+        $cliente->setSoapVersion(SOAP_1_2);
 
+//        $cliente = new DaoRegistros();
+//        $cliente = new Localizapet\Service\Servicos();
 
-        $busca = [
-                'operando' =>'r.raca_id',
-                'operador'  => '=',
-                'valor'     => '16'
-        ];
-        $buscas = [];
-        array_push($buscas, $busca);
-
-        $rows = $client->buscaRegistros($buscas);
-
-        $listaRegistros = [];
-        foreach ($rows as $row){
-            $registro = new Registro();
-            $registro = $row;
-            array_push($listaRegistros, $registro);
-
+        $data = $form->getData();
+        \Zend\Debug\Debug::dump($data);
+        $parametros = [];
+        if($data['sexo'] != -1) {
+            $parametro = ['operando'=>'r.sexo', 'operador'=> '=', 'valor'=> $data['sexo']];
+            array_push($parametros, $parametro);
         }
+        if($data['raca'] != -1) {
+            $parametro = ['operando'=>'r.raca_id', 'operador'=> '=', 'valor'=> $data['raca']];
+            array_push($parametros, $parametro);
+        }
+
+        $listaRegistros = $cliente->buscaRegistros($parametros);
+//        $rows = $cliente->findPerParameter($parametros);
+//        \Zend\Debug\Debug::dump($rows);
+//        exit();
+//
+//        $listaRegistros = [];
+//        foreach ($rows as $row){
+//            $registro = new Registro();
+//            $registro = $row;
+//            array_push($listaRegistros, $registro);
+//
+//        }
 //        \Zend\Debug\Debug::dump($listaRegistros);
 
         return $view = new ViewModel([
 //            'registros' => $client->call('listaRegistros')
-            'registros' => $listaRegistros
+            'registros' => $listaRegistros,
+            'form' => $form
         ]);
     }
 

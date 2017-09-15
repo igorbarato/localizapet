@@ -57,9 +57,10 @@ class DaoRegistros
             WHERE r.raca_id = racas.id
             AND r.usuario_id = usuarios.id ";
         foreach($buscas as $key => $busca){
-            $sql = $sql . "AND ".  $busca['operando'] . $busca['operador'] . $busca['valor'];
+            $sql = $sql . " AND ".  $busca['operando'] . $busca['operador'] . $busca['valor'];
         }
         \Zend\Debug\Debug::dump($sql);
+        $sql = $sql . " ORDER BY r.data DESC";
         $stmt = $this->connection->db->query($sql);
         $this->result = $stmt->fetch_all(MYSQLI_ASSOC);
         $this->connection->db->close();
