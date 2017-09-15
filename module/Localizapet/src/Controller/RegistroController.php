@@ -134,9 +134,8 @@ class RegistroController extends AbstractActionController
 //        $auth = new AuthenticationService();
 
         $registro = new Registro();
-//        $client = new DaoRegistros();
-        $client = new Localizapet\Service\Servicos();
-
+        $client = new DaoRegistros();
+//
 
         $data = $form->getData();
         $target_path = basename($data['foto']['name']);
@@ -160,7 +159,7 @@ class RegistroController extends AbstractActionController
         $registro->setStatus($data['status']);
         $registro->setUsuarioId($usuario['usuario_id']);
 
-        $client->cadastraRegistro($registro);
+        $client->save($registro);
 
         return $this->redirect()->toRoute('registro');
 
@@ -170,6 +169,7 @@ class RegistroController extends AbstractActionController
         $cliente = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
         $cliente->setWSDLCache(false);
         $cliente->setSoapVersion(SOAP_1_2);
+
 
         $id = (int)$this->params()->fromRoute('id', 0);
         $registro = $cliente->verRegistro($id);
