@@ -81,7 +81,7 @@ class UsuarioController extends AbstractActionController
    public function addAction()
    {
 
-        $form = new \Localizapet\Form\UsuarioForm();
+        $form = new UsuarioForm();
         $form->get('submit')->setValue('Adicionar Usuário');
         
         $request = $this->getRequest();
@@ -89,12 +89,12 @@ class UsuarioController extends AbstractActionController
         if (!$request->isPost()){
             return new ViewModel([
                 'form' => $form,
-            ]);   
+            ]);
         }
-        
-        $form->setData($request->getPost());
-        if (!$form->isValid()) {
-            return ['form' => $form];
+
+       $form->setData($request->getPost());
+       if (!$form->isValid()) {
+           return ['form' => $form];
         }
 
        $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
@@ -113,15 +113,16 @@ class UsuarioController extends AbstractActionController
        $usuario->setTelefone($data['telefone']);
 
 //       $client->save($usuario);
-       \Zend\Debug\Debug::dump($usuario);
+
 //       $client->call("cadastrarUsuario",array(
 //           $data['login'],
 //           $data['senha'],
 //           $data['telefone']
 //       ) );
 //
-       $result = $client->call("cadastrarUsuarioObjeto", $usuario);
-//        return $this->redirect()->toRoute('home');
+       $result = $client->call("cadastrarUsuario", "claudio", "12", "1234");
+       \Zend\Debug\Debug::dump($result);
+//        return $this->redirect()->toRoute('usuario');
                 
    }
    

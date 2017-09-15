@@ -2,7 +2,7 @@
 
 <?php
     $form = $this->form;
-    $messages = $form->getMessages();
+    \Zend\Debug\Debug::dump($form);
 
     $login = $form->get('login');
     $login->setAttribute('class','form-control');
