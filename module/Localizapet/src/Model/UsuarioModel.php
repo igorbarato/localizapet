@@ -41,7 +41,7 @@ class UsuarioModel
         return $this->usuario_id;
     }
 
-    function getLogin() {
+    public function getLogin() {
         return $this->login;
     }
 
