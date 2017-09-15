@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <?php if(!empty($messages)): ?>
+            <?php foreach($messages as $key => $message_type): ?>
+                <div class="alert alert-danger">
+                    <strong><?=$key?></strong>
+                    <?php foreach($message_type as $message):?>
+                        <?=$message?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <div class=" panel panel-success">
+            <div class="panel-heading text-center "><h4>Cadastrar</h4></div>
+            <div class="panel-body">
+
+<?php
+    $form = $this->form;
+
+    $login = $form->get('login');
+    $login->setAttribute('class','form-control');
+
+    $senha = $form->get('senha');
+    $senha->setAttribute('class','form-control');
+
+    $telefone = $form->get('telefone');
+    $telefone->setAttribute('class','form-control');
+
+    $submit = $form->get('submit');
+    $submit->setAttribute('class','btn btn-primary');
+
+    $form->setAttribute('action', $this->url('usuario', ['action'=>'cadastrar']));
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+
+?>
+
+<div class="form-group">
+    <?=$this->formLabel($login);?>
+    <?=$this->formElement($login);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($senha);?>
+    <?=$this->formElement($senha);?>
+</div>
+
+<div class="form-group">
+    <?=$this->formLabel($telefone);?>
+    <?=$this->formElement($telefone);?>
+</div>
+<div class="text-center">
+    <?=$this->formSubmit($submit);?> ou <a href="<?=$this->url('usuario', ['action'=>'login'])?>">Fazer Login</a>
+</div>
+<?php
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
+?>
+            </div>
+        </div>
+    </div>
+</div>

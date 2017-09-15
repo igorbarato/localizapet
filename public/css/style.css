@@ -80,7 +80,7 @@ body.home {
 }
 
 #map {
-    background:red;display: block;
+    display: block;
     position:absolute;
     height:auto;
     bottom:0;

@@ -22,6 +22,14 @@ class UsuarioController extends AbstractActionController
     }
 
     public function indexAction()
+    {
+        $auth = new AuthenticationService();
+        $auth->clearIdentity();
+//        \Zend\Debug\Debug::dump($auth->getIdentity());
+        return $this->redirect()->toRoute('usuario',['action'=>'login']);
+    }
+
+    public function loginAction()
     {   
         
         $auth = new AuthenticationService();
@@ -61,10 +69,9 @@ class UsuarioController extends AbstractActionController
             if($result != NULL){
                 //Seta o ID do usuário como parâmetro de Sessão
                 $auth->getStorage()->write(['usuario_id' => $result]);
-                
-                var_dump($auth->getIdentity());
 
                 $this->redirect()->toRoute('home');
+
             }else{
                 $erro = 'Não foi possível realizar o login verifique o <strong>Usuário</strong> ou a <strong>Senha</strong>';
                 return new ViewModel([
@@ -78,11 +85,11 @@ class UsuarioController extends AbstractActionController
         return new ViewModel([ 'form' => $form ]);
     }
     
-   public function addAction()
+   public function cadastrarAction()
    {
 
         $form = new UsuarioForm();
-        $form->get('submit')->setValue('Adicionar Usuário');
+        $form->get('submit')->setValue('Criar conta');
         
         $request = $this->getRequest();
         
@@ -122,7 +129,7 @@ class UsuarioController extends AbstractActionController
 //
 //       $result = $client->call("cadastrarUsuario", $usuario);
        \Zend\Debug\Debug::dump($result);
-//        return $this->redirect()->toRoute('usuario');
+        return $this->redirect()->toRoute('usuario');
                 
    }
    

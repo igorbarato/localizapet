@@ -1,4 +1,18 @@
-<h1>Novo Registro</h1>
+<div class="row">
+    <div class="col-xs-12">
+        <?php if(!empty($messages)): ?>
+            <?php foreach($messages as $key => $message_type): ?>
+                <div class="alert alert-danger">
+                    <strong><?=$key?></strong>
+                    <?php foreach($message_type as $message):?>
+                        <?=$message?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <div class=" panel panel-success">
+            <div class="panel-heading "><h4>Novo Registro</h4></div>
+            <div class="panel-body">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -52,12 +66,6 @@
     $status = $form->get('status');
     $status->setAttribute('class','form-control');
 
-    //$animal_id = $form->get('animal_id');
-    //$animal_id->setAttribute('class','form-control');
-
-//    $usuario_id= $form->get('usuario_id');
-//    $usuario_id->setAttribute('class','form-control');
-
     $submit = $form->get('submit');
     $submit->setAttribute('class','btn btn-primary');
 
@@ -67,17 +75,6 @@
     echo $this->form()->openTag($form);
 
 ?>
-
-<?php if(!empty($messages)): ?>
-    <?php foreach($messages as $key => $message_type): ?>
-        <div class="alert alert-danger">
-            <strong><?=$key?></strong>
-            <?php foreach($message_type as $message):?>
-                <?=$message?>
-            <?php endforeach; ?>
-        </div>
-    <?php endforeach; ?>
-<?php endif; ?>
 
 <div class="form-group">
     <?=$this->formLabel($tipo_registro);?>
@@ -130,13 +127,11 @@
 </div>
 
 
-<div class="form-group">
-    <?=$this->formLabel($status);?>
-    <?=$this->formElement($status);?>
-</div>
 
+<div class="text-center">
+    <?=$this->formSubmit($submit);?>
+</div>
 <?php
-echo $this->formSubmit($submit);
 echo $this->formHidden($form->get('usuario_id'));
 echo $this->formHidden($form->get('id'));
 echo $this->form()->closeTag();
@@ -163,3 +158,7 @@ echo $this->form()->closeTag();
       }
     }
 </script>
+            </div>
+        </div>
+    </div>
+</div>

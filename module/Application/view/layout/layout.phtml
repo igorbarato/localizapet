@@ -40,10 +40,14 @@
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
                         <li ><a href="<?= $this->url('home') ?>">Mapa</a></li>
-                        <li ><a href="<?= $this->url('registro') ?>">Meus Registros</a></li>
-                        <li ><a href="<?= $this->url('registro') ?>">Notificações</a></li>
+                        <li ><a href="<?= $this->url('registro', ['action'=>'add']) ?>">Adicionar Registro</a></li>
+                        <?php
+                            $auth = new Zend\Authentication\AuthenticationService();
+                            $url_title = (!$auth->getIdentity()) ? 'Login' :'Sair';
+                        ?>
+                        <li ><a href="<?= $this->url('usuario') ?>"><?=$url_title?></a></li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +56,8 @@
             <?= $this->content ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?= date('Y') ?> by Zend Technologies Ltd. All rights reserved.</p>
+                <p class="text-center">&copy; 2016 - <?= date('Y') ?> Desenvolvido por
+                    <a href="https://www.linkedin.com/in/igorbarato/" target="_blank">Igor Barato</a>.</p>
             </footer>
         </div>
         <?= $this->inlineScript() ?>

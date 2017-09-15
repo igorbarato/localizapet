@@ -29,9 +29,6 @@ class RegistroController extends AbstractActionController
     public function indexAction()
     {
 
-        $auth = new AuthenticationService();
-//        \Zend\Debug\Debug::dump($auth->getIdentity());
-
         $client = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
         ini_set("soap.wsdl_cache_enabled", 0);
         $client->setWSDLCache(false);
@@ -111,6 +108,7 @@ class RegistroController extends AbstractActionController
     {
         $auth = new AuthenticationService();
 //        \Zend\Debug\Debug::dump($auth->getIdentity());
+        if (!$auth->hasIdentity()) $this->redirect()->toRoute('usuario',['action'=>'login']);;
 
         $form = new RegistroForm();
         $form->get('submit')->setValue('Adicionar Registro');
