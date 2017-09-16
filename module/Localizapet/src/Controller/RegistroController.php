@@ -79,6 +79,8 @@ class RegistroController extends AbstractActionController
         $cliente->setWSDLCache(false);
         $cliente->setSoapVersion(SOAP_1_2);
 
+        $cliente = new Localizapet\Service\Servicos();
+
         $data = $form->getData();
         $parametros = [];
         if($data['sexo'] != -1) {

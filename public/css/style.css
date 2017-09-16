@@ -4,12 +4,21 @@ body {
 }
 
 .navbar {
-    background: #171616 !important;
+    background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
 }
 
 .navbar-brand {
     padding:0;
 }
+.navbar a {
+    color: #fff !important;
+}
+
+.navbar a:hover {
+    background-color: #265a88 !important;
+    background-position: 0 -15px;
+}
+
 
 .zf-green {
     color: #96ca2d;
@@ -38,6 +47,20 @@ div.container a.navbar-brand > img {
     display: inline;
     margin-right: 4px;
     margin-top: -2px;
+}
+
+a.navbar-brand img {
+    width: 55px;
+    height: auto;
+    padding: 6px;
+    margin: 5px;
+}
+
+a.navbar-brand {
+    font-weight: 100;
+    font-size: 30px;
+    font-family: 'Snippet', sans-serif;
+    color: #fff !important;
 }
 
 div.box-pet{
