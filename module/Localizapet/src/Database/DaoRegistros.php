@@ -69,7 +69,7 @@ class DaoRegistros
         foreach($buscas as $key => $busca){
             $sql = $sql . " AND ".  $busca['operando'] . $busca['operador'] . $busca['valor'];
         }
-        \Zend\Debug\Debug::dump($sql);
+//        \Zend\Debug\Debug::dump($sql);
         $sql = $sql . " ORDER BY r.data DESC";
         $stmt = $this->connection->db->query($sql);
         $this->result = $stmt->fetch_all(MYSQLI_ASSOC);
