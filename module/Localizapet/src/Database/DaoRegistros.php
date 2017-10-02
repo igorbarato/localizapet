@@ -99,7 +99,7 @@ class DaoRegistros
                 $registro->getNome(),
                 $registro->getSexo(),
                 $registro->getDetalhes(),
-                $registro->getFoto(),
+                base64_decode($registro->getFoto()),
                 $registro->getRacaId(),
                 $registro->getUsuarioId()
             );
