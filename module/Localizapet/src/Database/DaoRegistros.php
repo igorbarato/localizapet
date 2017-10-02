@@ -87,7 +87,7 @@ class DaoRegistros
           (`data`, `endereco`, `latitude`, `longitude`, `tipo_registro`, `status`, `nome`, `sexo`,
           `detalhes`, `foto`, `raca_id`, `usuario_id`)
           VALUES
-          (STR_TO_DATE(?,'%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          (STR_TO_DATE(?,'%d/%m/%Y %H:%i'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         if($stmt = $this->connection->db->prepare($sql)){
             $stmt->bind_param('ssddiisissii',
                 $registro->getData(),

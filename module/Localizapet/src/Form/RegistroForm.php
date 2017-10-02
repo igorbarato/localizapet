@@ -92,7 +92,7 @@ class RegistroForm extends Form
             'required' => true,
             'options' => [
                 'label'=> 'Data',
-                'format'=> 'd/m/Y'
+                'format'=> 'd/m/Y H:i'
             ],
         ]);
 

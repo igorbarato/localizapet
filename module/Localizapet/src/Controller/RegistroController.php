@@ -141,6 +141,7 @@ class RegistroController extends AbstractActionController
 
 
         $data = $form->getData();
+        \Zend\Debug\Debug::dump($data);
         $target_path = basename($data['foto']['name']);
         if(move_uploaded_file($data['foto']['tmp_name'], $target_path)) {
             $file = file_get_contents($data['foto']['name']);
@@ -161,8 +162,10 @@ class RegistroController extends AbstractActionController
         $registro->setLongitude($data['longitude']);
         $registro->setStatus($data['status']);
         $registro->setUsuarioId($usuario['usuario_id']);
+        \Zend\Debug\Debug::dump($registro);
 
         $client->save($registro);
+        exit();
 
         return $this->redirect()->toRoute('registro');
 

@@ -21,9 +21,13 @@
         ?>
 
         <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
         <?= $this->headScript()
+            ->prependFile($this->basePath('js/moment.min.js'))
+            ->prependFile($this->basePath('js/transition.js'))
+            ->prependFile($this->basePath('js/collapse.js'))
             ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
         ?>
     </head>
     <?php
@@ -65,5 +69,9 @@
             </footer>
         </div>
         <?= $this->inlineScript() ?>
+<!--        <script src="js/jquery-3.1.0.min.js"></script>-->
+
+
     </body>
+
 </html>
