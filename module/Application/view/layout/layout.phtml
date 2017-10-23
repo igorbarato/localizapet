@@ -23,12 +23,12 @@
         <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-        <?= $this->headScript()
-            ->prependFile($this->basePath('js/moment.min.js'))
-            ->prependFile($this->basePath('js/transition.js'))
-            ->prependFile($this->basePath('js/collapse.js'))
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-        ?>
+            <?= $this->headScript()
+                ->prependFile($this->basePath('js/moment.min.js'))
+                ->prependFile($this->basePath('js/transition.js'))
+                ->prependFile($this->basePath('js/collapse.js'))
+                ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ?>
     </head>
     <?php
         $url = $_SERVER['REQUEST_URI'];
@@ -68,6 +68,7 @@
                     <a href="https://www.linkedin.com/in/igorbarato/" target="_blank">Igor Barato</a>.</p>
             </footer>
         </div>
+
         <?= $this->inlineScript() ?>
 <!--        <script src="js/jquery-3.1.0.min.js"></script>-->
 
