@@ -2,7 +2,8 @@
 <div id="map"></div>
 <script>
     var map;
-    var latitude, longitude
+    var latitude, longitude;
+
     if (window.navigator && window.navigator.geolocation) {
         var geolocation = window.navigator.geolocation;
         geolocation.getCurrentPosition(sucesso, erro);
@@ -12,6 +13,8 @@
     function sucesso(posicao){
         latitude = posicao.coords.latitude;
         longitude = posicao.coords.longitude;
+        console.log(posicao.coords.latitude)
+        console.log(posicao.coords.longitude);
     }
     function erro(error){
         console.log(error)
@@ -37,6 +40,8 @@
                 }
             ]
         });
+//        directionsDisplay = new google.maps.DirectionsRenderer();
+//        map.setMyLocationEnabled(true);
 
 
         var icons = {
