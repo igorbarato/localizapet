@@ -2,11 +2,14 @@
 
 <?php
     $registro = $this->registro[0];
+    $status = $registro->status;
+    if($status == "1") $status = 'info';
+    else $status = ($registro->tipo_registro == 0) ? "danger" : "success";
 ?>
 
 <div class="row">
     <div class="col-xs-12 ">
-        <div id="panel" class=" panel panel-<?= ($registro->tipo_registro == 0) ? "danger" : "success" ?>">
+        <div id="panel" class=" panel panel-<?=$status?>">
             <div class="panel-heading text-center "><h4>Informações do animal</h4></div>
             <div class="panel-body">
                 <div class="col-lg-5 col-xs-12">
@@ -52,7 +55,7 @@
         jQuery.ajax({
             type: "POST",
             contentType: "json",
-            url: "http://localhost:8080/registro/update",
+            url: "http://localizapet.site/registro/update",
             data: {'id' : id},
             cache: false,
             success: function(response)

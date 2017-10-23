@@ -44,11 +44,11 @@ class Servicos
      * @param \Localizapet\Model\UsuarioModel $usuario
      * @return string $result
      */
-    function cadastrarUsuarioObjeto(UsuarioModel $usuario){
-        $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
-        $result = $dao_usuarios->save($usuario);
-        return $result;
-    }
+//    function cadastrarUsuarioObjeto(UsuarioModel $usuario){
+//        $dao_usuarios = new \Localizapet\Database\DaoUsuarios();
+//        $result = $dao_usuarios->save($usuario);
+//        return $result;
+//    }
 
     /**
      * @return \Localizapet\Model\Raca $raca
@@ -84,10 +84,10 @@ class Servicos
      * @param int $raca_id
      * @param int $usuario_id
      */
-    function insereRegistro($endereco, $data, $latitude, $longitude, $tipoRegistro,
-                            $status, $nome, $sexo, $detalhes, $foto, $raca_id, $usuario_id){
-
-    }
+//    function insereRegistro($endereco, $data, $latitude, $longitude, $tipoRegistro,
+//                            $status, $nome, $sexo, $detalhes, $foto, $raca_id, $usuario_id){
+//
+//    }
 
     /**
      * @param \Localizapet\Model\Registro $registro
@@ -138,13 +138,7 @@ class Servicos
         //Retorna a lista de registros
         return $listaRegistros->getArrayCopy();
     }
-
-    /**
-     * @return String
-     */
-    function hello(){
-        return 'Hello Brasil';
-    }
+    
 
     /**
      * @param int $id
@@ -161,6 +155,26 @@ class Servicos
             $registro = new Registro();
         $registro->convertArrayObject($row);
         $listaRegistros->append($registro);
+        }
+        //Retorna a lista de registros
+        return $listaRegistros->getArrayCopy();
+    }
+
+    /**
+     * @param int $id
+     * @return String
+     */
+    function atualizaStatus($id){
+        $daoRegistro = new DaoRegistros();
+        //Método de busca de todos os registros
+        $rows = $daoRegistro->find($id);
+
+        //Trata o array retornado para uma lista de objetos
+        $listaRegistros = new ArrayObject();
+        foreach($rows as $key => $row){
+            $registro = new Registro();
+            $registro->convertArrayObject($row);
+            $listaRegistros->append($registro);
         }
         //Retorna a lista de registros
         return $listaRegistros->getArrayCopy();

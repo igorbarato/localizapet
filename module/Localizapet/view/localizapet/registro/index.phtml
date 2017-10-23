@@ -27,19 +27,31 @@
 
         var icons = {
             C:{
-                perdido: {
+                perdido_p: {
                     icon: '/img/red_MarkerC.png'
                 },
-                encontrado: {
+                encontrado_p: {
                     icon: '/img/green_MarkerC.png'
+                },
+                perdido_c: {
+                    icon: '/img/blue_MarkerC.png'
+                },
+                encontrado_c: {
+                    icon: '/img/blue_MarkerC.png'
                 }
             },
             G: {
-                perdido: {
+                perdido_p: {
                     icon: '/img/red_MarkerG.png'
                 },
-                encontrado: {
+                encontrado_p: {
                     icon: '/img/green_MarkerG.png'
+                },
+                perdido_c: {
+                    icon: '/img/blue_MarkerG.png'
+                },
+                encontrado_c: {
+                    icon: '/img/blue_MarkerG.png'
                 }
             }
         };
@@ -53,7 +65,10 @@
                 latitude: <?= $registro->latitude ?>,
                 longitude: <?= $registro->longitude ?>,
                 label: <?php ($registro->raca->especie == 0) ? print "\"C\"" : print "\"G\"";?>,
-                type:  <?php ($registro->tipo_registro == 0) ? print "\"perdido\"" : print "\"encontrado\"";?>,
+                type:  <?php
+                if($registro->status == 1) ($registro->tipo_registro == 0) ? print "\"perdido_c\"" : print "\"encontrado_c\"";
+                else ($registro->tipo_registro == 0) ? print "\"perdido_p\"" : print "\"encontrado_p\"";
+                ?>,
                 foto: "<?=$registro->foto?>",
                 sexo: "<?php ($registro->sexo == 0) ? print "Fêmea" : print "Macho";?>",
                 raca: "<?= $registro->raca->raca ?>"},

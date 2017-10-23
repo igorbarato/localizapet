@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e34f089-798b-40dc-adc1-21820300505d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Application/view/layout/layout.phtml" afterPath="$PROJECT_DIR$/module/Application/view/layout/layout.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Controller/RegistroController.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Controller/RegistroController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Database/DaoRegistros.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Database/DaoRegistros.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php" afterPath="$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/index.phtml" afterPath="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/index.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/ver.phtml" afterPath="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/ver.phtml" />
     </list>
     <ignored path="localizapet.iws" />
@@ -34,12 +32,12 @@
       <file leaf-file-name="ver.phtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/ver.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73275864">
-              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.43965518">
+              <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
               <folding>
-                <marker date="1508730651263" expanded="true" signature="676:691" placeholder="..." />
-                <marker date="1508730651263" expanded="true" signature="2841:2879" placeholder="..." />
-                <marker date="1508730651263" expanded="true" signature="2877:2879" placeholder="{...}" />
+                <marker date="1508734269354" expanded="true" signature="776:791" placeholder="..." />
+                <marker date="1508734269354" expanded="true" signature="2941:2979" placeholder="..." />
+                <marker date="1508734269354" expanded="true" signature="2977:2979" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -55,6 +53,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="RegistroForm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Form/RegistroForm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="20.846153">
+              <caret line="101" column="31" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="WebServiceController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Controller/WebServiceController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -65,20 +73,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DaoRegistros.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Database/DaoRegistros.php">
+      <file leaf-file-name="index.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.538462">
-              <caret line="181" column="13" selection-start-line="181" selection-start-column="13" selection-end-line="181" selection-end-column="13" />
-              <folding>
-                <marker date="1508728198490" expanded="true" signature="560:866" placeholder="SELECT r.id,..registros..." />
-                <marker date="1508728198490" expanded="true" signature="1111:1459" placeholder="SELECT r.id,..registros..." />
-                <marker date="1508728198490" expanded="true" signature="1111:1460" placeholder="SELECT r.id,..registros..." />
-                <marker date="1508728198490" expanded="true" signature="1906:2231" placeholder="SELECT r.id,..." />
-                <marker date="1508728198490" expanded="true" signature="2876:3147" placeholder="INSERT INTO `registros`..." />
-                <marker date="1508728198490" expanded="true" signature="4282:4742" placeholder="UPDATE regis..." />
-                <marker date="1508728198490" expanded="true" signature="5913:5996" placeholder="UPDATE regis..." />
-              </folding>
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,18 +136,18 @@
         <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/usuario/login.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/usuario/cadastrar.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/busca.phtml" />
-        <option value="$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Controller/UsuarioController.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/js/transition.js" />
         <option value="$PROJECT_DIR$/public/js/collapse.js" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Form/RegistroForm.php" />
-        <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/index.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/add.phtml" />
         <option value="$PROJECT_DIR$/module/Application/view/layout/layout.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/update.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Database/DaoRegistros.php" />
         <option value="$PROJECT_DIR$/module/Localizapet/src/Controller/RegistroController.php" />
+        <option value="$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php" />
+        <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/index.phtml" />
         <option value="$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/ver.phtml" />
       </list>
     </option>
@@ -421,6 +421,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localizapet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localizapet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Localizapet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -853,6 +879,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33275864">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="e#121#155#0#PHP" expanded="false" />
+            <marker date="1505439353681" expanded="true" signature="520:618" placeholder="SELECT * FRO..usuarios..." />
+            <marker date="1505439353681" expanded="true" signature="901:925" placeholder="SELECT * FRO..usuarios..." />
+            <marker date="1505439353681" expanded="true" signature="1406:1712" placeholder="SELECT r.id,..registros..." />
+            <marker date="1505439353681" expanded="true" signature="2321:2412" placeholder="INSERT INTO `registros`..." />
+            <marker date="1505439353681" expanded="true" signature="3192:3652" placeholder="UPDATE regis..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -911,13 +945,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Controller/UsuarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-72.57692">
-          <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/transition.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9158416">
@@ -940,17 +967,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23793103">
-          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-          <folding>
-            <element signature="e#70#108#0#PHP" expanded="false" />
-            <element signature="e#4065#4098#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/busca.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19782214">
@@ -959,14 +975,6 @@
             <marker date="1505464655491" expanded="true" signature="2180:2524" placeholder="..." />
             <marker date="1505464655491" expanded="true" signature="2376:2391" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/index.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="96" selection-start-line="122" selection-start-column="52" selection-end-line="122" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,14 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Form/RegistroForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5258621">
-          <caret line="101" column="31" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/add.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-62.192307">
@@ -1055,10 +1055,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Controller/RegistroController.php">
+    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Controller/UsuarioController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.423077">
-          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Service/Servicos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.923077">
+          <caret line="143" column="21" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1071,14 +1079,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Controller/RegistroController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.423077">
+          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/Localizapet/src/Form/RegistroForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="20.846153">
+          <caret line="101" column="31" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/index.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/module/Localizapet/view/localizapet/registro/ver.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73275864">
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.43965518">
+          <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
           <folding>
-            <marker date="1508730651263" expanded="true" signature="676:691" placeholder="..." />
-            <marker date="1508730651263" expanded="true" signature="2841:2879" placeholder="..." />
-            <marker date="1508730651263" expanded="true" signature="2877:2879" placeholder="{...}" />
+            <marker date="1508734269354" expanded="true" signature="776:791" placeholder="..." />
+            <marker date="1508734269354" expanded="true" signature="2941:2979" placeholder="..." />
+            <marker date="1508734269354" expanded="true" signature="2977:2979" placeholder="{...}" />
           </folding>
         </state>
       </provider>
