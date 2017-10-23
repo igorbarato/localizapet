@@ -170,6 +170,28 @@ class DaoRegistros
 
     }
 
+    public function updateStatus($id)
+    {
+//        if (isset($animal->id)) {
+//            return $this->update($animal);
+//        }
+        $this->connection = new Database('registros');
+        $sql = "UPDATE registros SET `status` = (CASE status WHEN 1 THEN 0 ELSE 1 END) WHERE id = ?";
+//        $valida_data = "null";
+        if($stmt = $this->connection->db->prepare($sql)){
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $return = "atualizado";
+
+            $stmt->close();
+        }else{
+            $return = $this->connection->db->error;
+        }
+        $this->connection->db->close();
+        return $return;
+
+    }
+
     public function delete($id)
     {
         // TODO: Implement delete() method.

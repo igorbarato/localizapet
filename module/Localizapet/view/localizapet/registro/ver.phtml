@@ -6,31 +6,40 @@
 
 <div class="row">
     <div class="col-xs-12 ">
-        <div class=" panel panel-<?= ($registro->tipo_registro == 0) ? "danger" : "success" ?>">
+        <div id="panel" class=" panel panel-<?= ($registro->tipo_registro == 0) ? "danger" : "success" ?>">
             <div class="panel-heading text-center "><h4>Informações do animal</h4></div>
             <div class="panel-body">
                 <div class="col-lg-5 col-xs-12">
                     <img width="100%" height="auto" src="data:image/jpeg;base64,<?=$registro->{'foto'}?>"/>
                 </div>
-                <div class="col-lg-7 col-xs-12">
-                    <?php if($registro->nome != "") echo "<p style='font-size: 26px'><strong>" . $registro->nome . "</strong></p><br>";  ?>
+                <div class="col-lg-7 col-xs-12 text-center">
+                    <?php if($registro->nome != "") echo "<p style='font-size: 26px'> <strong>" . $registro->nome . "</strong></p><br>";  ?>
                     <p><i class="fa fa-venus-mars" aria-hidden="true"></i> <?= ($registro->sexo == 0 ) ? "Fêmea" : "Macho" ?></p>
-                    <p><i class="fa fa-paw" aria-hidden="true"></i> <?= ($registro->raca->especie == 0) ? "Cachorro" : "Gato" ?></p>
-                    <p><i class="fa fa-paw" aria-hidden="true"></i> <?= $registro->raca->raca ?></p>
-                    <p><i class="fa fa-info-circle" aria-hidden="true"></i> <?= $registro->detalhes ?></p>
-                    <p><i class="fa fa-tag" aria-hidden="true"></i> <?= ($registro->tipo_registro == 0) ? "Perdido" : "Encontrado" ?></p>
-                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $registro->data ?></p>
-                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> <?= $registro->endereco ?><br>
+                    <p><i class="fa fa-paw" aria-hidden="true"></i> <?= ($registro->raca->especie == 0) ? "Cachorro" : "Gato" ?> - <?= $registro->raca->raca ?></p>
+                    <p><i class="fa fa-info-circle" aria-hidden="true"></i> <strong>Detalhes:</strong> <?= $registro->detalhes ?></p>
+                    <p><i class="fa fa-tag" aria-hidden="true"></i> <strong>Tipo de registro:</strong> Animal <?= ($registro->tipo_registro == 0) ? "Perdido" : "Encontrado" ?></p>
+                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>Data:</strong> <?= $registro->data ?></p>
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Endereço:</strong> <?= $registro->endereco ?>
                         <span class="text-center">
-                            <a class="btn btn-primary" onclick="myNavFunc()">ver no Maps</a>
+                            <a class="btn btn-primary" onclick="myNavFunc()">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i> Navegar
+                            </a>
                         </span>
                     </p>
-                    <p><i class="fa fa-phone" aria-hidden="true"></i> <?= $registro->usuario->login ?><br>
+                    <br>
+                    <p><strong>Contato:</strong> <?= $registro->usuario->login ?>
                         <span class="text-center">
-                            <a class="btn btn-primary" href="tel:<?= $registro->usuario->telefone ?>"><?= $registro->usuario->telefone ?>
-                                <br> ligar</a>
+                            <a class="btn btn-primary" href="tel:<?= $registro->usuario->telefone ?>">
+                                <i class="fa fa-phone" aria-hidden="true"></i> <?= $registro->usuario->telefone ?>
+                            </a>
                         </span>
                     </p>
+                    <br>
+                    <div>
+                        <strong>Status:</strong> <span id="status"><?= ($registro->status == 0 ) ? "Pendente" : "Concluído" ?></span>
+                        <input class="btn btn-primary" type="button" id="button_id" value="Atualizar status" onClick="UpdateRecord(<?= $registro->id ?>);">
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -38,6 +47,37 @@
 </div>
 
 <script>
+    function UpdateRecord(id)
+    {
+        jQuery.ajax({
+            type: "POST",
+            contentType: "json",
+            url: "http://localhost:8080/registro/update",
+            data: {'id' : id},
+            cache: false,
+            success: function(response)
+            {
+                if(response == "atualizado") updateStatus();
+
+            },
+            error: function(response){
+                console.log(response);
+            }
+        });
+
+
+
+    }
+    function updateStatus(){
+        status = $('#status').text();
+        console.log(status);
+        if(status == "Concluído")  $('#status').text("Pendente");
+        if(status == "Pendente") {
+            $('#status').text("Concluído");
+            $('#panel').removeClass('panel-danger').removeClass('panel-success').addClass('panel-info');
+        }
+
+    }
     function myNavFunc(){
         if( (navigator.platform.indexOf("iPhone") != -1)
             || (navigator.platform.indexOf("iPod") != -1)

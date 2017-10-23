@@ -9,6 +9,7 @@ use Localizapet\Form\PostForm;
 use Localizapet\Model\PostTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Uri\File;
+use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
 use Zend\Soap\Client;
 use Zend\Soap\AutoDiscover;
@@ -178,13 +179,43 @@ class RegistroController extends AbstractActionController
         $id = (int)$this->params()->fromRoute('id', 0);
         $registro = $cliente->verRegistro($id);
 
+
         return $view = new ViewModel([
             'registro' => $registro
         ]);
     }
 
-    public function editAction_old()
+    public function updateAction(){
+        //Seta template como JSON
+        $viewModel = new JsonModel();
+        $viewModel->setTerminal(true);
+        header('Content-type: application/json');
+
+        //Pega requisição e resultado
+        $request = $this->getRequest();
+        $rawBody = $request->getContent();
+        $json_data = json_decode($rawBody);
+        $id = $password=$json_data['id'];
+
+        //Atualiza status do Registro
+        $client = new DaoRegistros();
+        $result = $client->updateStatus((int)$id);
+        echo json_encode($result);
+
+        return $viewModel;
+
+    }
+    public function editAction()
     {
+        $cliente = new \Zend\Soap\Client('http://localizapet.site/server?wsdl');
+        $cliente->setWSDLCache(false);
+        $cliente->setSoapVersion(SOAP_1_2);
+
+        $id = (int)$this->params()->fromRoute('id', 0);
+        $registro = $cliente->verRegistro($id);
+
+
+
         $id = (int)$this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('registro');
