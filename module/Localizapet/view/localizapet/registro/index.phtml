@@ -6,10 +6,15 @@
 
     if (window.navigator && window.navigator.geolocation) {
         var geolocation = window.navigator.geolocation;
-        geolocation.getCurrentPosition(sucesso, erro);
+        geolocation.getCurrentPosition(sucesso, erro, options);
     } else {
         alert('Geolocalização não suportada em seu navegador.')
     }
+    var options = {
+	  enableHighAccuracy: true,
+	  timeout: 5000,
+	  maximumAge: 0
+    };
     function sucesso(posicao){
         latitude = posicao.coords.latitude;
         longitude = posicao.coords.longitude;
@@ -21,7 +26,7 @@
     }
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: latitude, lng: longitude},
+            center: {lat: -21.196004, lng: -47.795099},
             mapTypeControl: false,
             streetViewControl: false,
             zoom: 17,
@@ -40,6 +45,7 @@
                 }
             ]
         });
+
 //        directionsDisplay = new google.maps.DirectionsRenderer();
 //        map.setMyLocationEnabled(true);
 
@@ -74,6 +80,10 @@
                 }
             }
         };
+        if(latitude != null){
+        console.log("ta aqui");
+          map.setCenter({lat: latitude, lng: longitude});
+        }
 
         var locations = [
             <?php foreach ($registros as $registro): ?>
@@ -176,6 +186,6 @@
 //        }
 //    };
 </script>
-<script async defer
+<script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkUY4pGfhYU_aL2UQyy2BrG5A8IBjuEws&callback=initMap">
 </script>
